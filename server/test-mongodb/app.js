@@ -10,6 +10,13 @@ module.exports = function(app)
 
 
   var connectionString = 'mongodb://webappmaker:webappmaker@ds163181.mlab.com:63181/webappmaker';
+  if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
+    var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
+    var password = process.env.MLAB_PASSWORD_WEBDEV;
+    connectionString = 'mongodb://' + username + ':' + password;
+    connectionString += '@ds133094.mlab.com:33094/heroku_3vkswpgm'; // use yours
+  }
+
 
   var mongoose = require("mongoose");
     mongoose.connect(connectionString);
