@@ -1,6 +1,6 @@
 input {
-  margin-bottom: 5px;
-}
+   margin-bottom: 5px;
+ }
 
 .top-margin {
   margin-top: 60px;
@@ -12,4 +12,15 @@ input {
 
 .glyphicon-plus {
   font-size: 12px;
+}
+
+.borderless .list-group-item {
+  border: 0 none;
+}
+
+.small-indent {
+  padding-left: 15px;
+}
+.indent {
+  padding-left: 20px;
 }
