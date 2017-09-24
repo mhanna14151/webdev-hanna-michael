@@ -4,43 +4,40 @@
   <!-- Meta tags for making website for mobile-->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
+  <meta name="viewport" content="initial-scale=1, user-scalable=no">
 
 
   <meta charset="UTF-8">
   <title>User Profile</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
 
   <!-- STYLE sheet comes after all the libraries are loaded. Document style-->
 
-  <link href="../css/style.css" rel="stylesheet"/>
+  <link rel = 'stylesheet' href='../../css/vendors/bootstrap/dist/css/bootstrap.min.css' />
+  <link rel = 'stylesheet' href="../../css/styles.css">
+
 </head>
 
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
+  <div class="container-fluid bg-primary">
 
     <!--heading on the nav bar-->
-    <p class="navbar-header pull-left">
+    <div class="navbar-header pull-left ">
       <a class="navbar-brand thick">
-        <b>Profile</b>
+        <b class="whiteText">Profile</b>
       </a>
-    </p>
+    </div>
 
     <!--tick mark-->
-    <p class="navbar-text pull-right">
+    <div class="navbar-text pull-right">
       <a href="profile.html" class="navbar-link">
-        <span class="glyphicon glyphicon-ok"></span>
+        <span class="glyphicon glyphicon-ok whiteText"></span>
       </a>
-    </p>
-
+    </div>
   </div>
 </nav>
 
-
-<div class="container">
+<div class="container top-margin">
   <form>
     <div class="form-group">
       <label for="username">Username</label>
@@ -77,10 +74,10 @@
 
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
+  <div class="container-fluid bg-primary">
     <p class="navbar-text pull-right">
       <a href="profile.html">
-        <span class="glyphicon glyphicon-user"></span>
+        <span class="glyphicon glyphicon-user whiteText"></span>
       </a>
     </p>
 
