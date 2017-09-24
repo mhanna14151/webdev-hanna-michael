@@ -9,3 +9,7 @@ input {
 .whiteText {
   color: white;
 }
+
+.glyphicon-plus {
+  font-size: 12px;
+}

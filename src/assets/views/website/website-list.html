@@ -1,27 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Websites</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+
+  <meta charset="UTF-8">
+  <title>Websites</title>
+
+  <link rel='stylesheet' href='../../css/vendors/bootstrap/dist/css/bootstrap.min.css'/>
+  <link rel='stylesheet' href="../../css/styles.css">
 </head>
 
 
 <body>
-<div class="container">
-  <h1>Websites</h1>
-</div>
-<div class="container">
-  <ul>
-    <li>Address Book App</li>
-    <li>Blogger</li>
-    <li>BLogging App</li>
-    <li>Script Testing App</li>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid bg-primary">
+
+    <!--return mark-->
+    <div class="navbar-text pull-left">
+      <a href="../user/profile.html" class="navbar-link">
+        <span class="glyphicon-chevron-left whiteText"></span>
+      </a>
+    </div>
+
+
+    <!--heading on the nav bar-->
+    <div class="navbar-header pull-left ">
+      <a class="navbar-brand thick">
+        <b class="whiteText">Websites</b>
+      </a>
+    </div>
+
+
+    <!--add new website mark-->
+    <div class="navbar-text pull-right">
+      <a href="website-new.html" class="navbar-link">
+        <span class="glyphicon-plus whiteText"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid top-margin">
+  <ul class="list-group">
+    <li class="list-group-item">
+
+      Address Book App
+      <a href="addressBookApp.html">
+        <span class="glyphicon glyphicon-cog pull-right">
+        </span>
+      </a>
+    </li>
+    <li class="list-group-item">
+      Blogger
+      <a href="Blogger.html">
+        <span class="glyphicon glyphicon-cog pull-right">
+        </span>
+      </a>
+    </li>
+    <li class="list-group-item">Blogging App
+      <a href="bloggingApp.html">
+        <span class="glyphicon glyphicon-cog pull-right">
+        </span>
+      </a>
+    </li>
+    <li class="list-group-item">
+      Script Testing App
+      <a href="scriptTestingApp.html">
+        <span class="glyphicon glyphicon-cog pull-right">
+        </span>
+      </a>
+    </li>
   </ul>
 </div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid bg-primary">
+    <p class="navbar-text pull-right">
+      <a href="../user/profile.html">
+        <span class="glyphicon glyphicon-user whiteText"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
 
 
 </body>
 
 
-
 </html>
+
