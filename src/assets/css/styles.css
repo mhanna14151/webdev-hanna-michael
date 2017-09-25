@@ -14,6 +14,14 @@ textarea {
   color: white;
 }
 
+.blackText {
+  color: black;
+}
+
+.blueText {
+  color: blue;
+}
+
 .glyphicon-plus {
   font-size: 12px;
 }
