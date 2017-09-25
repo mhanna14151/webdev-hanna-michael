@@ -24,3 +24,8 @@ input {
 .indent {
   padding-left: 20px;
 }
+
+.right-divider {
+  border-right: 1px solid;
+  line-break: strict;
+}
