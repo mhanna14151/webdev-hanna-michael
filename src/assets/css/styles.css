@@ -2,6 +2,10 @@ input {
    margin-bottom: 5px;
  }
 
+textarea {
+  margin-bottom: 5px;
+}
+
 .top-margin {
   margin-top: 60px;
 }
