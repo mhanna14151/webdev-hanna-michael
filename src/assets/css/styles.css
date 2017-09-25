@@ -31,5 +31,11 @@ textarea {
 
 .right-divider {
   border-right: 1px solid;
-  line-break: strict;
 }
+
+.paddingWithNoTop {
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-bottom: 25px;
+}
+
