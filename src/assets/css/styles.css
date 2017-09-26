@@ -33,6 +33,7 @@ textarea {
 .small-indent {
   padding-left: 15px;
 }
+
 .indent {
   padding-left: 20px;
 }
@@ -41,7 +42,6 @@ textarea {
   border-right: 1px solid;
   border-color: #737373;
   position: relative;
-  height: 1000px;
 }
 
 .paddingWithNoTop {
@@ -79,4 +79,58 @@ textarea {
 
 .moh-top-margin {
   margin-top: 10px;
+}
+
+.moh-max-height {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+
+
+.float-wrap {
+  /* 816 = <number of floats> * (<float width> + 2 * <float border width>) */
+  width:816px;
+  border:1px solid;
+  /* causes .vertical-scroll's height to match its child divs' */
+  overflow:auto;
+}
+.left-floater {
+  width:100px;
+  height:100px;
+  border:1px solid;
+  float:left;
+}
+
+.outer {
+  overflow-x: scroll;
+}
+
+
+/* Add a black background color to the top navigation */
+.topnav {
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav > a {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  text-anchor: 25%;
+}
+
+.specialposition {
+  position: relative;
+  right: 250px
 }

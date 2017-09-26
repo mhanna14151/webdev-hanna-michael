@@ -6,7 +6,7 @@
   <meta name="viewport" content="initial-scale=1, user-scalable=no">
 
   <meta charset="UTF-8">
-  <title>Edit Heading Widget</title>
+  <title>Edit YouTube Widget</title>
 
   <link rel='stylesheet' href='../../css/vendors/bootstrap/dist/css/bootstrap.min.css'/>
   <link rel='stylesheet' href="../../css/styles.css">
@@ -15,51 +15,33 @@
 
 <body>
 <!--The banner-->
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="row container-fluid">
+<div class="topnav" id="myTopnav">
 
-    <!--Glyphicon Return Column-->
-    <div class="col-xs-1 fixed">
-      <div class="navbar-text pull-left">
-        <a href="widget-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-chevron-left blackText"></span>
-        </a>
-      </div>
-    </div>
+  <a href="widget-list.html" class="navbar-link">
+    <span class="glyphicon glyphicon-chevron-left blackText"></span>
+  </a>
 
-    <!--the left column-->
-    <div class="col-sm-2 hidden-xs">
-      <a class="navbar-brand thick">
-        <b>Widgets</b>
-      </a>
-    </div>
+  <a class = "hidden-xs">Widgets</a>
+
+  <a href="widget-list.html" class="navbar-link hidden-xs">
+    <span class="glyphicon glyphicon-plus blackText"></span>
+  </a>
+
+  <a class = specialPosition>Edit Widget</a>
+
+  <a href="widget-list.html" class="navbar-link pull-right">
+    <span class="glyphicon glyphicon-ok blackText"></span>
+  </a>
 
 
-    <!--right column-->
-    <div class="col-sm-9">
-      <!--heading on the nav bar-->
-      <div class="navbar-header pull-left ">
-        <a class="navbar-brand thick">
-          <b class="indent">Widget Edit</b>
-        </a>
-      </div>
-      <div class="navbar-text pull-right">
-        <!--Presumably in a future assignment,
-        I will edit this glyphicon to add the resulting website.-->
-        <a href="widget-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok blackText"></span>
-        </a>
-      </div>
-    </div>
-  </div>
-</nav>
+</div>
 
 <!--This is the content below the banner-->
 
-<div class="top-margin bottomPadding">
-  <div class="row">
+<div class="top-margin bottomPadding moh-max-height">
+  <div class="row moh-max-height">
     <!--Content on the Left-->
-    <div class="col-sm-3 hidden-xs">
+    <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
       <ul class="list-group borderless paddingLeft">
         <li class="list-group-item">
           <a href="widget-heading.html">
@@ -114,18 +96,27 @@
       </ul>
     </div>
     <!--Content on the Right, Main Column.-->
-    <div class="col-sm-9 paddingWithNoTop">
+    <div class="col-sm-9 paddingWithNoTop moh-max-height">
+
       <label>Name</label>
       <input class="form-control">
+
       <label>Text</label>
       <input class="form-control"
-             placeholder="US Senate Reaches Compromise on Emergency">
+             placeholder="">
       </input>
-      <label>Size</label>
+
+      <label>URL</label>
+      <input type="url" class='form-control'
+             placeholder="https://youtu.be/xuzNvBWaPy0>"
+
+      <label>Width</label>
       <input type="number" class="form-control"
-             placeholder="3">
-      <a class="btn btn-danger btn-block"
+             placeholder="1-100%">
+
+      <a class="btn btn-danger btn-block moh-top-margin"
          href="widget-chooser.html">delete</a>
+
     </div>
   </div>
 </div>
