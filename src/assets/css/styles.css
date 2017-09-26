@@ -37,8 +37,11 @@ textarea {
   padding-left: 20px;
 }
 
-.right-divider {
+.moh-right-divider {
   border-right: 1px solid;
+  border-color: #737373;
+  position: relative;
+  height: 1000px;
 }
 
 .paddingWithNoTop {
@@ -72,4 +75,8 @@ textarea {
   border-bottom-left-radius: 10px;
   opacity: 0.5;
 
+}
+
+.moh-top-margin {
+  margin-top: 10px;
 }

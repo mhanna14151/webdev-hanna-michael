@@ -1,10 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+
+  <meta charset="UTF-8">
+  <title>Edit Website</title>
+
+  <link rel='stylesheet' href='../../css/vendors/bootstrap/dist/css/bootstrap.min.css'/>
+  <link rel='stylesheet' href="../../css/styles.css">
 </head>
+
+
 <body>
+<!--The banner-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <!--Glyphicon Return Column-->
+    <div class="col-xs-1 fixed">
+      <div class="navbar-text pull-left">
+        <a href="widget-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left blackText"></span>
+        </a>
+      </div>
+    </div>
+
+    <!--the left column-->
+    <div class="col-sm-2 hidden-xs">
+      <a class="navbar-brand thick">
+        <b>Widgets</b>
+      </a>
+    </div>
+
+
+    <!--right column-->
+    <div class="col-sm-9">
+      <!--heading on the nav bar-->
+      <div class="navbar-header pull-left ">
+        <a class="navbar-brand thick">
+          <b class="indent">Widget Edit</b>
+        </a>
+      </div>
+      <div class="navbar-text pull-right">
+        <!--Presumably in a future assignment,
+        I will edit this glyphicon to add the resulting website.-->
+        <a href="widget-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok blackText"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!--This is the content below the banner-->
+
+<div class="top-margin bottomPadding">
+  <div class="row">
+    <!--Content on the Left-->
+    <div class="col-sm-3 hidden-xs moh-right-divider">
+      <ul class="list-group borderless paddingLeft">
+        <li class="list-group-item">
+          <a href="widget-heading.html">
+            Header
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-label.html">
+            Label
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-html.html">
+            HTML
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-text-input.html">
+            Text Input
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-link.html">
+            Link
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-button.html">
+            Button
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-image.html">
+            Image
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-youtube.html">
+            YouTube
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-data-table.html">
+            Data Table
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="widget-repeater.html">
+            Repeater
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--Content on the Right, Main Column.-->
+    <div class="col-sm-9 paddingWithNoTop">
+
+      <label>Name</label>
+      <input class="form-control">
+
+      <label>Text</label>
+      <input class="form-control"
+             placeholder="">
+      </input>
+
+      <label>URL</label>
+      <input type="url" class='form-control'
+             placeholder="http://random-ize.com/lorem-
+             ipsum-generators/lorem-ipsum/lorem-ipsum.jpg">
+
+      <label>Width</label>
+      <input type="number" class="form-control"
+             placeholder="1-100%">
+
+      <label>Upload</label>
+      <div class = "form-control">
+        <input type ="file"  name = "img">
+      </div>
+
+      <a class="btn btn-danger btn-block moh-top-margin"
+         href="widget-chooser.html">delete</a>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid bg-primary">
+    <p class="navbar-text pull-right">
+      <a href="../user/profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
 
 </body>
+
+
 </html>
+
