@@ -42,7 +42,7 @@ textarea {
 }
 
 .paddingWithNoTop {
-  padding-right: 65px;
+  padding-right: 35px;
   padding-left: 25px;
   padding-bottom: 25px;
 }
@@ -53,5 +53,23 @@ textarea {
 
 .bottomPadding {
   padding-bottom: 50px;
+
+}
+
+/*Not currently used*/
+.moh-glyph-right {
+  position: absolute;
+  right: 0px;
+  padding: 12px;
+}
+
+
+.moh-glyph-toolbar {
+  position: absolute;
+  right: 0px;
+  background-color: gray;
+  padding: 7px;
+  border-bottom-left-radius: 10px;
+  opacity: 0.5;
 
 }
