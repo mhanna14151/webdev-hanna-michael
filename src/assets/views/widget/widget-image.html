@@ -18,22 +18,25 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="row container-fluid">
 
-    <!--Glyphicon Return Column-->
-    <div class="col-xs-1 fixed">
-      <div class="navbar-text pull-left">
+    <!--the left column-->
+    <div class="col-sm-3">
+      <div class="navbar-brand pull-left fixed">
         <a href="widget-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left blackText"></span>
         </a>
       </div>
-    </div>
 
-    <!--the left column-->
-    <div class="col-sm-2 hidden-xs">
-      <a class="navbar-brand thick">
+      <a class="navbar-brand thick hidden-xs">
         <b>Widgets</b>
       </a>
+      <div class="navbar-brand pull-right hidden-xs">
+        <!--Presumably in a future assignment,
+        I will edit this glyphicon to add the result.-->
+        <a href="widget-list.html" class="navbar-link fixPlease">
+          <span class="glyphicon glyphicon-plus blackText"></span>
+        </a>
+      </div>
     </div>
-
 
     <!--right column-->
     <div class="col-sm-9">
@@ -45,7 +48,7 @@
       </div>
       <div class="navbar-text pull-right">
         <!--Presumably in a future assignment,
-        I will edit this glyphicon to add the resulting website.-->
+        I will edit this glyphicon to add the result.-->
         <a href="widget-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok blackText"></span>
         </a>
@@ -56,11 +59,11 @@
 
 <!--This is the content below the banner-->
 
-<div class="top-margin bottomPadding">
-  <div class="row">
+<div class= "bottomPadding moh-max-height moh-Margin-For-Two-Columns">
+  <div class="row moh-max-height">
     <!--Content on the Left-->
-    <div class="col-sm-3 hidden-xs moh-right-divider">
-      <ul class="list-group borderless paddingLeft">
+    <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
+      <ul class="list-group borderless paddingLeft small-top-Margin">
         <li class="list-group-item">
           <a href="widget-heading.html">
             Header
@@ -114,7 +117,7 @@
       </ul>
     </div>
     <!--Content on the Right, Main Column.-->
-    <div class="col-sm-9 paddingWithNoTop">
+    <div class="col-sm-9 paddingWithNoTop small-top-Margin">
 
       <label>Name</label>
       <input class="form-control">
