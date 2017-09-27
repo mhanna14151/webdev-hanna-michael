@@ -10,6 +10,14 @@ textarea {
   margin-top: 60px;
 }
 
+.moh-Margin-For-Two-Columns {
+  margin-top: 50px;
+}
+
+.small-top-Margin {
+  margin-top: 15px;
+}
+
 .whiteText {
   color: white;
 }
@@ -40,7 +48,7 @@ textarea {
 
 .moh-right-divider {
   border-right: 1px solid;
-  border-color: #737373;
+  border-color: gainsboro;
   position: relative;
 }
 
@@ -59,7 +67,6 @@ textarea {
 
 }
 
-/*Not currently used*/
 .moh-glyph-right {
   position: absolute;
   right: 0px;
@@ -94,43 +101,20 @@ body {
 }
 
 
-
-.float-wrap {
-  /* 816 = <number of floats> * (<float width> + 2 * <float border width>) */
-  width:816px;
-  border:1px solid;
-  /* causes .vertical-scroll's height to match its child divs' */
-  overflow:auto;
-}
-.left-floater {
-  width:100px;
-  height:100px;
-  border:1px solid;
-  float:left;
-}
-
-.outer {
-  overflow-x: scroll;
-}
-
-
-/* Add a black background color to the top navigation */
-.topnav {
-  overflow: hidden;
-}
-
-/* Style the links inside the navigation bar */
-.topnav > a {
-  float: left;
-  display: block;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  text-anchor: 25%;
-}
-
-.specialposition {
+.videoWrap {
   position: relative;
-  right: 250px
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0px;
+
 }
+
+.videoWrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+
+}
+
