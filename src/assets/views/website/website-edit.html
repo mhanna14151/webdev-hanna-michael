@@ -19,20 +19,20 @@
   <div class="row container-fluid bg-primary">
 
     <!--Glyphicon Return Column-->
-    <div class="col-xs-1 fixed">
+    <div class="col-sm-3 fixed">
       <div class="navbar-text pull-left">
         <a href="website-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left whiteText"></span>
         </a>
       </div>
+      <div class="hidden-xs">
+        <a class="navbar-brand thick">
+          <b class="whiteText">Websites</b>
+        </a>
+      </div>
+
     </div>
 
-    <!--the left column-->
-    <div class="col-sm-2 hidden-xs">
-      <a class="navbar-brand thick">
-        <b class="whiteText">Websites</b>
-      </a>
-    </div>
 
 
     <!--right column-->
@@ -99,11 +99,14 @@
       </ul>
     </div>
     <!--Content on the Right, Main Column.-->
-    <div class="col-sm-9 paddingWithNoTop">
+    <abe class="col-sm-9 paddingWithNoTop">
       <label>Name</label>
-      <input class="form-control" placeholder="Blogger">
+      <div>
+      <input class="form-control" type = "text">
+      </div>
       <label>Description</label>
-      <textarea class="form-control" placeholder="Blogger is a blog-publishing service..."></textarea>
+      <textarea class="form-control" type = "text">Blogger is a blog-publishing service...
+      </textarea>
       <a class="btn btn-danger btn-block"
          href="website-list.html">delete</a>
     </div>
