@@ -19,8 +19,7 @@ export class WebsiteService {
     { '_id': '567', 'name': 'Tic Tac Toe', 'developerId': '123', 'description': 'Lorem' },
     { '_id': '678', 'name': 'Checkers',    'developerId': '123', 'description': 'Lorem' },
     { '_id': '789', 'name': 'Chess',       'developerId': '234', 'description': 'Lorem' }
-  ]
-  ;
+  ];
 
   api = {
     'createWebsite'   : this.createWebsite,
@@ -37,6 +36,7 @@ export class WebsiteService {
     this.websites.push(website);
     return website;
   }
+
   // retrieves the websites in local websites array whose developerId matches the parameter userId
   findWebsitesByUser(userId) {
     for (let x = 0; x < this.websites.length; x++) {
@@ -44,6 +44,7 @@ export class WebsiteService {
         return this.websites[x]; }
     }
   }
+
   // retrieves the website in local websites array whose _id matches the websiteId parameter
   findWebsiteById(websiteId) {
     for (let x = 0; x < this.websites.length; x++) {
@@ -52,6 +53,7 @@ export class WebsiteService {
       }
     }
   }
+
   // updates the website in local websites array whose _id matches the websiteId parameter
   // may have to confirm this works
   updateWebsite(websiteId, website) {
@@ -61,6 +63,7 @@ export class WebsiteService {
       }
     }
   }
+
   // removes the website from local websites array whose _id matches the websiteId parameter
   deleteWebsite(websiteId) {
     for (let x = 0; x < this.websites.length; x++) {
@@ -69,4 +72,5 @@ export class WebsiteService {
       }
     }
   }
+
 }
