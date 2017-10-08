@@ -45,14 +45,14 @@ export class WidgetService {
   findWidgetsByPageId(pageId) {
     for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x].pageId === pageId) {
-        return this.pages[x];
+        return this.widgets[x];
       }
     }
   }
 
   // Retrieves the widget in local widgets array whose _id matches the widgetId parameter
   findWidgetById(widgetId) {
-    for (let x = 0; x < this.pages.length; x++) {
+    for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x]._id === widgetId) {
         return this.widgets[x];
       }
@@ -61,7 +61,7 @@ export class WidgetService {
 
   // Updates the widget in local widgets array whose _id matches the widgetId parameter
   updateWidget(widgetId, widget) {
-    for (let x = 0; x < this.pages.length; x++) {
+    for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x]._id === widgetId) {
         this.widgets[x] = widget;
       }
@@ -70,7 +70,7 @@ export class WidgetService {
 
   // Removes the widget from local widgets array whose _id matches the widgetId parameter
   deleteWidget(widgetId) {
-    for (let x = 0; x < this.pages.length; x++) {
+    for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x]._id === widgetId) {
         delete this.widgets[x];
       }
