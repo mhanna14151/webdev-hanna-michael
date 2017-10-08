@@ -33,7 +33,7 @@ const APP_ROUTES: Routes = [
   { path: 'user/:uid/website/:wid/page/:pid', component: PageEditComponent},
   { path: 'user/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},
   { path: 'WidgetChooserComponent', component: WidgetChooserComponent},
-  { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
+  { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent}
 // MIGHT NEED TO MAKE DIFFERENT PATHS FOR THE YOUTUBE, HEADER, and IMAGE
 ];
 
