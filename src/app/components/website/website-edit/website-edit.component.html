@@ -1,3 +1,119 @@
-<p>
-  website-edit works!
-</p>
+<!--The banner-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid bg-primary">
+
+    <!--the left column-->
+    <div class="col-sm-3">
+      <div class="navbar-brand pull-left fixed">
+        <a href="website-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left whiteText"></span>
+        </a>
+      </div>
+
+      <a class="navbar-brand thick hidden-xs">
+        <b class="whiteText">Websites</b>
+      </a>
+      <div class="navbar-brand pull-right hidden-xs">
+        <!--Presumably in a future assignment,
+        I will edit this glyphicon to add the result.-->
+        <a href="website-new.html" class="navbar-link fixPlease">
+          <span class="glyphicon glyphicon-plus whiteText"></span>
+        </a>
+      </div>
+    </div>
+
+    <!--right column-->
+    <div class="col-sm-9">
+      <!--heading on the nav bar-->
+      <div class="navbar-header pull-left ">
+        <a class="navbar-brand thick">
+          <b class="indent whiteText">Edit Website</b>
+        </a>
+      </div>
+      <div class="navbar-brand pull-right">
+        <!--Presumably in a future assignment,
+        I will edit this glyphicon to add the result.-->
+        <a href="website-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok whiteText"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!--This is everything below the banner-->
+<div class="bottomPadding moh-max-height moh-Margin-For-Two-Columns">
+  <div class="row moh-max-height">
+    <!--Content on the Left-->
+    <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
+      <ul class="list-group borderless paddingLeft small-top-Margin">
+        <li class="list-group-item">
+          <a href="../page/page-list.html" class="blackText">
+            Address Book App
+          </a>
+          <a href="website-edit.html">
+        <span class="glyphicon glyphicon-cog moh-glyph-right">
+        </span>
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="../page/page-list.html" class="blackText">
+            Blogger
+          </a>
+          <a href="website-edit.html">
+        <span class="glyphicon glyphicon-cog moh-glyph-right">
+        </span>
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="../page/page-list.html" class="blackText">
+            Blogging App
+          </a>
+          <a href="website-edit.html">
+        <span class="glyphicon glyphicon-cog moh-glyph-right">
+        </span>
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="../page/page-list.html" class="blackText">
+            Script Testing App
+          </a>
+          <a href="website-edit.html">
+        <span class="glyphicon glyphicon-cog moh-glyph-right">
+        </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--Content on the Right, Main Column.-->
+    <div class="col-sm-9 paddingWithNoTop small-top-Margin">
+      <label>Name</label>
+      <div>
+        <input class="form-control"
+               type="text"
+               value="Blogger">
+      </div>
+      <label>Description</label>
+      <textarea class="form-control"
+                rows = "4"
+                type="text">Blogger is a blog-publishing service that allows multi0user blogs with time-stamped entries. It was developed by Pyra Labs, which was bought by Google in 2003. Generally, the blogs are hosted by Google at a subdomain of blogspot.com Blogs can also be hosted in the registered custom domain of the blogger (like www.example.com) [4] A user can have up to 100 blogs per account.
+      </textarea>
+      <a class="btn btn-danger btn-block"
+         href="website-list.html">delete</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid bg-primary">
+    <p class="navbar-text pull-right">
+      <a href="../user/profile.html">
+        <span class="glyphicon glyphicon-user whiteText"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+

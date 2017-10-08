@@ -1,48 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="viewport" content="initial-scale=1, user-scalable=no">
-
-  <meta charset="UTF-8">
-  <title>Edit YouTube Widget</title>
-
-  <link rel='stylesheet' href='../../css/vendors/bootstrap/dist/css/bootstrap.min.css'/>
-  <link rel='stylesheet' href="../../css/styles.css">
-</head>
-
-
-<body>
 <!--The banner-->
-<div class="topnav" id="myTopnav">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
 
-  <a href="widget-list.html" class="navbar-link">
-    <span class="glyphicon glyphicon-chevron-left blackText"></span>
-  </a>
+    <!--the left column-->
+    <div class="col-sm-3">
+      <div class="navbar-brand pull-left fixed">
+        <a href="widget-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left blackText"></span>
+        </a>
+      </div>
 
-  <a class = "hidden-xs">Widgets</a>
+      <a class="navbar-brand thick hidden-xs">
+        <b>Widgets</b>
+      </a>
+      <div class="navbar-brand pull-right hidden-xs">
+        <!--Presumably in a future assignment,
+        I will edit this glyphicon to add the result.-->
+        <a href="widget-chooser.html" class="navbar-link fixPlease">
+          <span class="glyphicon glyphicon-plus blackText"></span>
+        </a>
+      </div>
+    </div>
 
-  <a href="widget-list.html" class="navbar-link hidden-xs">
-    <span class="glyphicon glyphicon-plus blackText"></span>
-  </a>
-
-  <a class = specialPosition>Edit Widget</a>
-
-  <a href="widget-list.html" class="navbar-link pull-right">
-    <span class="glyphicon glyphicon-ok blackText"></span>
-  </a>
-
-
-</div>
+    <!--right column-->
+    <div class="col-sm-9">
+      <!--heading on the nav bar-->
+      <div class="navbar-header pull-left ">
+        <a class="navbar-brand thick">
+          <b class="indent">Widget Edit</b>
+        </a>
+      </div>
+      <div class="navbar-text pull-right">
+        <!--Presumably in a future assignment,
+        I will edit this glyphicon to add the result.-->
+        <a href="widget-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok blackText"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
 
 <!--This is the content below the banner-->
 
-<div class="top-margin bottomPadding moh-max-height">
+<div class= "bottomPadding moh-max-height moh-Margin-For-Two-Columns">
   <div class="row moh-max-height">
     <!--Content on the Left-->
     <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
-      <ul class="list-group borderless paddingLeft">
+      <ul class="list-group borderless paddingLeft small-top-Margin">
         <li class="list-group-item">
           <a href="widget-heading.html">
             Header
@@ -96,26 +101,35 @@
       </ul>
     </div>
     <!--Content on the Right, Main Column.-->
-    <div class="col-sm-9 paddingWithNoTop moh-max-height">
+    <div class="col-sm-9 paddingWithNoTop small-top-Margin">
 
       <label>Name</label>
-      <input class="form-control">
+      <input class="form-control"
+             type = "text"
+             placeholder="Name of Widget">
 
       <label>Text</label>
       <input class="form-control"
-             placeholder="">
+             type="text"
+             placeholder="Text regarding Widget">
       </input>
 
       <label>URL</label>
-      <input type="url" class='form-control'
-             placeholder="https://youtu.be/xuzNvBWaPy0>"
+      <input type="url"
+             class='form-control'
+             placeholder="https://res.cloudinary.com/demo/image/upload/sample.jpg">
 
       <label>Width</label>
       <input type="number" class="form-control"
              placeholder="1-100%">
 
+      <label>Upload</label>
+      <div class = "form-control">
+        <input type ="file"  name = "img">
+      </div>
+
       <a class="btn btn-danger btn-block moh-top-margin"
-         href="widget-chooser.html">delete</a>
+         href="widget-list.html">delete</a>
 
     </div>
   </div>
@@ -132,10 +146,3 @@
 
   </div>
 </nav>
-
-
-</body>
-
-
-</html>
-
