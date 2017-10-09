@@ -12,10 +12,30 @@ export class UserService {
   constructor(private _http: Http) { }
 
   users = [
-    {_id: '123', username: 'alice',    password: 'alice',    firstName: 'Alice',  lastName: 'Wonder'  },
-    {_id: '234', username: 'bob',      password: 'bob',      firstName: 'Bob',    lastName: 'Marley'  },
-    {_id: '345', username: 'charly',   password: 'charly',   firstName: 'Charly', lastName: 'Garcia'  },
-    {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose',   lastName: 'Annunzi' }
+    {_id: '123',
+      username: 'alice',
+      password: 'alice',
+      email: 'alice@wonderland.com',
+      firstName: 'Alice',
+      lastName: 'Wonder'},
+    {_id: '234',
+      username: 'bob',
+      password: 'bob',
+      email: 'bobmarley@burgers.com',
+      firstName: 'Bob',
+      lastName: 'Marley'},
+    {_id: '345',
+      username: 'charly',
+      password: 'charly',
+      email: 'charlys@angels.com',
+      firstName: 'Charly',
+      lastName: 'Garcia'},
+    {_id: '456',
+      username: 'jannunzi',
+      password: 'jannunzi',
+      email: 'jannunzi@webdev.com',
+      firstName: 'Jose',
+      lastName: 'Annunzi'}
   ];
 
   api = {
