@@ -64,7 +64,7 @@
   <a class="btn btn-primary btn-block"
      [routerLink]="['user/:uid/website']">Websites</a>
   <a class="btn btn-danger btn-block "
-     [routerLink]="['login, default']">Logout</a>
+     [routerLink]="['/login']">Logout</a>
 
 </div>
 
@@ -72,9 +72,8 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid bg-primary">
     <p class="navbar-text pull-right">
-      <a [routerLink] = "['user /:uid']">
+       [routerLink] = "['user/", :uid']">
         <span class="glyphicon glyphicon-user whiteText"></span>
-      </a>
     </p>
   </div>
 </nav>
