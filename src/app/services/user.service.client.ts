@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 export class UserService {
 
-  constructor() { }
+  constructor(private _http: Http) { }
 
   users = [
     {_id: '123', username: 'alice',    password: 'alice',    firstName: 'Alice',  lastName: 'Wonder'  },
@@ -32,17 +32,25 @@ export class UserService {
     return user;
   }
 
-  findUserById(userId: string) {
+  findUserById(userId: String) {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x]._id === userId) {  return this.users[x]; }
     }
   }
 
-  findUserByUsername(user_name: string) {
+  findUserByUsername(user_name: String) {
     for (let x = 0; this.users.length; x++) {
       if (this.users[x].username === user_name) {
         return this.users[x];
       }
+    }
+  }
+
+  // Currently assumes usernames are unique
+  findUserByCredentials(username: String, password: String) {
+    const user = this.findUserByUsername(username);
+    if (user.password === password) {
+      return user;
     }
   }
 

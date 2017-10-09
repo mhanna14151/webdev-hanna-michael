@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 export class WidgetService {
 
-  constructor() {
+  constructor(private _http: Http) {
   }
 
   widgets = [

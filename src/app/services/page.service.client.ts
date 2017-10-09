@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 export class PageService {
 
-  constructor() {
+  constructor(private _http: Http) {
   }
 
   pages = [

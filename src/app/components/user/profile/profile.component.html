@@ -10,7 +10,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a href="profile.html" class="navbar-link">
+      <a [routerLink]="['/profile']" class="navbar-link">
         <span class="glyphicon glyphicon-ok whiteText"></span>
       </a>
     </div>
@@ -58,9 +58,9 @@
     </div>
   </form>
   <a class="btn btn-primary btn-block"
-     href="../website/website-list.html">Websites</a>
+     [routerLink]="['user/:uid/website']">Websites</a>
   <a class="btn btn-danger btn-block "
-     href="login.html" >Logout</a>
+     [routerLink]="['login, default']">Logout</a>
 
 </div>
 
@@ -68,10 +68,9 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid bg-primary">
     <p class="navbar-text pull-right">
-      <a href="profile.html">
+      <a [routerLink] = "['user /:uid']">
         <span class="glyphicon glyphicon-user whiteText"></span>
       </a>
     </p>
-
   </div>
 </nav>

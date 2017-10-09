@@ -1,1 +1,126 @@
-/* You can add global styles to this file, and also import other style files */
+input {
+  margin-bottom: 5px;
+}
+
+textarea {
+  margin-bottom: 5px;
+}
+
+.top-margin {
+  margin-top: 60px;
+}
+
+.moh-Margin-For-Two-Columns {
+  margin-top: 50px;
+}
+
+.small-top-Margin {
+  margin-top: 15px;
+}
+
+.whiteText {
+  color: white;
+}
+
+.blackText {
+  color: black;
+}
+
+.blueText {
+  color: blue;
+}
+
+.glyphicon-plus {
+  font-size: 12px;
+}
+
+.borderless .list-group-item {
+  border: 0 none;
+}
+
+.small-indent {
+  padding-left: 15px;
+}
+
+.indent {
+  padding-left: 20px;
+}
+
+.moh-right-divider {
+  border-right: 1px solid;
+  border-color: gainsboro;
+  position: relative;
+}
+
+.paddingWithNoTop {
+  padding-right: 35px;
+  padding-left: 25px;
+  padding-bottom: 25px;
+}
+
+.paddingLeft {
+  padding-left: 15px;
+}
+
+.bottomPadding {
+  padding-bottom: 50px;
+
+}
+
+.moh-glyph-right {
+  position: absolute;
+  right: 0px;
+  padding: 12px;
+}
+
+
+.moh-glyph-toolbar {
+  position: absolute;
+  right: 0px;
+  background-color: gray;
+  padding: 7px;
+  border-bottom-left-radius: 10px;
+  opacity: 0.5;
+
+}
+
+.moh-top-margin {
+  margin-top: 10px;
+}
+
+.moh-max-height {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+a:hover { text-decoration: none }
+
+
+
+.videoWrap {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0px;
+
+}
+
+.videoWrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+
+}
+
+textarea {
+  row: 3;
+}
