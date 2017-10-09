@@ -48,10 +48,10 @@ export class UserService {
     'deleteUser' : this.deleteUser
   };
 
-  createUser(user: User) {
-    user = new User (Math.random(), user.username, user.password, user.email, user.firstName, user.lastName);
-    this.users.push(user);
-    return user;
+  createUser(userName, password, email, firstName, lastName) {
+    let x = this.users.length;
+    this.users.push( new User (Math.random(), userName, password, email, firstName, lastName));
+    return this.users[x];
   }
 
   findUserById(userId: String) {

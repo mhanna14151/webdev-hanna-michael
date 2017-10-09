@@ -3,7 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 import { Router} from '@angular/router';
 
 import {UserService} from '../../../services/user.service.client';
-import {User} from "../../../models/user.model.client";
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-profile',

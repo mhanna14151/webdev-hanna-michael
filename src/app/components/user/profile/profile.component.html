@@ -11,7 +11,7 @@
     <!--tick mark-->
     <div class="navbar-text pull-right">
       <a class="navbar-link">
-        <span (click) = updateProfile() class="glyphicon glyphicon-ok whiteText " ></span>
+        <span (click) = updateProfile(user.username) class="glyphicon glyphicon-ok whiteText " ></span>
       </a>
     </div>
   </div>
@@ -25,7 +25,7 @@
              class="form-control"
              id="username"
              placeholder="User Name"
-             value= {{user.username}}>
+             value={{user.username}}>
     </div>
   </form>
 
