@@ -61,8 +61,10 @@
              value={{user.lastName}}>
     </div>
   </form>
-  <a class="btn btn-primary btn-block"
-     [routerLink]="['user/:uid/website']">Websites</a>
+  <button class = "btn btn-primary btn-block"
+          (click)="navigateToUsersWebsite()">
+    Websites
+  </button>
   <a class="btn btn-danger btn-block "
      [routerLink]="['/login']">Logout</a>
 
