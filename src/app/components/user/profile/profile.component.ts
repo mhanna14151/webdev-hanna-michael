@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { Router} from "@angular/router";
+import { Router} from '@angular/router';
 
 import {UserService} from '../../../services/user.service.client';
 
@@ -23,8 +23,13 @@ export class ProfileComponent implements OnInit {
       this.user = this.userService.findUserById(this.userId);
     });
   }
-  returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
-  }
+
+  // updateProfile() {
+  //   this.user(this.user.firstName, this.user.lastName)
+  //   this.userService.updateUser(this.userId, this.user);
+  // }
+  // returnToProfile() {
+  //   this.router.navigate(['user/', this.user._id]);
+  // }
 
 }

@@ -3,6 +3,7 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import {User} from '../models/user.model.client';
 
 // injecting service into module
 @Injectable()
@@ -10,33 +11,34 @@ import { Router } from '@angular/router';
 export class UserService {
 
   constructor(private _http: Http) { }
-
-  users = [
-    {_id: '123',
-      username: 'alice',
-      password: 'alice',
-      email: 'alice@wonderland.com',
-      firstName: 'Alice',
-      lastName: 'Wonder'},
-    {_id: '234',
-      username: 'bob',
-      password: 'bob',
-      email: 'bobmarley@burgers.com',
-      firstName: 'Bob',
-      lastName: 'Marley'},
-    {_id: '345',
-      username: 'charly',
-      password: 'charly',
-      email: 'charlys@angels.com',
-      firstName: 'Charly',
-      lastName: 'Garcia'},
-    {_id: '456',
-      username: 'jannunzi',
-      password: 'jannunzi',
-      email: 'jannunzi@webdev.com',
-      firstName: 'Jose',
-      lastName: 'Annunzi'}
+    users: User[] = [
+      new User('123', 'alice', 'alice', 'alice@wonderland.com', 'Alice', 'Wonder'),
+      new User('234', 'bob', 'bob', 'bobmarley@burgers.com', 'Bob', 'Marley'),
+      new User('345', 'charly', 'charly', 'charlys@angels.com', 'Charly', 'Garcia'),
+      new User('456', 'jannunzi', 'jannunzi', 'jannunzi@webdev.com', 'Jose', 'Annunzi')
   ];
+
+  // users = [
+  //   {_123', 'alice', 'alice', 'alice@wonderland.com',Alice', 'Wonder'},
+  //   {_id: '234',
+  //     username: 'bob',
+  //     password: 'bob',
+  //     email: 'bobmarley@burgers.com',
+  //     firstName: 'Bob',
+  //     lastName: 'Marley'},
+  //   {_id: '345',
+  //     username: 'charly',
+  //     password: 'charly',
+  //     email: 'charlys@angels.com',
+  //     firstName: 'Charly',
+  //     lastName: 'Garcia'},
+  //   {_id: '456',
+  //     username: 'jannunzi',
+  //     password: 'jannunzi',
+  //     email: 'jannunzi@webdev.com',
+  //     firstName: 'Jose',
+  //     lastName: 'Annunzi'}
+  // ];
 
   api = {
     'createUser'   : this.createUser,
@@ -46,8 +48,8 @@ export class UserService {
     'deleteUser' : this.deleteUser
   };
 
-  createUser(user: any) {
-    user._id = Math.random();
+  createUser(user: User) {
+    user = new User (Math.random(), user.username, user.password, user.email, user.firstName, user.lastName);
     this.users.push(user);
     return user;
   }

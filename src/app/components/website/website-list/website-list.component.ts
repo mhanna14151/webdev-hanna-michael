@@ -14,10 +14,11 @@ export class WebsiteListComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute,
               private router: Router) { }
 
-  ngOnInit() {    this.route.params.subscribe(params => {
+  ngOnInit() {
+    this.route.params.subscribe(params => {
     this.userId = params['uid'];
     this.user = this.userService.findUserById(this.userId);
-  });
+    });
   }
   returnToProfile() {
     this.router.navigate(['user/', this.user._id]);
