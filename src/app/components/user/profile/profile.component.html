@@ -11,7 +11,9 @@
     <!--tick mark-->
     <div class="navbar-text pull-right">
       <a class="navbar-link">
-        <span (click) = updateProfile(user.username) class="glyphicon glyphicon-ok whiteText " ></span>
+        <span (click)="updateProfile(username,email,firstName, lastName)"
+              class="glyphicon glyphicon-ok whiteText">
+        </span>
       </a>
     </div>
   </div>
@@ -20,12 +22,12 @@
 <div class="container top-margin">
   <form>
     <div class="form-group">
-      <label for="username">Username</label>
+      <label for="username">User Name</label>
       <input type="text"
              class="form-control"
              id="username"
              placeholder="User Name"
-             value={{username}}>
+      [ngModel]="username" name="username">
     </div>
   </form>
 
@@ -36,7 +38,7 @@
              class="form-control"
              id="email"
              placeholder = "email@address.com"
-             value={{email}}>
+             [(ngModel)]="email" name="email">
     </div>
   </form>
 
@@ -47,10 +49,9 @@
              class="form-control"
              id="first-name"
              placeholder="First Name"
-             value={{firstName}}>
+             [(ngModel)]="firstName" name="firstName">
     </div>
   </form>
-
   <form>
     <div class="form-group">
       <label for="last-name">Last Name</label>
@@ -58,7 +59,7 @@
              class="form-control"
              id="last-name"
              placeholder="Last Name"
-             value={{lastName}}>
+             [(ngModel)]="lastName" name="lastName">
     </div>
   </form>
   <button class = "btn btn-primary btn-block"
@@ -67,7 +68,6 @@
   </button>
   <a class="btn btn-danger btn-block "
      [routerLink]="['/login']">Logout</a>
-
 </div>
 
 <!--NEED TO COME BACK TO THIS-->

@@ -40,8 +40,8 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['user', this.userId, 'website']);
   }
 
-  updateProfile(userName, email, firstName, lastName) {
-    this.userService.updateUser(this.userId, new User(this.userId, userName,
+  updateProfile(username: String, email: String, firstName: String, lastName: String) {
+    this.userService.updateUser(this.userId, new User(this.userId, username,
       this.user.password, email, firstName, lastName));
   }
 
