@@ -50,17 +50,20 @@
   <div class="row moh-max-height">
     <!--Content on the Left-->
     <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
-      <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
-        <li class="list-group-item">
-          <a routerLink="['']">
-            {{website.name}}
-          </a>
-          <span (click)="navigateToWebsiteEdit(website._id)" class="glyphicon glyphicon-cog pull-right"></span>
-        </li>
+      <div class = "paddingLeft small-top-Margin">
+        <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
+          <li class="list-group-item">
+            <a routerLink="['']">
+              {{website.name}}
+            </a>
+            <span (click)="navigateToWebsiteEdit(website._id)" class="glyphicon glyphicon-cog pull-right"></span>
+          </li>
+        </div>
       </div>
     </div>
     <!--Content on the Right, Main Column.-->
-    <div class="col-sm-9 paddingWithNoTop small-top-Margin">
+    <div class="list-group borderless paddingLeft">
+      <div class="col-sm-9 paddingWithNoTop small-top-Margin">
       <label>Name</label>
       <div>
         <input type="text"
@@ -73,10 +76,11 @@
       <textarea class="form-control"
                 rows = "4"
                 type="text"
-      [(ngModel)] ="description" description ="description">
+                [(ngModel)] ="description" description ="description">
       </textarea>
       <a class="btn btn-danger btn-block"
          href="website-list.html">delete</a>
+      </div>
     </div>
   </div>
 </div>
