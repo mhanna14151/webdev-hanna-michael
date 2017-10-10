@@ -40,10 +40,12 @@ export class WebsiteService {
 
   // retrieves the websites in local websites array whose developerId matches the parameter userId
   findWebsitesByUser(userId) {
+    const separateWebsite: Website[] = [];
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x].developerId === userId) {
-        return this.websites[x]; }
+        separateWebsite.push(this.websites[x]); }
     }
+    return separateWebsite;
   }
 
   // retrieves the website in local websites array whose _id matches the websiteId parameter
