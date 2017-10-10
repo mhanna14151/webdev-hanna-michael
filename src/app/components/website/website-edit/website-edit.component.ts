@@ -57,6 +57,10 @@ export class WebsiteEditComponent implements OnInit {
     this.router.navigate(['user', this.userId, 'website']);
   }
 
+  navigateToWebsiteNew() {
+    this.router.navigate(['user/', this.user._id, 'website', 'new']);
+  }
+
   returnToProfile() {
     this.router.navigate(['user/', this.user._id]);
   }

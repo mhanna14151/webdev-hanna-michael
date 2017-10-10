@@ -33,7 +33,6 @@ export class WebsiteListComponent implements OnInit {
       console.log('User id is this: ' +  this.userId);
     });
     this.websites = this.websiteService.findWebsitesByUser(this.userId);
-
     this.user = this.userService.findUserById(this.userId);
     this.websiteId = this.websiteService.findWebsiteById(this.userId)._id;
     // this.route.params.subscribe(params => {
@@ -54,6 +53,10 @@ export class WebsiteListComponent implements OnInit {
 
   navigateToWebsiteEdit(ID) {
     this.router.navigate(['user/', this.user._id, 'website', ID]);
+  }
+
+  navigateToWebsiteNew() {
+    this.router.navigate(['user/', this.user._id, 'website', 'new']);
   }
 
   navigateToPage() {
