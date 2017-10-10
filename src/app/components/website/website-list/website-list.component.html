@@ -32,10 +32,15 @@
       <a routerLink="['']">
         {{website.name}}
       </a>
-      <span routerLink="['user', website.developerId,
-      'website', website._id]" class="glyphicon glyphicon-cog pull-right"></span>
+      <span (click)="navigateToWebsiteEdit(website._id)"class="glyphicon glyphicon-cog pull-right"></span>
     </li>
   </div>
+
+  <!--(click)="navigateToWebsiteEdit()"-->
+
+  <!--routerLink="['user', {{website.developerId}},-->
+  <!--'website', {{website._id}}]"-->
+
 
   <!--<ul class="list-group borderless">-->
     <!--<li class="list-group-item">-->

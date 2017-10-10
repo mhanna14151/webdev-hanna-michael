@@ -3,8 +3,8 @@ import {UserService} from '../../../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WebsiteService} from '../../../services/website.service.client';
 import {Website} from '../../../models/website.model.client';
-import {User} from "../../../models/user.model.client";
-import {PageService} from "../../../services/page.service.client";
+import {User} from '../../../models/user.model.client';
+import {PageService} from '../../../services/page.service.client';
 
 @Component({
   selector: 'app-website-list',
@@ -17,6 +17,8 @@ import {PageService} from "../../../services/page.service.client";
 export class WebsiteListComponent implements OnInit {
   userId: String;
   user: User;
+  websiteId: String;
+  websites: Website[];
   // websites: Website[];
 
   constructor(private userService: UserService,
@@ -27,9 +29,17 @@ export class WebsiteListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-    this.userId = params['uid'];
-    this.user = this.userService.findUserById(this.userId);
+      this.userId = params['uid'];
+      console.log('User id is this: ' +  this.userId);
     });
+    this.websites = this.websiteService.findWebsitesByUser(this.userId);
+
+    this.user = this.userService.findUserById(this.userId);
+    this.websiteId = this.websiteService.findWebsiteById(this.userId)._id;
+    // this.route.params.subscribe(params => {
+    //     this.websiteId = params['wid'];
+    //     console.log('Website ID is this stuff: ' + this.websiteId);
+    // });
   }
 
   outputWebsitesForThisUser() {
@@ -40,6 +50,10 @@ export class WebsiteListComponent implements OnInit {
 
   returnToProfile() {
     this.router.navigate(['user/', this.user._id]);
+  }
+
+  navigateToWebsiteEdit(ID) {
+    this.router.navigate(['user/', this.user._id, 'website', ID]);
   }
 
   navigateToPage() {

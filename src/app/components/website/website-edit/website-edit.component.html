@@ -46,45 +46,19 @@
 <div class="bottomPadding moh-max-height moh-Margin-For-Two-Columns">
   <div class="row moh-max-height">
     <!--Content on the Left-->
+
+
+
+
     <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
-      <ul class="list-group borderless paddingLeft small-top-Margin">
+      <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
         <li class="list-group-item">
-          <a href="../page/page-list.html" class="blackText">
-            Address Book App
+          <a routerLink="['']">
+            {{website.name}}
           </a>
-          <a href="website-edit.html">
-        <span class="glyphicon glyphicon-cog moh-glyph-right">
-        </span>
-          </a>
+          <span (click)="navigateToWebsiteEdit(website._id)"class="glyphicon glyphicon-cog pull-right"></span>
         </li>
-        <li class="list-group-item">
-          <a href="../page/page-list.html" class="blackText">
-            Blogger
-          </a>
-          <a href="website-edit.html">
-        <span class="glyphicon glyphicon-cog moh-glyph-right">
-        </span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="../page/page-list.html" class="blackText">
-            Blogging App
-          </a>
-          <a href="website-edit.html">
-        <span class="glyphicon glyphicon-cog moh-glyph-right">
-        </span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="../page/page-list.html" class="blackText">
-            Script Testing App
-          </a>
-          <a href="website-edit.html">
-        <span class="glyphicon glyphicon-cog moh-glyph-right">
-        </span>
-          </a>
-        </li>
-      </ul>
+      </div>
     </div>
     <!--Content on the Right, Main Column.-->
     <div class="col-sm-9 paddingWithNoTop small-top-Margin">

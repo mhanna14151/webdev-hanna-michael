@@ -3,7 +3,7 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
-import {Website} from "../models/website.model.client";
+import {Website} from '../models/website.model.client';
 
 // injecting service into module
 @Injectable()
