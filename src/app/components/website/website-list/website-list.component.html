@@ -29,7 +29,9 @@
 <div class="container-fluid top-margin">
   <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
     <li class="list-group-item">
-      {{website.name}}
+      <a routerLink="['']">
+        {{website.name}}
+      </a>
       <span routerLink="['user', website.developerId,
       'website', website._id]" class="glyphicon glyphicon-cog pull-right"></span>
     </li>

@@ -3,6 +3,7 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import {Page} from '../models/page.model.client';
 
 // injecting service into module
 @Injectable()
@@ -12,10 +13,10 @@ export class PageService {
   constructor(private _http: Http) {
   }
 
-  pages = [
-    {'_id': '321', 'name': 'Post 1', 'websiteId': '456', 'description': 'Lorem'},
-    {'_id': '432', 'name': 'Post 2', 'websiteId': '456', 'description': 'Lorem'},
-    {'_id': '543', 'name': 'Post 3', 'websiteId': '456', 'description': 'Lorem'}
+  pages: Page[] = [
+    new Page('321', 'Post 1', '456', 'Lorem'),
+    new Page('432', 'post 2', '456', 'Lorem'),
+    new Page('543', 'Post 3', '456', 'Lorem')
   ];
 
   api = {

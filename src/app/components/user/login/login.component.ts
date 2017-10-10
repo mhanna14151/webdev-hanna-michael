@@ -8,9 +8,11 @@ import {UserService} from '../../../services/user.service.client';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   username: String;
   password: String;
+  errorFlag: boolean;
+  errorMsg: String;
+
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -19,6 +21,8 @@ export class LoginComponent implements OnInit {
     if (user != null) {
       this.router.navigate(['user/', user._id]);
     }
+    this.errorFlag = true;
+    this.errorMsg = 'Username and/or password is incorrect';
   }
 
   ngOnInit() {

@@ -26,13 +26,10 @@ export class RegisterComponent implements OnInit {
     //   // do nothing...
     // }
     if (password === verifyPassword) {
-        console.log('Passwords match');
         this.user = this.userService.createUser(new User(Math.random().toString(),
           this.userName, this.password, email, firstName, lastName));
       const user = this.userService.findUserByCredentials(username, password);
-      console.log('USER IS: ' + user);
       if (this.userService.findUserByUsername(this.userName) != null) {
-        console.log('USER IS NOT NULL');
         this.router.navigate(['user/', user._id]);
       }
     }
