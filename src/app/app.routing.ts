@@ -20,10 +20,10 @@ import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-y
 
 
 const APP_ROUTES: Routes = [
-  { path : '', component : LoginComponent},
-  { path : 'test', component: TestComponent},
-  { path : 'login', component: LoginComponent},
-  { path : 'register', component: RegisterComponent},
+  { path: '', component : LoginComponent},
+  { path: 'test', component: TestComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'user/:uid', component: ProfileComponent},
   { path: 'user/:uid/website', component: WebsiteListComponent},
   { path: 'user/:uid/website/new', component: WebsiteNewComponent},
@@ -31,9 +31,9 @@ const APP_ROUTES: Routes = [
   { path: 'user/:uid/website/:wid/page', component: PageListComponent},
   { path: 'user/:uid/website/:wid/page/new', component: PageNewComponent},
   { path: 'user/:uid/website/:wid/page/:pid', component: PageEditComponent},
-  // { path: 'user/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},
-  // { path: 'WidgetChooserComponent', component: WidgetChooserComponent},
-  // { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent}
+  { path: 'user/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},
+  { path: 'WidgetChooserComponent', component: WidgetChooserComponent},
+  { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent}
 // MIGHT NEED TO MAKE DIFFERENT PATHS FOR THE YOUTUBE, HEADER, and IMAGE
 ];
 

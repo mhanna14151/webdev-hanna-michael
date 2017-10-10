@@ -20,6 +20,9 @@ export class WebsiteListComponent implements OnInit {
     this.user = this.userService.findUserById(this.userId);
     });
   }
+/*  outputWebsitesForThisUser(userId) {
+    const array[]
+  }*/
   returnToProfile() {
     this.router.navigate(['user/', this.user._id]);
   }
