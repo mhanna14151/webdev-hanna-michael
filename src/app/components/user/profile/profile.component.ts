@@ -46,8 +46,8 @@ export class ProfileComponent implements OnInit {
   //   this.user(this.user.firstName, this.user.lastName)
   //   this.userService.updateUser(this.userId, this.user);
   // }
-  // returnToProfile() {
-  //   this.router.navigate(['user/', this.user._id]);
-  // }
+  returnToProfile() {
+    this.ngOnInit();
+  }
 
 }
