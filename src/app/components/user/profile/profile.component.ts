@@ -13,6 +13,10 @@ import {User} from '../../../models/user.model.client';
 export class ProfileComponent implements OnInit {
   userId: String;
   user: User;
+  username: String;
+  email: String;
+  firstName: String;
+  lastName: String;
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
@@ -21,7 +25,14 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
+      console.log('User ID: ' + this.userId);
       this.user = this.userService.findUserById(this.userId);
+      console.log('User ' + this.user);
+      this.username = this.user.username;
+      console.log('username :' + this.username);
+      this.email = this.user.email;
+      this.firstName = this.user.firstName;
+      this.lastName = this.user.lastName;
     });
   }
 

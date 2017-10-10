@@ -48,11 +48,20 @@ export class UserService {
     'deleteUser' : this.deleteUser
   };
 
-  createUser(userName, password, email, firstName, lastName) {
-    let x = this.users.length;
-    this.users.push( new User (Math.random(), userName, password, email, firstName, lastName));
-    return this.users[x];
+  createUser(user: User) {
+    user._id = Math.random().toString();
+    this.users.push(user);
+    return user;
   }
+  //
+  //
+  //
+  // // (Math.floor(1 + (1000 - 1) * Math.random())
+  // createUser(user) {
+  //   user = new User (Math.random(), this.userName, password, email, firstName, lastName);
+  //   this.users.push(user);
+  //   return user;
+  // }
 
   findUserById(userId: String) {
     for (let x = 0; x < this.users.length; x++) {
@@ -80,7 +89,7 @@ export class UserService {
   updateUser(userId, user) {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x]._id === userId) {
-        this.users[x] = user;
+        this.users[x++] = user;
       }
     }
   }

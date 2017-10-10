@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class = "top-margin">Register</h1>
   <input placeholder="username"
-         [(ngModel)] = "username"
+         [(ngModel)] = "userName"
          type="text"
          class="form-control"/>
   <input placeholder="password"
@@ -13,7 +13,7 @@
          type="password"
          class="form-control"/>
   <button class = 'btn btn-primary btn-block'
-          (click)="registerNewUser(username, password, verifyPassword, null, null, null)">Register</button>
+          (click)="registerNewUser(userName, password, verifyPassword, null, null, null)">Register</button>
   <a class="btn btn-danger btn-block"
      [routerLink]="['/login']" >Cancel</a>
 

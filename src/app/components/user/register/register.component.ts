@@ -10,6 +10,10 @@ import {User} from '../../../models/user.model.client';
 })
 export class RegisterComponent implements OnInit {
   user: User;
+  password: String;
+  verifyPassword: String;
+  userName: String;
+
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -22,9 +26,13 @@ export class RegisterComponent implements OnInit {
     //   // do nothing...
     // }
     if (password === verifyPassword) {
-        this.user = this.userService.createUser(username, password, email, firstName, lastName);
+        console.log('Passwords match');
+        this.user = this.userService.createUser(new User(Math.random().toString(),
+          this.userName, this.password, email, firstName, lastName));
       const user = this.userService.findUserByCredentials(username, password);
-      if (user != null) {
+      console.log('USER IS: ' + user);
+      if (this.userService.findUserByUsername(this.userName) != null) {
+        console.log('USER IS NOT NULL');
         this.router.navigate(['user/', user._id]);
       }
     }
