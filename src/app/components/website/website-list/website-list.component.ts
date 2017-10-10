@@ -44,7 +44,7 @@ export class WebsiteListComponent implements OnInit {
 
   outputWebsitesForThisUser() {
     const websiteList: Website[] = this.websiteService.findWebsitesByUser(this.userId);
-    console.log(this.websiteService.findWebsitesByUser(this.userId));
+    // console.log(this.websiteService.findWebsitesByUser(this.userId));
     return websiteList;
   }
 

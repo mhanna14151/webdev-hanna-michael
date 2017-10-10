@@ -33,30 +33,29 @@
       <div class="navbar-brand pull-right">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="website-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok whiteText"></span>
+        <a (click)="navigateToUsersWebsite()" class="navbar-link">
+         <span (click)="updateWebsite(website._id, name, description)"
+               class="glyphicon glyphicon-ok whiteText">
+        </span>
         </a>
       </div>
     </div>
   </div>
 </nav>
 
+<!--(click)="updateWebsite(website._id, name, description)"-->
 
 <!--This is everything below the banner-->
 <div class="bottomPadding moh-max-height moh-Margin-For-Two-Columns">
   <div class="row moh-max-height">
     <!--Content on the Left-->
-
-
-
-
     <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
       <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
         <li class="list-group-item">
           <a routerLink="['']">
             {{website.name}}
           </a>
-          <span (click)="navigateToWebsiteEdit(website._id)"class="glyphicon glyphicon-cog pull-right"></span>
+          <span (click)="navigateToWebsiteEdit(website._id)" class="glyphicon glyphicon-cog pull-right"></span>
         </li>
       </div>
     </div>
@@ -64,20 +63,36 @@
     <div class="col-sm-9 paddingWithNoTop small-top-Margin">
       <label>Name</label>
       <div>
-        <input class="form-control"
-               type="text"
-               value="Blogger">
+        <input type="text"
+               class="form-control"
+               id="name"
+               placeholder="Name"
+               [(ngModel)]="name" name="name">
       </div>
       <label>Description</label>
       <textarea class="form-control"
                 rows = "4"
-                type="text">Blogger is a blog-publishing service that allows multi0user blogs with time-stamped entries. It was developed by Pyra Labs, which was bought by Google in 2003. Generally, the blogs are hosted by Google at a subdomain of blogspot.com Blogs can also be hosted in the registered custom domain of the blogger (like www.example.com) [4] A user can have up to 100 blogs per account.
+                type="text"
+      [(ngModel)] ="description" description ="description">
       </textarea>
       <a class="btn btn-danger btn-block"
          href="website-list.html">delete</a>
     </div>
   </div>
 </div>
+
+<div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
+  <li class="list-group-item">
+    <a routerLink="['']">
+      {{website.name}}
+    </a>
+    <span (click)="navigateToWebsiteEdit(website._id)"class="glyphicon glyphicon-cog pull-right"></span>
+  </li>
+</div>
+
+
+
+
 
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
