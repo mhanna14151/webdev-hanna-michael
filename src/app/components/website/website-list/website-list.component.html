@@ -20,51 +20,58 @@
     <!--add new website mark-->
     <div class="navbar-text pull-right">
       <a class="navbar-link">
-        <span (click)="outputWebsitesForThisUser()" class="glyphicon glyphicon-plus whiteText"></span>
+        <span class="glyphicon glyphicon-plus whiteText"></span>
       </a>
     </div>
   </div>
 </nav>
 
 <div class="container-fluid top-margin">
-  <ul class="list-group borderless">
+  <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
     <li class="list-group-item">
-      <a href="../page/page-list.html" class = "blackText">
-        Address Book App
-      </a>
-      <a href="website-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-      </a>
+      {{website.name}}
+      <span routerLink="['user', website.developerId,
+      'website', website._id]" class="glyphicon glyphicon-cog pull-right"></span>
     </li>
-    <li class="list-group-item">
-      <a href="../page/page-list.html" class = "blackText">
-        Blogger
-      </a>
-      <a href="website-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <a href="../page/page-list.html" class = "blackText">
-        Blogging App
-      </a>
-      <a href="website-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <a href="../page/page-list.html" class = "blackText">
-        Script Testing App
-      </a>
-      <a href="website-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-      </a>
-    </li>
-  </ul>
+  </div>
+
+  <!--<ul class="list-group borderless">-->
+    <!--<li class="list-group-item">-->
+      <!--<a href="../page/page-list.html" class = "blackText">-->
+        <!--Address Book App-->
+      <!--</a>-->
+      <!--<a href="website-edit.html">-->
+        <!--<span class="glyphicon glyphicon-cog pull-right">-->
+        <!--</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="list-group-item">-->
+      <!--<a href="../page/page-list.html" class = "blackText">-->
+        <!--Blogger-->
+      <!--</a>-->
+      <!--<a href="website-edit.html">-->
+        <!--<span class="glyphicon glyphicon-cog pull-right">-->
+        <!--</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="list-group-item">-->
+      <!--<a href="../page/page-list.html" class = "blackText">-->
+        <!--Blogging App-->
+      <!--</a>-->
+      <!--<a href="website-edit.html">-->
+        <!--<span class="glyphicon glyphicon-cog pull-right">-->
+        <!--</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="list-group-item">-->
+      <!--<a href="../page/page-list.html" class = "blackText">-->
+        <!--Script Testing App-->
+      <!--</a>-->
+      <!--<a href="website-edit.html">-->
+        <!--<span class="glyphicon glyphicon-cog pull-right">-->
+        <!--</span>-->
+      <!--</a>-->
+    <!--</li>-->
 </div>
 
 <!-- Footer -->
