@@ -15,13 +15,13 @@ export class PageService {
 
   pages: Page[] = [
     new Page('321', 'Post 1', '456', 'Lorem'),
-    new Page('432', 'post 2', '456', 'Lorem'),
+    new Page('432', 'Post 2', '456', 'Lorem'),
     new Page('543', 'Post 3', '456', 'Lorem')
   ];
 
   api = {
     'createPage': this.createPage,
-    'findPageByWebsiteId': this.findPageByWebsiteId,
+    'findPageByWebsiteId': this.findPagesByWebsiteId,
     'findPageById': this.findPageById,
     'updatePage': this.updatePage,
     'deletePage': this.deletePage
@@ -36,13 +36,16 @@ export class PageService {
   }
 
   // Retrieves the pages in local pages array whose websiteId matches the parameter websiteId
-  findPageByWebsiteId(websiteId) {
+  findPagesByWebsiteId(websiteId) {
+    const pageList: Page[] = [];
     for (let x = 0; x < this.pages.length; x++) {
       if (this.pages[x].websiteId === websiteId) {
-        return this.pages[x];
+        pageList.push(this.pages[x]);
       }
     }
+    return pageList;
   }
+
 
   // Retrieves the page in local pages array whose _id matches the pageId parameter
   findPageById(pageId) {

@@ -42,7 +42,7 @@ export class WebsiteListComponent implements OnInit {
   }
 
   outputWebsitesForThisUser() {
-    const websiteList: Website[] = this.websiteService.findWebsitesByUser(this.userId);
+    const websiteList: Website[] = this.websiteService.findWebsitesByUser(this.websiteId);
     // console.log(this.websiteService.findWebsitesByUser(this.userId));
     return websiteList;
   }
@@ -59,9 +59,9 @@ export class WebsiteListComponent implements OnInit {
     this.router.navigate(['user/', this.user._id, 'website', 'new']);
   }
 
-  navigateToPage() {
-    // this.router.navigate(this.pageService.findPageBy)
-
+  navigateToPage(ID) {
+    this.router.navigate(['user/', this.user._id, 'website', ID, 'page']);
 
   }
+
 }

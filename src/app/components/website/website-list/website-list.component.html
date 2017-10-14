@@ -30,9 +30,9 @@
 <div class="container-fluid top-margin">
   <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
     <li class="list-group-item">
-      <a routerLink="['']">
+      <button (click)="navigateToPage(website._id)">
         {{website.name}}
-      </a>
+      </button>
       <span (click)="navigateToWebsiteEdit(website._id)"class="glyphicon glyphicon-cog pull-right"></span>
     </li>
   </div>
