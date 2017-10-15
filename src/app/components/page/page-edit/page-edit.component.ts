@@ -12,4 +12,9 @@ export class PageEditComponent implements OnInit {
   ngOnInit() {
   }
 
+  // deleteThisPage(ID){
+  //   this.pageService.deletePage(ID);
+  //   this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page']);
+  // }
+
 }

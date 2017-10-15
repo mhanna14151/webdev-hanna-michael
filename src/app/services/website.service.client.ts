@@ -70,15 +70,10 @@ export class WebsiteService {
 
   // removes the website from local websites array whose _id matches the websiteId parameter
   deleteWebsite(websiteId) {
-    console.log('WEBSITE ID' + websiteId);
-    console.log(this.websites);
     for (let x = 0; x < this.websites.length; x++) {
-      console.log('This.websites ' + this.websites[x]._id);
       if (this.websites[x]._id === websiteId) {
         this.websites.splice(x, 1);
-        console.log('Deleted it');
       }
-      console.log(this.websites);
     }
   }
 

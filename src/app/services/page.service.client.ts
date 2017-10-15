@@ -69,8 +69,7 @@ export class PageService {
   deletePage(pageId) {
     for (let x = 0; x < this.pages.length; x++) {
       if (this.pages[x]._id === pageId) {
-        delete this.pages[x];
-      }
+        this.pages.splice(x, 1);      }
     }
   }
 

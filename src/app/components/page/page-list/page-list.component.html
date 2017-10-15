@@ -3,7 +3,7 @@
 
     <!--return mark-->
     <div class="navbar-brand pull-left">
-      <a href="../website/website-list.html" class="navbar-link">
+      <a (click)="navigateToUsersWebsite()" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left blackText"></span>
       </a>
     </div>
@@ -18,7 +18,7 @@
 
     <!--add new page mark-->
     <div class="navbar-text pull-right">
-      <a href="page-new.html" class="navbar-link">
+      <a (click)="navigateToCreateNewPage()" class="navbar-link">
         <span class="glyphicon glyphicon-plus blackText"></span>
       </a>
     </div>
@@ -41,7 +41,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a (click)="returnToProfile()">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

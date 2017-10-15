@@ -5,7 +5,7 @@
     <!--the left column-->
     <div class="col-sm-3">
       <div class="navbar-brand pull-left fixed">
-        <a href="page-list.html" class="navbar-link">
+        <a (click)="returnToPreviousPage()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left blackText"></span>
         </a>
       </div>
@@ -16,7 +16,7 @@
       <div class="navbar-brand pull-right hidden-xs">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="page-new.html" class="navbar-link fixPlease">
+        <a (click)="navigateToCreateNewPage()" class="navbar-link fixPlease">
           <span class="glyphicon glyphicon-plus blackText"></span>
         </a>
       </div>
@@ -33,88 +33,51 @@
       <div class="navbar-text pull-right">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="page-list.html" class="navbar-link">
+        <a (click)="createNewPage(name, description)" class="navbar-link">
           <span class="glyphicon glyphicon-ok blackText"></span>
         </a>
       </div>
     </div>
   </div>
 </nav>
-
-<!--This is the content below the banner-->
 <div class="bottomPadding moh-max-height moh-Margin-For-Two-Columns">
   <div class="row moh-max-height">
     <!--Content on the Left-->
-    <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
-      <ul class="list-group borderless paddingLeft small-top-Margin">
+  <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
+    <div class="paddingLeft small-top-Margin">
+      <div *ngFor="let page of outputPagesForThisUser(userId)" class = 'borderless'>
         <li class="list-group-item">
-          <a href="../widget/widget-list.html" class="blackText">
-            Blog Post
+          <a (click)="navigateToWidget(page._id)">
+            {{page.name}}
           </a>
-          <a href="page-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-          </a>
+          <span (click)="navigateToPageEdit(page._id)" class="glyphicon glyphicon-cog pull-right"></span>
         </li>
-        <li class="list-group-item">
-          <a href="../widget/widget-list.html" class="blackText">
-            Blogs
-          </a> <a href="page-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-        </a>
-        </li>
-        <li class="list-group-item">
-          <a href="../widget/widget-list.html" class="blackText">
-            Home
-          </a>
-          <a href="page-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="../widget/widget-list.html" class="blackText">
-            About
-          </a>
-          <a href="page-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="../widget/widget-list.html" class="blackText">
-            Contact Us
-          </a>
-          <a href="page-edit.html">
-        <span class="glyphicon glyphicon-cog pull-right">
-        </span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!--Content on the Right, Main Column.-->
-    <div class="col-sm-9 paddingWithNoTop small-top-Margin">
-      <label>Name</label>
-      <input class="form-control" type = "text"
-             placeholder="Page Name">
-      <label>Description</label>
-      <input class="form-control" type = "text"
-             placeholder="Page Title">
-      <a class="btn btn-danger btn-block"
-         href="page-list.html">delete</a>
+      </div>
     </div>
   </div>
+  <!--Content on the Right, Main Column.-->
+  <div class="col-sm-9 paddingWithNoTop small-top-Margin">
+    <label>Name</label>
+    <input class="form-control" type = "text"
+           id = "name"
+           placeholder="Page Name"
+           [(ngModel)]="name" name = "name">
+    <label>Description</label>
+    <input class="form-control" type = "text"
+           id = "description"
+           placeholder="Page Title"
+           [(ngModel)]="description" name = "description">
+    <a class="btn btn-danger btn-block"
+       (click)="returnToPreviousPage()">Cancel</a>
+  </div>
 </div>
-
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a (click)="returnToProfile()">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
-
   </div>
 </nav>
