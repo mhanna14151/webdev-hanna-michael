@@ -19,6 +19,7 @@ export class WidgetYoutubeComponent implements OnInit {
   websiteID: String;
   url: String;
   width: String;
+  widgetType: String;
 
   constructor(private widgetService: WidgetService,
               private router: Router,
@@ -39,7 +40,7 @@ export class WidgetYoutubeComponent implements OnInit {
       console.log(this.width);
     });
   }
-  // _id, widgetType, pageId, size, width, text, url
+
   updateWidgetYoutube(text: String, width: String, url: String) {
     this.widgetService.updateWidget(this.widgetID,
       new Widget(this.widgetID, 'YOUTUBE', this.pageID, null, width, text, url));
@@ -48,6 +49,11 @@ export class WidgetYoutubeComponent implements OnInit {
   }
 
   returnToPreviousSite() {
+    this.widgetID = this.widget._id;
+    console.log('widgetId for deletion ' + this.widgetID);
+    if (this.url === null) {
+      this.widgetService.deleteWidget(this.widgetID);
+    }
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
   }
 
@@ -62,6 +68,19 @@ export class WidgetYoutubeComponent implements OnInit {
 
   navigateToWidgetChooser() {
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
+  }
+
+  createNewWidget(type: String) {
+    this.widgetType = type;
+    this.widget = this.widgetService.createWidget(this.pageID,
+      new Widget(null, this.widgetType, this.pageID, null, null, null, null));
+    console.log('ID' + this.widget._id);
+    this.widgetID = this.widget._id;
+    console.log('id: ' + this.widgetID);
+    this.widgetService.deleteWidget(this.widgetID);
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget',
+      this.widgetID]);
   }
 
 

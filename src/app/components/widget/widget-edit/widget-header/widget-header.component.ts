@@ -17,6 +17,7 @@ export class WidgetHeaderComponent implements OnInit {
   pageID: String;
   userID: String;
   websiteID: String;
+  widgetType: String;
 
   constructor(private widgetService: WidgetService,
               private router: Router,
@@ -43,6 +44,11 @@ export class WidgetHeaderComponent implements OnInit {
   }
 
   returnToPreviousSite() {
+    this.widgetID = this.widget._id;
+    if (this.text === null) {
+      this.widgetService.deleteWidget(this.widgetID);
+    }
+    console.log('Deleting from Chevron');
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
   }
 
@@ -57,6 +63,21 @@ export class WidgetHeaderComponent implements OnInit {
 
   navigateToWidgetChooser() {
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
+  }
+
+  createNewWidget(type: String) {
+    this.widgetService.deleteWidget(this.widgetID);
+    this.widgetType = type;
+    this.widget = this.widgetService.createWidget(this.pageID,
+      new Widget(null, this.widgetType, this.pageID, null, null, null, null));
+    console.log('ID' + this.widget._id);
+    this.widgetID = this.widget._id;
+    console.log('id: ' + this.widgetID);
+    this.widgetService.deleteWidget(this.widgetID);
+    // console.log('Deleting from Create');
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget',
+      this.widgetID]);
   }
 
 
