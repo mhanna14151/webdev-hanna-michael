@@ -80,4 +80,8 @@ export class PageListComponent implements OnInit {
     this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', 'new']);
   }
 
+  navigateToPageEdit(ID) {
+    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID]);
+  }
+
 }

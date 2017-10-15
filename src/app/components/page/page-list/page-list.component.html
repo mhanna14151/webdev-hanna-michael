@@ -32,7 +32,7 @@
         <a (click)="navigateToWidget(page._id)">
           {{page.name}}
         </a>
-        <span class="glyphicon glyphicon-cog pull-right"></span>
+        <span (click) ="navigateToPageEdit(page._id)" class="glyphicon glyphicon-cog pull-right"></span>
       </li>
     </div>
 </div>
