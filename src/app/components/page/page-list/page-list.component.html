@@ -27,7 +27,7 @@
 
 <!--Below the banner-->
 <div class="container-fluid top-margin">
-    <div *ngFor="let page of outputPagesForThisUser(userId)" class = 'borderless'>
+    <div *ngFor="let page of outputPagesForThisUser()" class = 'borderless'>
       <li class="list-group-item">
         <a (click)="navigateToWidget(page._id)">
           {{page.name}}

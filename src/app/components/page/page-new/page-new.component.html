@@ -41,7 +41,7 @@
     <!--Content on the Left-->
   <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
     <div class="paddingLeft small-top-Margin">
-      <div *ngFor="let page of outputPagesForThisUser(userId)" class = 'borderless'>
+      <div *ngFor="let page of outputPagesForThisUser()" class = 'borderless'>
         <li class="list-group-item">
           <a (click)="navigateToWidget(page._id)">
             {{page.name}}

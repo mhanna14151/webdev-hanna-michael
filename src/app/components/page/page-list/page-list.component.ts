@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Website} from '../../../models/website.model.client';
 import {User} from '../../../models/user.model.client';
 import {UserService} from '../../../services/user.service.client';
-import {WebsiteService} from '../../../services/website.service.client';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Page} from '../../../models/page.model.client';
@@ -20,7 +18,8 @@ export class PageListComponent implements OnInit {
   pages: Page[];
   pageID: String;
 
-  constructor(private pageService: PageService,
+  constructor(private userService: UserService,
+              private pageService: PageService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -31,7 +30,7 @@ export class PageListComponent implements OnInit {
       this.pageID = params['pid'];
     });
     this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
-    // this.user = this.userService.findUserById(this.userId);
+    this.user = this.userService.findUserById(this.userId);
 
   }
 
