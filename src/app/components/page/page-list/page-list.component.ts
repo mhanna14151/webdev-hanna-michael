@@ -20,8 +20,7 @@ export class PageListComponent implements OnInit {
   pages: Page[];
   pageID: String;
 
-  constructor(private userService: UserService,
-              private pageService: PageService,
+  constructor(private pageService: PageService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -32,22 +31,21 @@ export class PageListComponent implements OnInit {
       this.pageID = params['pid'];
     });
     this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
-    this.user = this.userService.findUserById(this.userId);
+    // this.user = this.userService.findUserById(this.userId);
 
   }
 
   outputPagesForThisUser() {
-    const pageList = this.pageService.findPagesByWebsiteId(this.websiteId);
-    return pageList;
+    return this.pageService.findPagesByWebsiteId(this.websiteId);
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
+    this.router.navigate(['user/', this.userId]);
   }
 
 
   navigateToWidget(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID, 'widget']);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID, 'widget']);
   }
 
   navigateToUsersWebsite() {
@@ -55,11 +53,11 @@ export class PageListComponent implements OnInit {
   }
 
   navigateToCreateNewPage() {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', 'new']);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', 'new']);
   }
 
   navigateToPageEdit(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID]);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID]);
   }
 
 }
