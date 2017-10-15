@@ -48,6 +48,7 @@ export class WebsiteEditComponent implements OnInit {
 
   updateWebsite(ID, name: String, description: String) {
     this.websiteService.updateWebsite(ID, new Website(ID, name, this.userId, description));
+    this.router.navigate(['user/', this.userId, 'website']);
   }
 
   navigateToUsersWebsite() {

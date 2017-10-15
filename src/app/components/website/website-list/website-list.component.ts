@@ -28,7 +28,6 @@ export class WebsiteListComponent implements OnInit {
     });
     this.websites = this.websiteService.findWebsitesByUser(this.userId);
     this.user = this.userService.findUserById(this.userId);
-    this.websiteId = this.websiteService.findWebsiteById(this.userId)._id;
   }
 
   outputWebsitesForThisUser() {
@@ -37,7 +36,7 @@ export class WebsiteListComponent implements OnInit {
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
+    this.router.navigate(['user/', this.userId]);
   }
 
   navigateToWebsiteEdit(ID) {
@@ -45,11 +44,11 @@ export class WebsiteListComponent implements OnInit {
   }
 
   navigateToWebsiteNew() {
-    this.router.navigate(['user/', this.user._id, 'website', 'new']);
+    this.router.navigate(['user/', this.userId, 'website', 'new']);
   }
 
   navigateToPage(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', ID, 'page']);
+    this.router.navigate(['user/', this.userId, 'website', ID, 'page']);
 
   }
 
