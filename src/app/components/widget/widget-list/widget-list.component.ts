@@ -54,43 +54,26 @@ export class WidgetListComponent implements OnInit {
   outputWidgetsForThisPage() {
     return this.widgetService.findWidgetsByPageId(this.pageID);
   }
-  //
-  // getWidgetType(type) {
-  //   console.log('Entering getWidgetType');
-  //   if (type === 'HTML') {
-  //     return widgetType.HTML;
-  //   }
-  //   if (type === 'YOUTUBE') {
-  //     return widgetType.YOUTUBE;
-  //   }
-  //   if (type === 'IMAGE') {
-  //     return widgetType.IMAGE;
-  //   }
-  //   if (type === 'HEADING') {
-  //     return widgetType.HEADING;
-  //   }
-  // }
 
   returnToProfile() {
     this.router.navigate(['user/', this.user._id]);
   }
 
-  // navigateToWebsiteEdit(ID) {
-  //   this.router.navigate(['user/', this.user._id, 'website', ID]);
-  // }
-  //
-  // navigateToWebsiteNew() {
-  //   this.router.navigate(['user/', this.user._id, 'website', 'new']);
-  // }
+
 
   navigateToWidget(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID, 'widget']);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
+    ID]);
 
   }
 
   dyanamicWidth(width) {
     return width.toString;
 
+  }
+
+  navigateToWidgetChooser() {
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget', 'new']);
   }
 
   cleanThisUrl(url) {

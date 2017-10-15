@@ -19,7 +19,7 @@
 
     <!--add new widget mark-->
     <div class="navbar-text pull-right">
-      <a href="widget-chooser.html" class="navbar-link">
+      <a (click)="navigateToWidgetChooser()" class="navbar-link">
         <span class="glyphicon glyphicon-plus blackText"></span>
       </a>
     </div>
@@ -33,9 +33,7 @@
       <!--HEADER CASE-->
       <div *ngSwitchCase="'HEADING'" class = "moh-widget bottomPadding">
         <div class="pull-right moh-glyph-toolbar">
-          <a href=widget-heading.html>
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
+          <span (click)="navigateToWidget(widget._id)" class="glyphicon glyphicon-cog"></span>
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </div>
         <div [ngSwitch]="widget.size">
