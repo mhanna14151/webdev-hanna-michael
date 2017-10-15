@@ -21,11 +21,9 @@ export class WidgetNewComponent implements OnInit {
   widgetType: String;
   url: string;
 
-
   constructor(private widgetService: WidgetService,
               private route: ActivatedRoute,
               private router: Router) { }
-
 
   ngOnInit() {
     this.route.params.subscribe(params => {

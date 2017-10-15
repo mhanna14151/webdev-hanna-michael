@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,21 +19,17 @@ import { PageListComponent } from './components/page/page-list/page-list.compone
 import { WidgetChooserComponent } from './components/widget/widget-chooser/widget-chooser.component';
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
-// import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
-// import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
-// import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
+import {WidgetNewComponent} from './components/widget/widget-new/widget-new.component';
+import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
+import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
+import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 
 
 // services
 import { UserService } from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
 import { PageService } from './services/page.service.client';
-import {WidgetService} from "./services/widget.service.client";
-import {WidgetHeaderComponent} from "./components/widget/widget-edit/widget-header/widget-header.component";
-import {WidgetImageComponent} from "./components/widget/widget-edit/widget-image/widget-image.component";
-import {WidgetYoutubeComponent} from "./components/widget/widget-edit/widget-youtube/widget-youtube.component";
-import { WidgetNewComponent } from './components/widget/src/app/components/widget/widget-new/widget-new.component';
-// import { WidgetService } from './services/widget.service.client';
+import {WidgetService} from './services/widget.service.client';
 
 
 @NgModule({
