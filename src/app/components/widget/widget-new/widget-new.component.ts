@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../models/user.model.client';
 import {Website} from '../../../models/website.model.client';
-import {Page} from '../../../models/page.model.client';
 import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-widget-edit',
-  templateUrl: './widget-edit.component.html',
-  styleUrls: ['./widget-edit.component.css']
+  selector: 'app-widget-new',
+  templateUrl: './widget-new.component.html',
+  styleUrls: ['./widget-new.component.css']
 })
-export class WidgetEditComponent implements OnInit {
+export class WidgetNewComponent implements OnInit {
   userId: String;
   user: User;
   websiteId: String;

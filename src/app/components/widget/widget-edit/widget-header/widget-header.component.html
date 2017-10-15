@@ -44,8 +44,9 @@
 
 <div class= "bottomPadding moh-max-height moh-Margin-For-Two-Columns">
   <div class="row moh-max-height">
+    <!--Content on the Left-->
     <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
-      <ul class="list-group borderless container-fluid moh-max-height">
+      <ul class="list-group borderless">
         <li class="list-group-item">
           <a (click)="createNewWidget('HEADING')">
             Header
@@ -98,12 +99,13 @@
         </li>
       </ul>
     </div>
+    <!--Content on the Right, Main Column.-->
     <div class="col-sm-9 paddingWithNoTop small-top-Margin">
       <label>Name</label>
       <input class="form-control"
              type = "text"
-             placeholder="Name of Widget">
-             <!--value = {{widget.widgetType}}>-->
+             placeholder="Name of Widget"
+             value = {{widget.widgetType}}>
       <label>Text</label>
       <input class="form-control"
              type = "text"

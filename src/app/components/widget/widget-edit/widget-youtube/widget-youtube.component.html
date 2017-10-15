@@ -50,7 +50,7 @@
   <div class="row moh-max-height">
     <!--Content on the Left-->
     <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
-      <ul class="list-group borderless paddingLeft">
+      <ul class="list-group borderless">
         <li class="list-group-item">
           <a (click)="createNewWidget('HEADING')">
             Header
@@ -105,12 +105,11 @@
     </div>
     <!--Content on the Right, Main Column.-->
     <div class="col-sm-9 paddingWithNoTop moh-max-height small-top-Margin">
-      <div class = "container-fluid paddingLeft">
       <label>Name</label>
       <input class="form-control"
              type = "text"
-             placeholder="Name of Widget">
-             <!--value = {{widget.widgetType}}>-->
+             placeholder="Name of Widget"
+             value = {{widget.widgetType}}>
       <label>Text</label>
       <input class="form-control"
              type="text"
@@ -131,7 +130,6 @@
       <a class="btn btn-danger btn-block moh-top-margin"
          (click)="deleteThisWidget(widgetID)">Delete
       </a>
-      </div>
     </div>
   </div>
 </div>

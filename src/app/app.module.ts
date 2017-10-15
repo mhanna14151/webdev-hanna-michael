@@ -33,6 +33,7 @@ import {WidgetService} from "./services/widget.service.client";
 import {WidgetHeaderComponent} from "./components/widget/widget-edit/widget-header/widget-header.component";
 import {WidgetImageComponent} from "./components/widget/widget-edit/widget-image/widget-image.component";
 import {WidgetYoutubeComponent} from "./components/widget/widget-edit/widget-youtube/widget-youtube.component";
+import { WidgetNewComponent } from './components/widget/src/app/components/widget/widget-new/widget-new.component';
 // import { WidgetService } from './services/widget.service.client';
 
 
@@ -56,7 +57,8 @@ import {WidgetYoutubeComponent} from "./components/widget/widget-edit/widget-you
     WidgetListComponent,
     WidgetHeaderComponent,
     WidgetImageComponent,
-    WidgetYoutubeComponent
+    WidgetYoutubeComponent,
+    WidgetNewComponent
   ],
   imports: [
     BrowserModule,
