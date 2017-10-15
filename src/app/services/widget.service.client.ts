@@ -17,7 +17,7 @@ export class WidgetService {
   widgets = [
     new Widget('123', 'HEADING', '321', 2, null, 'Gizmodo', null),
     new Widget('234', 'HEADING', '321', 4, null, 'Lorem ipsum', null),
-    new Widget('345', 'IMAGE', '321', 2, '100%', null, 'http://lorempixel.com/400/200/'),
+    new Widget('345', 'IMAGE', '321', 2, '100%', 'Random Image', 'http://lorempixel.com/400/200/'),
     new Widget('456', 'HTML', '321', null, null, 'Lorem ipsum', null), // come back and put the paragraph <p> tags on
     new Widget('567', 'HEADING', '321', 4, null, 'Lorem Ipsum', null),
     new Widget('678', 'YOUTUBE', '321', null, '100%', null, 'https://youtu.be/AM2Ivdi9c4E'),

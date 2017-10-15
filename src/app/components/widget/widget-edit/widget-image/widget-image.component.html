@@ -106,29 +106,31 @@
       <label>Name</label>
       <input class="form-control"
              type = "text"
-             placeholder="Name of Widget">
-
+             placeholder="Name of Widget"
+             value = {{widget.widgetType}}>
       <label>Text</label>
       <input class="form-control"
              type="text"
-             placeholder="Text regarding Widget">
+             id="text"
+             placeholder="Text regarding Widget"
+             [(ngModel)] ="text" name ="text">
       <label>URL</label>
       <input type="url"
              class='form-control'
-             placeholder="https://res.cloudinary.com/demo/image/upload/sample.jpg">
-
+             placeholder="https://res.cloudinary.com/demo/image/upload/sample.jpg"
+             [(ngModel)] = "url" name = "url">
       <label>Width</label>
-      <input type="number" class="form-control"
-             placeholder="1-100%">
-
+      <input type="text" class="form-control"
+             placeholder="1-100%"
+             id = "width"
+             [(ngModel)] = "width" name = "width">
       <label>Upload</label>
       <div class = "form-control">
         <input type ="file"  name = "img">
       </div>
 
       <a class="btn btn-danger btn-block moh-top-margin"
-         href="widget-list.html">delete</a>
-
+         href="widget-list.html">Delete</a>
     </div>
   </div>
 </div>
