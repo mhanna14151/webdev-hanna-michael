@@ -23,7 +23,6 @@ export class WidgetListComponent implements OnInit {
   url: string;
   width: String;
 
-
   constructor(private widgetService: WidgetService,
               private route: ActivatedRoute,
               private router: Router,
@@ -37,10 +36,6 @@ export class WidgetListComponent implements OnInit {
       this.pageID = params['pid'];
     });
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageID);
-    console.log(this.userId);
-    console.log('Website Id: ' + this.websiteId);
-    console.log('WIDGETS ARE THESE WIDGETS: ' + this.widgets);
-    console.log('Page Id: ' + this.pageID);
   }
 
   outputWidgetsForThisPage() {

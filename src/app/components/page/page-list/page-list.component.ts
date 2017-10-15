@@ -19,10 +19,8 @@ export class PageListComponent implements OnInit {
   websiteId: String;
   pages: Page[];
   pageID: String;
-  // websites: Website[];
 
   constructor(private userService: UserService,
-              private websiteService: WebsiteService,
               private pageService: PageService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -32,21 +30,14 @@ export class PageListComponent implements OnInit {
       this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
-      console.log('User id is this: ' +  this.userId);
     });
     this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
-    console.log(this.pages);
-    console.log(this.userId);
-    console.log('Website Id: ' + this.websiteId);
     this.user = this.userService.findUserById(this.userId);
-    // this.route.params.subscribe(params => {
-    //     this.websiteId = params['wid'];
-    //     console.log('Website ID is this stuff: ' + this.websiteId);
-    // });
+
   }
 
   outputPagesForThisUser() {
-    const pageList: Page[] = this.pageService.findPagesByWebsiteId(this.websiteId);
+    const pageList = this.pageService.findPagesByWebsiteId(this.websiteId);
     return pageList;
   }
 
@@ -54,13 +45,6 @@ export class PageListComponent implements OnInit {
     this.router.navigate(['user/', this.user._id]);
   }
 
-  // navigateToWebsiteEdit(ID) {
-  //   this.router.navigate(['user/', this.user._id, 'website', ID]);
-  // }
-  //
-  // navigateToWebsiteNew() {
-  //   this.router.navigate(['user/', this.user._id, 'website', 'new']);
-  // }
 
   navigateToWidget(ID) {
     this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID, 'widget']);
