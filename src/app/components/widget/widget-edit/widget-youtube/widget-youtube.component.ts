@@ -77,8 +77,6 @@ export class WidgetYoutubeComponent implements OnInit {
     console.log('ID' + this.widget._id);
     this.widgetID = this.widget._id;
     console.log('id: ' + this.widgetID);
-    this.widgetService.deleteWidget(this.widgetID);
-    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget',
       this.widgetID]);
   }

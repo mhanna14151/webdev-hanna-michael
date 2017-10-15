@@ -45,72 +45,68 @@
 
 <div class= "bottomPadding moh-max-height moh-Margin-For-Two-Columns">
   <div class="row moh-max-height">
-    <!--EXPLORATIONS OF ADDING A NAVIGATOR ON THE LEFT DESPITE ONE OF THE-->
-    <!--TAS STATING IT WAS NOT NECESSARY. THERE IS A MINOR BUG IN CERTAIN
-    CIRCUMSTANCES WHICH MAKES IT NOT PRODUCT READY SO IT"S COMMENTED OUT-->
     <!--Content on the Left-->
-    <!--<div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">-->
-      <!--<ul class="list-group borderless">-->
-        <!--<li class="list-group-item">-->
-          <!--<a (click)="createNewWidget('HEADING')">-->
-            <!--Header-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a>-->
-            <!--Label-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a (click)="createNewWidget('HTML')">-->
-            <!--HTML-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a>-->
-            <!--Text Input-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a>-->
-            <!--Link-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a>-->
-            <!--Button-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a (click)="createNewWidget('IMAGE')">-->
-            <!--Image-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a (click)="createNewWidget('YOUTUBE')">-->
-            <!--YouTube-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a>-->
-            <!--Data Table-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li class="list-group-item">-->
-          <!--<a>-->
-            <!--Repeater-->
-          <!--</a>-->
-        <!--</li>-->
-      <!--</ul>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;Content on the Right, Main Column.&ndash;&gt;-->
-    <!--<div class="col-sm-9 paddingWithNoTop small-top-Margin">-->
-    <div class="paddingWithNoTop small-top-Margin">
+    <div class="col-sm-3 hidden-xs moh-right-divider moh-max-height">
+      <ul class="list-group borderless">
+        <li class="list-group-item">
+          <a (click)="createNewWidget('HEADING')">
+            Header
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a>
+            Label
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a (click)="createNewWidget('HTML')">
+            HTML
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a>
+            Text Input
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a>
+            Link
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a>
+            Button
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a (click)="createNewWidget('IMAGE')">
+            Image
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a (click)="createNewWidget('YOUTUBE')">
+            YouTube
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a>
+            Data Table
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a>
+            Repeater
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--Content on the Right, Main Column.-->
+    <div class="col-sm-9 paddingWithNoTop small-top-Margin">
       <label>Name</label>
       <input class="form-control"
              type = "text"
-             placeholder="Name of Widget"
-             value = {{widget.widgetType}}>
+             placeholder="Name of Widget">
+             <!--value = {{widget.widgetType}}>-->
       <label>Text</label>
       <input class="form-control"
              type="text"
@@ -131,6 +127,7 @@
       <div class = "form-control">
         <input type ="file"  name = "img">
       </div>
+
       <a class="btn btn-danger btn-block moh-top-margin"
          (click)="deleteThisWidget(widgetID)">Delete</a>
     </div>
