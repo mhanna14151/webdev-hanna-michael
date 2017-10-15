@@ -12,26 +12,26 @@
              name="username"
              type="text"
              class="form-control"
-             ngModel
+             [(ngModel)] ="username"
              required
-             #username="ngModel"/>
-    <span class="help-block" *ngIf="!username.valid && username.touched">
-      Please enter username!
-    </span>
+             id = "username"/>
+    <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
+      <!--Please enter username!-->
+    <!--</span>-->
     <input placeholder="password"
            name = "password"
            type = "password"
            class = "form-control"
-           ngModel
-           required
-           #password="ngModel"/>
-    <span class="help-block" *ngIf="!password.valid && password.touched">
-      Please enter password!
-    </span>
+           [(ngModel)] = "password"
+           id = "password"
+           required/>
+    <!--<span class="help-block" *ngIf="!password.valid && password.touched">-->
+      <!--Please enter password!-->
+    <!--</span>-->
     <button class="btn btn-primary btn-block"
             type="submit"
             [disabled]="!f.valid"
-            (click)="login(username.value,password.value)">Login</button>
+            (click)="login(username, password)">Login</button>
     <a class="btn btn-success btn-block "
        [routerLink]="['/register']">Register</a>
   </form>
