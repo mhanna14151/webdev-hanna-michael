@@ -5,7 +5,7 @@
     <!--the left column-->
     <div class="col-sm-3">
       <div class="navbar-brand pull-left fixed">
-        <a href="website-list.html" class="navbar-link">
+        <a (click)="navigateToUsersWebsite()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left whiteText"></span>
         </a>
       </div>
@@ -16,7 +16,7 @@
       <div class="navbar-brand pull-right hidden-xs">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="website-new.html" class="navbar-link fixPlease">
+        <a (click)="navigateToWebsiteNew()" class="navbar-link fixPlease">
           <span class="glyphicon glyphicon-plus whiteText"></span>
         </a>
       </div>
@@ -33,7 +33,7 @@
       <div class="navbar-text pull-right">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="website-list.html" class="navbar-link">
+        <a (click)="createNewWebsite(name, description)" class="navbar-link">
           <span class="glyphicon glyphicon-ok whiteText"></span>
         </a>
       </div>
@@ -50,7 +50,7 @@
       <div class="paddingLeft small-top-Margin">
         <div *ngFor="let website of outputWebsitesForThisUser()" class='borderless'>
           <li class="list-group-item">
-            <a routerLink="['']">
+            <a (click)="navigateToPage(website._id)">
               {{website.name}}
             </a>
             <span (click)="navigateToWebsiteEdit(website._id)" class="glyphicon glyphicon-cog pull-right"></span>
@@ -62,14 +62,19 @@
     <div class="list-group borderless paddingLeft">
       <div class="col-sm-9 paddingWithNoTop small-top-Margin">
         <label>Name</label>
-        <input class="form-control"
+        <input placeholder="Name"
+               id = "name"
+               [(ngModel)]="name"
+               name="name"
                type="text"
-               placeholder="Name">
+               class="form-control"/>
         <label>Description</label>
-        <textarea class="form-control"
+        <textarea placeholder="Description"
                   rows="4"
                   type="text"
-                  placeholder="Description"></textarea>
+                  id = "description"
+                  [(ngModel)]="description" name="description"
+                  class="form-control"></textarea>
       </div>
     </div>
   </div>

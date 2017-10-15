@@ -5,11 +5,10 @@
     <!--the left column-->
     <div class="col-sm-3">
       <div class="navbar-brand pull-left fixed">
-        <a href="website-list.html" class="navbar-link">
+        <a (click)="navigateToUsersWebsite()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left whiteText"></span>
         </a>
       </div>
-
       <a class="navbar-brand thick hidden-xs">
         <b class="whiteText">Websites</b>
       </a>
@@ -53,10 +52,10 @@
       <div class = "paddingLeft small-top-Margin">
         <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
           <li class="list-group-item">
-            <a routerLink="['']">
+            <a (click)="navigateToPage(website._id)">
               {{website.name}}
             </a>
-            <span (click)="navigateToWebsiteEdit(website._id)" class="glyphicon glyphicon-cog pull-right"></span>
+            <span (click)="navigateToWebsiteEdit(website._id)"class="glyphicon glyphicon-cog pull-right"></span>
           </li>
         </div>
       </div>
@@ -76,7 +75,7 @@
       <textarea class="form-control"
                 rows = "4"
                 type="text"
-                [(ngModel)] ="description" description ="description">
+                [(ngModel)] ="description" name ="description">
       </textarea>
       <a class="btn btn-danger btn-block"
          href="website-list.html">delete</a>
@@ -85,14 +84,6 @@
   </div>
 </div>
 
-<div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
-  <li class="list-group-item">
-    <a routerLink="['']">
-      {{website.name}}
-    </a>
-    <span (click)="navigateToWebsiteEdit(website._id)"class="glyphicon glyphicon-cog pull-right"></span>
-  </li>
-</div>
 
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">

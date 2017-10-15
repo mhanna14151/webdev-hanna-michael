@@ -49,7 +49,8 @@ export class UserService {
   };
 
   createUser(user: User) {
-    user._id = Math.random().toString();
+    const num: Number = (Math.floor(1 + (1000 - 1) * Math.random()));
+    user._id = num.toString();
     this.users.push(user);
     return user;
   }

@@ -12,18 +12,14 @@ import {PageService} from '../../../services/page.service.client';
   styleUrls: ['./website-list.component.css']
 })
 
-
-
 export class WebsiteListComponent implements OnInit {
   userId: String;
   user: User;
   websiteId: String;
   websites: Website[];
-  // websites: Website[];
 
   constructor(private userService: UserService,
               private websiteService: WebsiteService,
-              private pageService: PageService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -42,7 +38,7 @@ export class WebsiteListComponent implements OnInit {
   }
 
   outputWebsitesForThisUser() {
-    const websiteList: Website[] = this.websiteService.findWebsitesByUser(this.websiteId);
+    const websiteList: Website[] = this.websiteService.findWebsitesByUser(this.userId);
     // console.log(this.websiteService.findWebsitesByUser(this.userId));
     return websiteList;
   }
@@ -52,7 +48,8 @@ export class WebsiteListComponent implements OnInit {
   }
 
   navigateToWebsiteEdit(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', ID]);
+    console.log(ID);
+    this.router.navigate(['user/', this.userId, 'website', ID]);
   }
 
   navigateToWebsiteNew() {

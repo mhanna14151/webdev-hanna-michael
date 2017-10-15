@@ -3,7 +3,7 @@
 
     <!--return mark-->
     <div class="navbar-text pull-left">
-      <a href="../user/profile.html" class="navbar-link">
+      <a (click)="returnToProfile()" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left whiteText"></span>
       </a>
     </div>
@@ -30,20 +30,21 @@
 <div class="container-fluid top-margin">
   <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
     <li class="list-group-item">
-      <button (click)="navigateToPage(website._id)">
+      <a (click)="navigateToPage(website._id)">
         {{website.name}}
-      </button>
-      <span (click)="navigateToWebsiteEdit(website._id)"class="glyphicon glyphicon-cog pull-right"></span>
+      </a>
+      <a>
+        <span (click)="navigateToWebsiteEdit(website._id)" class="glyphicon glyphicon-cog pull-right"></span>
+      </a>
     </li>
   </div>
-
 </div>
 
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid bg-primary">
     <div class="navbar-text pull-right">
-      <span (click)= returnToProfile() class="glyphicon glyphicon-user whiteText"></span>
+      <span (click)="returnToProfile()" class="glyphicon glyphicon-user whiteText"></span>
     </div>
   </div>
 </nav>
