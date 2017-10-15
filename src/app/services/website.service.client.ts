@@ -33,6 +33,7 @@ export class WebsiteService {
   // adds the website parameter instance to the local websites array.
   // The new website's developerId is set to the userId parameter
   createWebsite(userId, website) {
+    website._id = Math.random().toString();
     website.developerId = userId;
     this.websites.push(website);
     return website;

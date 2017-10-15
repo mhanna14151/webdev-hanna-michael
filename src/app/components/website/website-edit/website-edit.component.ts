@@ -18,29 +18,25 @@ export class WebsiteEditComponent implements OnInit {
   description: String;
   website: Website;
   websiteId: String;
-  websites: Website[];
 
   // websites: Website[];
 
   constructor(private userService: UserService,
               private websiteService: WebsiteService,
+              private pageService: PageService,
               private route: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log('BEginning: ' + this.name);
       this.userId = params['uid'];
-      this.websiteId = params['wid'];
+      this.websiteId = params['wid']
       this.website = this.websiteService.findWebsiteById(this.websiteId);
       this.user = this.userService.findUserById(this.userId);
       this.name = this.website.name;
-      console.log('Did it work: ' + this.name);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
+      this.description = this.website.description;
     });
-    this.websiteId = this.websiteService.findWebsiteById(this.userId)._id;
-    this.description = this.website.description;
   }
 
   outputWebsitesForThisUser() {
@@ -50,7 +46,7 @@ export class WebsiteEditComponent implements OnInit {
   }
 
   navigateToWebsiteEdit(ID) {
-    this.router.navigate(['user', this.user._id, 'website', ID]);
+    this.router.navigate(['user/', this.user._id, 'website', ID]);
   }
 
   updateWebsite(ID, name: String, description: String) {
@@ -62,16 +58,10 @@ export class WebsiteEditComponent implements OnInit {
   }
 
   navigateToWebsiteNew() {
-    this.router.navigate(['user/', this.userId, 'website', 'new']);
+    this.router.navigate(['user/', this.user._id, 'website', 'new']);
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['user/', this.user._id]);
   }
-
-  navigateToPage(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', ID, 'page']);
-
-  }
-
 }
