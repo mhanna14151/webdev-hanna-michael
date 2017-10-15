@@ -69,4 +69,10 @@ export class WebsiteNewComponent implements OnInit {
   returnToProfile() {
     this.router.navigate(['user/', this.user._id]);
   }
+
+  navigateToPage(ID) {
+    this.router.navigate(['user/', this.user._id, 'website', ID, 'page']);
+
+  }
+
 }

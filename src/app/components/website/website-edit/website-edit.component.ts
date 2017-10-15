@@ -18,8 +18,7 @@ export class WebsiteEditComponent implements OnInit {
   description: String;
   website: Website;
   websiteId: String;
-
-  // websites: Website[];
+  websites: Website[];
 
   constructor(private userService: UserService,
               private websiteService: WebsiteService,
@@ -37,6 +36,7 @@ export class WebsiteEditComponent implements OnInit {
       this.name = this.website.name;
       this.description = this.website.description;
     });
+    this.websites = this.outputWebsitesForThisUser();
   }
 
   outputWebsitesForThisUser() {
@@ -64,4 +64,16 @@ export class WebsiteEditComponent implements OnInit {
   returnToProfile() {
     this.router.navigate(['user/', this.user._id]);
   }
+
+  navigateToPage(ID) {
+    this.router.navigate(['user/', this.user._id, 'website', ID, 'page']);
+
+  }
+
+  deleteThisWebsite(webID) {
+    this.websiteService.deleteWebsite(webID);
+    console.log(this.outputWebsitesForThisUser());
+    this.router.navigate(['user', this.userId, 'website']);
+  }
+
 }
