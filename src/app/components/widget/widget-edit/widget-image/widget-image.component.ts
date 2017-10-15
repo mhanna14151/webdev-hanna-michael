@@ -39,12 +39,26 @@ export class WidgetImageComponent implements OnInit {
       console.log(this.width);
     });
   }
-
-  updateWidgetImage(text: String, size: Number) {
+  // _id, widgetType, pageId, size, width, text, url
+  updateWidgetImage(text: String, width: String, url: String) {
     this.widgetService.updateWidget(this.widgetID,
-      new Widget(this.widgetID, 'HEADING', this.pageID, size, null, text, null));
+      new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, url));
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
 
   }
+
+  returnToPreviousSite() {
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+  }
+
+  returnToProfile() {
+    this.router.navigate(['user/', this.userID]);
+  }
+
+  deleteThisWidget(ID) {
+    this.widgetService.deleteWidget(ID);
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+  }
+
 
 }

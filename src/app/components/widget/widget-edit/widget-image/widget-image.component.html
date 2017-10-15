@@ -5,8 +5,8 @@
     <!--the left column-->
     <div class="col-sm-3">
       <div class="navbar-brand pull-left fixed">
-        <a href="widget-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-chevron-left blackText"></span>
+        <a class="navbar-link">
+          <span (click)="returnToPreviousSite()" class="glyphicon glyphicon-chevron-left blackText"></span>
         </a>
       </div>
 
@@ -16,7 +16,7 @@
       <div class="navbar-brand pull-right hidden-xs">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="widget-chooser.html" class="navbar-link fixPlease">
+        <a class="navbar-link fixPlease">
           <span class="glyphicon glyphicon-plus blackText"></span>
         </a>
       </div>
@@ -33,8 +33,8 @@
       <div class="navbar-text pull-right">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="widget-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok blackText"></span>
+        <a class="navbar-link">
+          <span (click)="updateWidgetImage(text, width, url)" class="glyphicon glyphicon-ok blackText"></span>
         </a>
       </div>
     </div>
@@ -130,7 +130,7 @@
       </div>
 
       <a class="btn btn-danger btn-block moh-top-margin"
-         href="widget-list.html">Delete</a>
+         (click)="deleteThisWidget(widgetID)">Delete</a>
     </div>
   </div>
 </div>
@@ -139,10 +139,9 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
-        <span class="glyphicon glyphicon-user"></span>
+      <a>
+        <span (click)="returnToProfile()" class="glyphicon glyphicon-user"></span>
       </a>
     </p>
-
   </div>
 </nav>

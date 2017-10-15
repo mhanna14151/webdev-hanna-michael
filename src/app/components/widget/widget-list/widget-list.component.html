@@ -1,22 +1,18 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-
     <!--return mark-->
     <div class="navbar-brand pull-left">
-      <a href="../page/page-list.html" class="navbar-link">
-        <span class="glyphicon glyphicon-chevron-left blackText"></span>
+      <a class="navbar-link">
+        <span (click)="returnToPreviousSite()" class="glyphicon glyphicon-chevron-left blackText"></span>
       </a>
     </div>
-
-
     <!--heading on the nav bar-->
     <div class="pull-left">
       <a class="navbar-brand thick">
         <b>Widgets</b>
       </a>
     </div>
-
     <!--add new widget mark-->
     <div class="navbar-text pull-right">
       <a (click)="navigateToWidgetChooser()" class="navbar-link">
@@ -99,8 +95,8 @@
   <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
       <p class="navbar-text pull-right">
-        <a href="../user/profile.html">
-          <span class="glyphicon glyphicon-user"></span>
+        <a>
+          <span (click)="returnToProfile()" class="glyphicon glyphicon-user"></span>
         </a>
       </p>
     </div>

@@ -50,7 +50,7 @@ export class WidgetEditComponent implements OnInit {
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
+    this.router.navigate(['user/', this.userId]);
   }
 
 

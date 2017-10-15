@@ -48,6 +48,8 @@ export class WidgetService {
   // Adds the widget parameter instance to the local widgets array.
   // The new widget's pageId is set to the pageId parameter
   createWidget(pageId, widget) {
+    widget._id = Math.random().toString();
+    console.log('CREATE ID: ' + widget._id);
     widget.pageId = pageId;
     this.widgets.push(widget);
     return widget;
@@ -86,7 +88,7 @@ export class WidgetService {
   deleteWidget(widgetId) {
     for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x]._id === widgetId) {
-        delete this.widgets[x];
+        this.widgets.splice(x, 1);
       }
     }
   }

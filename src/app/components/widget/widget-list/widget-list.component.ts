@@ -57,7 +57,7 @@ export class WidgetListComponent implements OnInit {
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
+    this.router.navigate(['user/', this.userId]);
   }
 
 
@@ -81,6 +81,10 @@ export class WidgetListComponent implements OnInit {
     const end = url.split('/');
     thisUrl += end[end.length - 1];
     return this.sanitzer.bypassSecurityTrustResourceUrl(thisUrl);
+  }
+
+  returnToPreviousSite() {
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
   }
 
 }

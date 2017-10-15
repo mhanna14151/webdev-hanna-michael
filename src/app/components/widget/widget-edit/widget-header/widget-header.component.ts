@@ -42,4 +42,18 @@ export class WidgetHeaderComponent implements OnInit {
 
   }
 
+  returnToPreviousSite() {
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+  }
+
+  returnToProfile() {
+    this.router.navigate(['user/', this.userID]);
+  }
+
+  deleteThisWidget(ID) {
+    this.widgetService.deleteWidget(ID);
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+  }
+
+
 }

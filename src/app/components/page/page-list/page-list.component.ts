@@ -63,13 +63,7 @@ export class PageListComponent implements OnInit {
   // }
 
   navigateToWidget(ID) {
-    console.log('navigating to widget...');
-    console.log(this.userId);
-    console.log(this.websiteId);
-    console.log(ID);
     this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID, 'widget']);
-    console.log('navigated successfully');
-
   }
 
   navigateToUsersWebsite() {

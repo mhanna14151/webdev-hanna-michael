@@ -22,8 +22,10 @@ export class WidgetChooserComponent implements OnInit {
   website: Website;
   widgetType: String;
   pages: Page[];
+  widget: Widget;
   pageID: String;
   widgets: Widget[];
+  widgetID: String;
   url: string;
 
 
@@ -48,10 +50,17 @@ export class WidgetChooserComponent implements OnInit {
     this.router.navigate(['user/', this.user._id]);
   }
 
+// (_id, widgetType, pageId, size, width, text, url) {
   createNewWidget(type: String) {
     this.widgetType = type;
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', this.pageID, 'widget',
-    Math.random()]);
+    // const newWidget: Widget = new Widget(null, this.widgetType, this.pageID, null, null, null, null);
+    this.widget = this.widgetService.createWidget(this.pageID,
+      new Widget(null, this.widgetType, this.pageID, null, null, null, null));
+    console.log('ID' + this.widget._id);
+    this.widgetID = this.widget._id;
+    console.log('id: ' + this.widgetID);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
+    this.widgetID]);
   }
 
   dyanamicWidth(width) {
