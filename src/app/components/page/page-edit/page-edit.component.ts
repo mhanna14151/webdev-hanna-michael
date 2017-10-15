@@ -30,10 +30,10 @@ export class PageEditComponent implements OnInit {
       this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
-      this.page = this.pageService.findPageById(this.pageID);
-      this.name = this.page.name;
-      this.description = this.page.description;
     });
+    this.page = this.pageService.findPageById(this.pageID);
+    this.name = this.page.name;
+    this.description = this.page.description;
     this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
     this.page = this.pageService.findPageById(this.pageID);
     this.name = this.page.name;
