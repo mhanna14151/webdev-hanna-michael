@@ -18,6 +18,7 @@ export class PageListComponent implements OnInit {
   user: User;
   websiteId: String;
   pages: Page[];
+  pageID: String;
   // websites: Website[];
 
   constructor(private userService: UserService,
@@ -30,6 +31,7 @@ export class PageListComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
       this.websiteId = params['wid'];
+      this.pageID = params['pid'];
       console.log('User id is this: ' +  this.userId);
     });
     this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
@@ -60,8 +62,13 @@ export class PageListComponent implements OnInit {
   //   this.router.navigate(['user/', this.user._id, 'website', 'new']);
   // }
 
-  navigateToPage(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', ID, 'page']);
+  navigateToWidget(ID) {
+    console.log('navigating to widget...');
+    console.log(this.userId);
+    console.log(this.websiteId);
+    console.log(ID);
+    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID, 'widget']);
+    console.log('navigated successfully');
 
   }
 

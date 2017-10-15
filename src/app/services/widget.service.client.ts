@@ -3,13 +3,14 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
-import {Widget} from "../models/widget.model.client";
+import {Website} from '../models/website.model.client';
+import {Widget} from '../models/widget.model.client';
+
 
 // injecting service into module
 @Injectable()
 
 export class WidgetService {
-
   constructor(private _http: Http) {
   }
 
@@ -19,7 +20,7 @@ export class WidgetService {
     new Widget('345', 'IMAGE', '321', 2, '100%', null, 'http://lorempixel.com/400/200/'),
     new Widget('456', 'HTML', '321', null, null, 'Lorem ipsum', null), // come back and put the paragraph <p> tags on
     new Widget('567', 'HEADING', '321', 4, null, 'Lorem Ipsum', null),
-    new Widget('678', 'YOUTUBE', '321', '321', '100%', null, 'https://youtu.be/AM2Ivdi9c4E'),
+    new Widget('678', 'YOUTUBE', '321', null, '100%', null, 'https://youtu.be/AM2Ivdi9c4E'),
     new Widget('789', 'HTML', '321', null, null, 'Lorem Ipsum', null) // come back and put the paragraph <p> tags on
   ];
 
@@ -53,12 +54,14 @@ export class WidgetService {
   }
 
   // Retrieves the widgets in local widgets array whose pageId matches the parameter pageId
-  findWidgetsByPageId(pageId) {
+  findWidgetsByPageId(ID) {
+    const widgetList: Widget[] = [];
     for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x].pageId === pageId) {
-        return this.widgets[x];
+      if (this.widgets[x].pageId === ID) {
+        widgetList.push(this.widgets[x]);
       }
     }
+    return widgetList;
   }
 
   // Retrieves the widget in local widgets array whose _id matches the widgetId parameter

@@ -26,80 +26,84 @@
   </div>
 </nav>
 
-
-<div class="container-fluid top-margin">
-  <!--Heading Widget Example-->
-  <div class="container-fluid">
-    <div class="moh-widget bottomPadding">
-      <div class="pull-right moh-glyph-toolbar">
-        <a href=widget-heading.html>
+<!--Below the banner-->
+<div class="container-fluid top-margin bottomPadding">
+  <div *ngFor="let widget of outputWidgetsForThisPage()" class = 'borderless'>
+    <div [ngSwitch]="widget.widgetType">
+      <!--HEADER CASE-->
+      <div *ngSwitchCase="'HEADING'" class = "moh-widget bottomPadding">
+        <div class="pull-right moh-glyph-toolbar">
+          <a href=widget-heading.html>
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <div [ngSwitch]="widget.size">
+          <div *ngSwitchCase="6">
+            <h1>{{widget.text}}</h1>
+          </div>
+          <div *ngSwitchCase="5">
+            <h2>{{widget.text}}</h2>
+          </div>
+          <div *ngSwitchCase="4">
+            <h3>{{widget.text}}</h3>
+          </div>
+          <div *ngSwitchCase="3">
+            <h4>{{widget.text}}</h4>
+          </div>
+          <div *ngSwitchCase="2">
+            <h5>{{widget.text}}</h5>
+          </div>
+          <div *ngSwitchCase="1">
+            <h6>{{widget.text}}</h6>
+          </div>
+        </div>
+      </div>
+      <!--IMAGE CASE-->
+      <div *ngSwitchCase="'IMAGE'" class = "moh-widget bottomPadding">
+        <div class="pull-right moh-glyph-toolbar">
+          <img width={{widget.width}}
+               src="{{widget.url}}">
+          <a href="widget-image.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <img src="{{widget.url}}" width = 100%>
+        <!--Come back and make this Width Dynamic-->
+      </div>
+      <!--YOUTUBE CASE-->
+      <div *ngSwitchCase="'YOUTUBE'" class = "moh-widget bottomPadding">
+        <div class="pull-right moh-glyph-toolbar">
+          <a href="widget-youtube.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <div class = "videoWrap">
+          <iframe width="560" height="315" [src]="cleanThisUrl(widget.url)"
+                  frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <!--HTML CASE-->
+      <div *ngSwitchCase="'HTML'" class = "moh-widget bottomPadding">
+        <div class="pull-right moh-glyph-toolbar">
           <span class="glyphicon glyphicon-cog"></span>
-        </a>
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <p>{{widget.text}}</p>
       </div>
-      <h1>BRILLIANT HEADING</h1>
     </div>
-
-    <!--Image Widget Example-->
-    <div class="moh-widget bottomPadding">
-      <div class="pull-right moh-glyph-toolbar">
-        <a href="widget-image.html">
-          <span class="glyphicon glyphicon-cog"></span>
+  </div>
+  <!-- Footer -->
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+      <p class="navbar-text pull-right">
+        <a href="../user/profile.html">
+          <span class="glyphicon glyphicon-user"></span>
         </a>
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
-      </div>
-      <img width="100%"
-           src="https://res.cloudinary.com/demo/image/upload/sample.jpg">
-    </div>
-
-    <!--Embeded video-->
-    <div class="moh-widget bottomPadding">
-      <div class="pull-right moh-glyph-toolbar">
-        <a href="widget-youtube.html">
-          <span class="glyphicon glyphicon-cog"></span>
-
-        </a>
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
-      </div>
-
-      <div class = "videoWrap">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/RY4rWrlY-qM"
-                frameborder="0" allowfullscreen></iframe>
-      </div>
-
-    </div>
-
-
-    <div class="moh-widget bottomPadding">
-      <div class="pull-right moh-glyph-toolbar">
-        <span class="glyphicon glyphicon-cog"></span>
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
-      </div>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis tincidunt justo in efficitur. Praesent
-        volutpat varius libero id tincidunt. Etiam bibendum, lorem sed consequat suscipit, sapien nulla tristique urna,
-        non dignissim turpis lacus sed magna. Donec quis mauris orci. Pellentesque dignissim tortor nec nisl interdum
-        luctus. Proin nec erat vel justo scelerisque sodales. Aliquam purus purus, placerat id molestie a, molestie non
-        tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam maximus
-        scelerisque mauris, ut rutrum magna. Vivamus lacinia tortor et erat commodo, a tempus libero posuere. Morbi
-        venenatis scelerisque augue, et pulvinar diam varius ac. Suspendisse ut iaculis enim. Pellentesque non orci
-        ligula. Quisque tincidunt porttitor auctor. Morbi vel nulla at tortor tincidunt dapibus sit amet quis neque.
       </p>
     </div>
-
-
-  </div>
+  </nav>
 
 </div>
-
-<!-- Footer -->
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
-    </p>
-
-  </div>
-</nav>

@@ -76,6 +76,7 @@ textarea {
 
 .moh-glyph-toolbar {
   position: absolute;
+  z-index: 1;
   right: 0px;
   background-color: gray;
   padding: 7px;
