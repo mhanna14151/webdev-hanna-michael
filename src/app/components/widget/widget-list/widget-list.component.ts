@@ -25,6 +25,7 @@ export class WidgetListComponent implements OnInit {
   pageID: String;
   widgets: Widget[];
   url: string;
+  width: String;
 
 
   constructor(private userService: UserService,
@@ -67,9 +68,8 @@ export class WidgetListComponent implements OnInit {
 
   }
 
-  dyanamicWidth(width) {
-    return width.toString;
-
+  widthOfWidget(ID) {
+    return this.widgetService.findWidgetById(ID).width;
   }
 
   navigateToWidgetChooser() {

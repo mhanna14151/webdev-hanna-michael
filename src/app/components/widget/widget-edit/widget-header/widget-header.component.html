@@ -9,14 +9,13 @@
           <span class="glyphicon glyphicon-chevron-left blackText"></span>
         </a>
       </div>
-
       <a class="navbar-brand thick hidden-xs">
         <b>Widgets</b>
       </a>
       <div class="navbar-brand pull-right hidden-xs">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="widget-chooser.html" class="navbar-link fixPlease">
+        <a class="navbar-link fixPlease">
           <span class="glyphicon glyphicon-plus blackText"></span>
         </a>
       </div>
@@ -33,7 +32,7 @@
       <div class="navbar-text pull-right">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="widget-list.html" class="navbar-link">
+        <a (click)="updateWidgetHeader(text, size)" class="navbar-link">
           <span class="glyphicon glyphicon-ok blackText"></span>
         </a>
       </div>
@@ -105,15 +104,18 @@
       <label>Name</label>
       <input class="form-control"
              type = "text"
-             placeholder="Name of Widget">
+             placeholder="Name of Widget"
+             value = {{widget.widgetType}}>
       <label>Text</label>
       <input class="form-control"
              type = "text"
-             placeholder="US Senate Reaches Compromise on Emergency">
+             placeholder="US Senate Reaches Compromise on Emergency"
+             [(ngModel)] ="text" name ="text">
       <label>Size</label>
       <input type="number"
              class="form-control"
-             placeholder="3">
+             placeholder="3"
+             [(ngModel)] ="size" name ="size">
       <a class="btn btn-danger btn-block"
          href="widget-list.html">delete</a>
     </div>
