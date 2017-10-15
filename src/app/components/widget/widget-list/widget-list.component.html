@@ -70,7 +70,7 @@
       <!--YOUTUBE CASE-->
       <div *ngSwitchCase="'YOUTUBE'" class = "moh-widget bottomPadding">
         <div class="pull-right moh-glyph-toolbar">
-          <a href="widget-youtube.html">
+          <a (click)="navigateToWidget(widget._id)">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
           <span class="glyphicon glyphicon-menu-hamburger"></span>

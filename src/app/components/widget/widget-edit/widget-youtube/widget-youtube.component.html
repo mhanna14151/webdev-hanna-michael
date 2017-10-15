@@ -8,7 +8,7 @@
     <div class="col-sm-3">
 
       <div class="navbar-brand pull-left fixed">
-        <a href="widget-list.html" class="navbar-link">
+        <a (click)="returnToPreviousSite()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left blackText"></span>
         </a>
       </div>
@@ -19,7 +19,7 @@
       <div class="navbar-text pull-right hidden-xs">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="widget-chooser.html" class="navbar-link fixPlease">
+        <a (click)="navigateToWidgetChooser()" class="navbar-link fixPlease">
           <span class="glyphicon glyphicon-plus blackText"></span>
         </a>
       </div>
@@ -36,8 +36,8 @@
       <div class="navbar-brand pull-right">
         <!--Presumably in a future assignment,
         I will edit this glyphicon to add the result.-->
-        <a href="widget-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok blackText"></span>
+        <a class="navbar-link">
+          <span (click)="updateWidgetYoutube(text, width, url)" class="glyphicon glyphicon-ok blackText"></span>
         </a>
       </div>
     </div>
@@ -105,28 +105,31 @@
     </div>
     <!--Content on the Right, Main Column.-->
     <div class="col-sm-9 paddingWithNoTop moh-max-height small-top-Margin">
-
       <label>Name</label>
       <input class="form-control"
-             type="text"
-             placeholder="Name of Widget">
-
+             type = "text"
+             placeholder="Name of Widget"
+             value = {{widget.widgetType}}>
       <label>Text</label>
       <input class="form-control"
              type="text"
-             placeholder="Text regarding Widget">
-
+             id="text"
+             placeholder="Text regarding Widget"
+             [(ngModel)] ="text" name ="text">
       <label>URL</label>
-      <input type="url" class='form-control'
-             placeholder="https://youtu.be/xuzNvBWaPy0>">
-
+      <input type="url"
+             id = "url"
+             class='form-control'
+             placeholder="https://youtu.be/xuzNvBWaPy0>"
+             [(ngModel)] = "url" name = "url">
       <label>Width</label>
-      <input type="number" class="form-control"
-             placeholder="1-100%">
-
+      <input type="text" class="form-control"
+             placeholder="1-100%"
+             id = "width"
+             [(ngModel)] = "width" name = "width">
       <a class="btn btn-danger btn-block moh-top-margin"
-         href="widget-list.html">delete</a>
-
+         (click)="deleteThisWidget(widgetID)">Delete
+      </a>
     </div>
   </div>
 </div>

@@ -40,9 +40,9 @@ export class WidgetYoutubeComponent implements OnInit {
     });
   }
   // _id, widgetType, pageId, size, width, text, url
-  updateWidgetImage(text: String, width: String, url: String) {
+  updateWidgetYoutube(text: String, width: String, url: String) {
     this.widgetService.updateWidget(this.widgetID,
-      new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, url));
+      new Widget(this.widgetID, 'YOUTUBE', this.pageID, null, width, text, url));
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
 
   }
@@ -58,6 +58,10 @@ export class WidgetYoutubeComponent implements OnInit {
   deleteThisWidget(ID) {
     this.widgetService.deleteWidget(ID);
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+  }
+
+  navigateToWidgetChooser() {
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
   }
 
 

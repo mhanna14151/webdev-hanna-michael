@@ -60,5 +60,9 @@ export class WidgetImageComponent implements OnInit {
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
   }
 
+  navigateToWidgetChooser() {
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
+  }
+
 
 }
