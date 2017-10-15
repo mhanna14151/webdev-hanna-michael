@@ -47,9 +47,7 @@ export class WidgetChooserComponent implements OnInit {
     this.widgetType = type;
     this.widget = this.widgetService.createWidget(this.pageID,
       new Widget(null, this.widgetType, this.pageID, null, null, null, null));
-    console.log('ID' + this.widget._id);
     this.widgetID = this.widget._id;
-    console.log('id: ' + this.widgetID);
     this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
     this.widgetID]);
   }

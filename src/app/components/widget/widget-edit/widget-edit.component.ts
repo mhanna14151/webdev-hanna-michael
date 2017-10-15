@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../models/user.model.client';
 import {Website} from '../../../models/website.model.client';
-import {Page} from '../../../models/page.model.client';
 import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -41,13 +40,8 @@ export class WidgetEditComponent implements OnInit {
     console.log('Website Id: ' + this.websiteId);
     console.log('WIDGETS ARE THESE WIDGETS: ' + this.widgets);
     console.log('Page Id: ' + this.pageID);
-    // this.website = this.websiteService.findWebsiteById(this.websiteId);
-    // this.user = this.userService.findUserById(this.userId);
   }
 
-  outputWidgetsForThisPage() {
-    return this.widgetService.findWidgetsByPageId(this.pageID);
-  }
 
   returnToProfile() {
     this.router.navigate(['user/', this.userId]);
@@ -55,19 +49,5 @@ export class WidgetEditComponent implements OnInit {
 
 
 
-  navigateToWidget(ID) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
-      ID]);
-
-  }
-
-  dyanamicWidth(width) {
-    return width.toString;
-
-  }
-
-  navigateToWidgetChooser() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget', 'new']);
-  }
 
 }

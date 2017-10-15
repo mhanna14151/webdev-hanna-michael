@@ -30,7 +30,6 @@ export class PageEditComponent implements OnInit {
       this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
-      console.log('Page id is this: ' +  this.pageID);
       this.page = this.pageService.findPageById(this.pageID);
       this.name = this.page.name;
       this.description = this.page.description;
@@ -38,14 +37,9 @@ export class PageEditComponent implements OnInit {
     this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
     this.page = this.pageService.findPageById(this.pageID);
     this.name = this.page.name;
-    console.log(this.name);
     this.description = this.page.description;
-    console.log('Website Id: ' + this.websiteId);
     this.user = this.userService.findUserById(this.userId);
-    // this.route.params.subscribe(params => {
-    //     this.websiteId = params['wid'];
-    //     console.log('Website ID is this stuff: ' + this.websiteId);
-    // });
+
   }
 
   outputPagesForThisUser() {
@@ -57,21 +51,8 @@ export class PageEditComponent implements OnInit {
     this.router.navigate(['user/', this.user._id]);
   }
 
-  // navigateToWebsiteEdit(ID) {
-  //   this.router.navigate(['user/', this.user._id, 'website', ID]);
-  // }
-  //
-  // navigateToWebsiteNew() {
-  //   this.router.navigate(['user/', this.user._id, 'website', 'new']);
-  // }
-
   navigateToWidget(ID) {
-    console.log('navigating to widget...');
-    console.log(this.userId);
-    console.log(this.websiteId);
-    console.log(ID);
     this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID, 'widget']);
-    console.log('navigated successfully');
 
   }
 

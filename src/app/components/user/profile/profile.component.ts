@@ -42,10 +42,6 @@ export class ProfileComponent implements OnInit {
       this.user.password, email, firstName, lastName));
   }
 
-  // updateProfile() {
-  //   this.user(this.user.firstName, this.user.lastName)
-  //   this.userService.updateUser(this.userId, this.user);
-  // }
   returnToProfile() {
     this.ngOnInit();
   }

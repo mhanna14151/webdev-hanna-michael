@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Widget} from "../../../../models/widget.model.client";
-import {ActivatedRoute, Router} from "@angular/router";
-import {WidgetService} from "../../../../services/widget.service.client";
+import {Widget} from '../../../../models/widget.model.client';
+import {ActivatedRoute, Router} from '@angular/router';
+import {WidgetService} from '../../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-image',
@@ -37,7 +37,6 @@ export class WidgetImageComponent implements OnInit {
       this.url = this.widget.url;
       this.text = this.widget.text;
       this.width = this.widget.width;
-      console.log(this.width);
     });
   }
   // _id, widgetType, pageId, size, width, text, url
@@ -65,22 +64,21 @@ export class WidgetImageComponent implements OnInit {
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
   }
 
-  navigateToWidgetChooser() {
-    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
-  }
-
-  createNewWidget(type: String) {
-    this.widgetType = type;
-    this.widget = this.widgetService.createWidget(this.pageID,
-      new Widget(null, this.widgetType, this.pageID, null, null, null, null));
-    console.log('ID' + this.widget._id);
-    this.widgetID = this.widget._id;
-    console.log('id: ' + this.widgetID);
-    this.widgetService.deleteWidget(this.widgetID);
-    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
-    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget',
-      this.widgetID]);
-  }
+  // COMMENTED OUT IN CASE I WANT TO BRING BACK THE DOUBLE COLUMNS WITH THE SIDEBAR
+  // navigateToWidgetChooser() {
+  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
+  // }
+  //
+  // createNewWidget(type: String) {
+  //   this.widgetType = type;
+  //   this.widget = this.widgetService.createWidget(this.pageID,
+  //     new Widget(null, this.widgetType, this.pageID, null, null, null, null));
+  //   this.widgetID = this.widget._id;
+  //   this.widgetService.deleteWidget(this.widgetID);
+  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget',
+  //     this.widgetID]);
+  // }
 
 
 }

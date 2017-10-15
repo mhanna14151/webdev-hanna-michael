@@ -22,9 +22,6 @@ export class RegisterComponent implements OnInit {
 
   registerNewUser(username, password, verifyPassword,
                   email, firstName, lastName) {
-    // if (this.userService.findUserByUsername(username) != null) {
-    //   // do nothing...
-    // }
     if (password === verifyPassword) {
         this.user = this.userService.createUser(new User(Math.random().toString(),
           this.userName, this.password, email, firstName, lastName));

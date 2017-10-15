@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../../../models/user.model.client';
 import {UserService} from '../../../services/user.service.client';
 import {WebsiteService} from '../../../services/website.service.client';
-import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Website} from '../../../models/website.model.client';
 
@@ -22,7 +21,6 @@ export class WebsiteEditComponent implements OnInit {
 
   constructor(private userService: UserService,
               private websiteService: WebsiteService,
-              private pageService: PageService,
               private route: ActivatedRoute,
               private router: Router) {
   }
@@ -41,7 +39,6 @@ export class WebsiteEditComponent implements OnInit {
 
   outputWebsitesForThisUser() {
     const websiteList: Website[] = this.websiteService.findWebsitesByUser(this.userId);
-    // console.log(this.websiteService.findWebsitesByUser(this.userId));
     return websiteList;
   }
 
@@ -72,7 +69,6 @@ export class WebsiteEditComponent implements OnInit {
 
   deleteThisWebsite(webID) {
     this.websiteService.deleteWebsite(webID);
-    console.log(this.outputWebsitesForThisUser());
     this.router.navigate(['user', this.userId, 'website']);
   }
 

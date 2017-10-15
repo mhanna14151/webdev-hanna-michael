@@ -32,7 +32,7 @@ import {WidgetService} from './services/widget.service.client';
 
 
 @NgModule({
-  // Declare components here
+  // Declared components here
   declarations: [
     AppComponent,
     HomeComponent,

@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
-import {UserService} from '../../../services/user.service.client';
-import {WebsiteService} from '../../../services/website.service.client';
-import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Page} from '../../../models/page.model.client';
 import {User} from '../../../models/user.model.client';
 import {Website} from '../../../models/website.model.client';
-import {$PERCENT} from "@angular/compiler/src/chars";
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-widget-list',
@@ -28,10 +24,7 @@ export class WidgetListComponent implements OnInit {
   width: String;
 
 
-  constructor(private userService: UserService,
-              private websiteService: WebsiteService,
-              private pageService: PageService,
-              private widgetService: WidgetService,
+  constructor(private widgetService: WidgetService,
               private route: ActivatedRoute,
               private router: Router,
               private sanitzer: DomSanitizer) { }
@@ -48,8 +41,6 @@ export class WidgetListComponent implements OnInit {
     console.log('Website Id: ' + this.websiteId);
     console.log('WIDGETS ARE THESE WIDGETS: ' + this.widgets);
     console.log('Page Id: ' + this.pageID);
-    // this.website = this.websiteService.findWebsiteById(this.websiteId);
-    // this.user = this.userService.findUserById(this.userId);
   }
 
   outputWidgetsForThisPage() {
@@ -66,10 +57,6 @@ export class WidgetListComponent implements OnInit {
     this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
     ID]);
 
-  }
-
-  widthOfWidget(ID) {
-    return this.widgetService.findWidgetById(ID).width;
   }
 
   navigateToWidgetChooser() {
