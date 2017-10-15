@@ -47,8 +47,8 @@ export class WidgetHeaderComponent implements OnInit {
     this.widgetID = this.widget._id;
     if (this.text === null) {
       this.widgetService.deleteWidget(this.widgetID);
+      console.log('Deleting from Chevron');
     }
-    console.log('Deleting from Chevron');
     this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
   }
 
