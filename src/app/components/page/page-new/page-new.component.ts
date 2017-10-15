@@ -22,7 +22,6 @@ export class PageNewComponent implements OnInit {
   description: String;
 
   constructor(private userService: UserService,
-              private websiteService: WebsiteService,
               private pageService: PageService,
               private route: ActivatedRoute,
               private router: Router) { }
