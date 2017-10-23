@@ -59,22 +59,22 @@
     <!--Content on the Right, Main Column.-->
     <div class="list-group borderless paddingLeft">
       <div class="col-sm-9 paddingWithNoTop small-top-Margin">
-      <label>Name</label>
-      <div>
-        <input type="text"
-               class="form-control"
-               id="name"
-               placeholder="Name"
-               [(ngModel)]="name" name="name">
-      </div>
-      <label>Description</label>
-      <textarea class="form-control"
-                rows = "4"
-                type="text"
-                [(ngModel)] ="description" name ="description">
+        <label>Name</label>
+        <div>
+          <input type="text"
+                 class="form-control"
+                 id="name"
+                 placeholder="Name"
+                 [(ngModel)]="name" name="name">
+        </div>
+        <label>Description</label>
+        <textarea class="form-control"
+                  rows = "4"
+                  type="text"
+                  [(ngModel)] ="description" name ="description">
       </textarea>
-      <a class="btn btn-danger btn-block"
-         (click)="deleteThisWebsite(websiteId)">delete</a>
+        <a class="btn btn-danger btn-block"
+           (click)="deleteThisWebsite(websiteId)">delete</a>
       </div>
     </div>
   </div>
@@ -92,4 +92,3 @@
 
   </div>
 </nav>
-

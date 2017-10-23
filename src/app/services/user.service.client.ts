@@ -18,27 +18,6 @@ export class UserService {
       new User('456', 'jannunzi', 'jannunzi', 'jannunzi@webdev.com', 'Jose', 'Annunzi')
   ];
 
-  // users = [
-  //   {_123', 'alice', 'alice', 'alice@wonderland.com',Alice', 'Wonder'},
-  //   {_id: '234',
-  //     username: 'bob',
-  //     password: 'bob',
-  //     email: 'bobmarley@burgers.com',
-  //     firstName: 'Bob',
-  //     lastName: 'Marley'},
-  //   {_id: '345',
-  //     username: 'charly',
-  //     password: 'charly',
-  //     email: 'charlys@angels.com',
-  //     firstName: 'Charly',
-  //     lastName: 'Garcia'},
-  //   {_id: '456',
-  //     username: 'jannunzi',
-  //     password: 'jannunzi',
-  //     email: 'jannunzi@webdev.com',
-  //     firstName: 'Jose',
-  //     lastName: 'Annunzi'}
-  // ];
 
   api = {
     'createUser'   : this.createUser,

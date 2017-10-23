@@ -29,7 +29,8 @@ import { UserService } from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
-
+import { BannerForHomePageComponent } from './components/banner-for-home-page/banner-for-home-page.component';
+import { BannerForWebDevAssignmentComponent } from './components/banner-for-web-dev-assignment/banner-for-web-dev-assignment.component';
 
 @NgModule({
   // Declared components here
@@ -52,6 +53,8 @@ import {WidgetService} from './services/widget.service.client';
     WidgetHeaderComponent,
     WidgetImageComponent,
     WidgetYoutubeComponent,
+    BannerForHomePageComponent,
+    BannerForWebDevAssignmentComponent,
   ],
   imports: [
     BrowserModule,
