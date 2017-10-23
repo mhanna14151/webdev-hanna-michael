@@ -60,10 +60,6 @@ export class UserService {
 
   // Currently assumes usernames are unique
   findUserByCredentials(username: String, password: String) {
-    // const user = this.findUserByUsername(username);
-    // if (user.password === password) {
-      // return user;
-    // }
     const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
     return this._http.get(url)
       .map(

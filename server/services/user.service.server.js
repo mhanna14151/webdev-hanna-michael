@@ -96,7 +96,6 @@ module.exports = function(app) {
         res.json({});
       }
       return;
-
     }
     res.json(users);
   }
@@ -121,14 +120,14 @@ module.exports = function(app) {
   }
 
 
-  function findUserByCredentials(req, res) {
-    var userId = req.params["uid"];
-    var user = users.find(function (user) {
-      "use strict";
-      return user._id === userId
-    });
-    res.json(user);
-  }
+  // function findUserByCredentials(req, res) {
+  //   var userId = req.params["uid"];
+  //   var user = users.find(function (user) {
+  //     "use strict";
+  //     return user._id === userId
+  //   });
+  //   res.json(user);
+  // }
 
   function createUser(req, res) {
     "use strict";

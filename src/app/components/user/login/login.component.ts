@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private router: Router, private userService: UserService) { }
-
   login(username: String, password: String) {
     this.userService.findUserByCredentials(username, password)
       .subscribe((user: User)  => {
