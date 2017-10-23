@@ -38,8 +38,10 @@ export class PageEditComponent implements OnInit {
     this.page = this.pageService.findPageById(this.pageID);
     this.name = this.page.name;
     this.description = this.page.description;
-    this.user = this.userService.findUserById(this.userId);
-
+    this.userService.findUserById(this.userId)
+      .subscribe((user: User) => {
+        this.user = user;
+      });
   }
 
   outputPagesForThisUser() {

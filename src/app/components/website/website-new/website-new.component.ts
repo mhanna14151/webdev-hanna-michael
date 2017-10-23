@@ -31,7 +31,10 @@ export class WebsiteNewComponent implements OnInit {
       this.userId = params['uid'];
       this.websiteId = params['wid']
       this.website = this.websiteService.findWebsiteById(this.websiteId);
-      this.user = this.userService.findUserById(this.userId);
+      this.userService.findUserById(this.userId)
+        .subscribe((user: User) => {
+          this.user = user;
+        });
     });
   }
 

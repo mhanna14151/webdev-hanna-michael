@@ -45,7 +45,7 @@
 //
 // }
 
-var User = require('../model/user.model.server')
+var User = require('../model/user.model.server');
 
 module.exports = function(app) {
 
@@ -57,9 +57,47 @@ module.exports = function(app) {
   ];
 
   app.get("/api/user/:uid", findUserById);
-  app.get("/api/user", findAllUsers);
+  // app.get("/api/user?username=username&password=password", findUserByCredentials);
+  // app.get("/api/user?username=username", findUserByUsername);
+  app.put("/api/user/:uid", updateUser);
+  app.delete("/api/user/:uid", deleteUser);
+  app.get("/api/user", findUsers); // find users by user names, credentials, or all users.
+  app.post("/api/user", createUser);
 
-  function findAllUsers(req, res) {
+
+  /**
+   * Returns a different set of users based on conditions.
+   * @param req
+   * @param res
+   */
+  function findUsers(req, res) {
+    var username = req.query["username"];
+    var password = req.query["password"];
+    if (username && password) {
+      var user = users.find(function (user) {
+        "use strict";
+        return user.username === username && user.password === password;}
+      );
+      if (user) {
+        res.json(user);
+      } else {
+        res.json({});
+      }
+      return;
+    }
+    else if (username) {
+      var user = users.find(function (user) {
+        "use strict";
+        return user.username === username;}
+      );
+      if (user) {
+        res.json(user);
+      } else {
+        res.json({});
+      }
+      return;
+
+    }
     res.json(users);
   }
 
@@ -70,6 +108,41 @@ module.exports = function(app) {
       return user._id === userId
     });
     res.json(user);
+  }
+
+  function findUserByUsername(req, res) {
+    var username = req.params['username'];
+    console.log(username);
+    var user = users.find(function (user) {
+      "use strict"
+      return user.username = username;
+    });
+    res.json(user);
+  }
+
+
+  function findUserByCredentials(req, res) {
+    var userId = req.params["uid"];
+    var user = users.find(function (user) {
+      "use strict";
+      return user._id === userId
+    });
+    res.json(user);
+  }
+
+  function createUser(req, res) {
+    "use strict";
+
+  }
+
+  function updateUser(req, res) {
+    "use strict";
+
+  }
+
+  function deleteUser(req, res) {
+    "use strict";
+
   }
 
 

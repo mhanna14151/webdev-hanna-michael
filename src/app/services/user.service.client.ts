@@ -32,37 +32,44 @@ export class UserService {
     user._id = num.toString();
     this.users.push(user);
     return user;
+
   }
-  //
-  //
-  //
-  // // (Math.floor(1 + (1000 - 1) * Math.random())
-  // createUser(user) {
-  //   user = new User (Math.random(), this.userName, password, email, firstName, lastName);
-  //   this.users.push(user);
-  //   return user;
-  // }
 
   findUserById(userId: String) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {  return this.users[x]; }
-    }
+    const url = 'http://localhost:3100/api/user/' + userId;
+    return this._http.get(url)
+      .map(
+        (response: Response) => {
+          return response.json();
+        });
   }
 
   findUserByUsername(user_name: String) {
-    for (let x = 0; this.users.length; x++) {
-      if (this.users[x].username === user_name) {
-        return this.users[x];
-      }
-    }
+    const url = 'http://localhost:3100/api/user?username=' + user_name;
+    return this._http.get(url)
+      .map(
+        (response: Response) => {
+          return response.json();
+        });
+    // for (let x = 0; this.users.length; x++) {
+    //   if (this.users[x].username === user_name) {
+    //     return this.users[x];
+    //   }
+    // }
   }
 
   // Currently assumes usernames are unique
   findUserByCredentials(username: String, password: String) {
-    const user = this.findUserByUsername(username);
-    if (user.password === password) {
-      return user;
-    }
+    // const user = this.findUserByUsername(username);
+    // if (user.password === password) {
+      // return user;
+    // }
+    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    return this._http.get(url)
+      .map(
+        (response: Response) => {
+      return response.json();
+    });
   }
 
   // Come back and check this

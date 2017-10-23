@@ -34,7 +34,10 @@ export class PageNewComponent implements OnInit {
     });
     this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
     this.page = this.pageService.findPageById(this.pageID);
-    this.user = this.userService.findUserById(this.userId);
+    this.userService.findUserById(this.userId)
+      .subscribe((user: User) => {
+        this.user = user;
+      });
 
   }
 
