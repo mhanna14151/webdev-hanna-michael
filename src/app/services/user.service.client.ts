@@ -32,10 +32,10 @@ export class UserService {
     user._id = num.toString();
     console.log('User in Create User Client: ' + user);
     // if (this.findUserByUsername(user.username) === null) {
-      return this._http.post(url, user)
-        .map((response: Response) => {
-          return response.json();
-        });
+    return this._http.post(url, user)
+      .map((response: Response) => {
+        return response.json();
+      });
     // }
     // user._id = num.toString();
     // this.users.push(user);
@@ -66,8 +66,8 @@ export class UserService {
     return this._http.get(url)
       .map(
         (response: Response) => {
-      return response.json();
-    });
+          return response.json();
+        });
   }
 
   // Come back and check this
@@ -76,7 +76,7 @@ export class UserService {
     const url = 'http://localhost:3100/api/user/' + userId;
     return this._http.put(url, newUser)
       .map((response: Response) => {
-      return response.json();
+        return response.json();
       });
     // for (let x = 0; x < this.users.length; x++) {
     //   if (this.users[x]._id === userId) {
@@ -86,12 +86,13 @@ export class UserService {
   }
 
   // COME BACK AND IMPLEMENT
-  // deleteUser(userId) {
-  //   for (let x = 0; x < this.users.length; x++) {
-  //     if (this.users[x]._id === userId) {
-  //       delete this.users[x];
-  //     }
-  //   }
-  // }
+  deleteUser(userId) {
+    const url = 'http://localhost:3100/api/user/' + userId;
+    return this._http.delete(url)
+      .map(
+        (response: Response) => {
+          return response.json();
+        });
+  }
 
 }

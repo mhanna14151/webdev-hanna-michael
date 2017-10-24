@@ -57,6 +57,18 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  terminateAccount() {
+    this.userService.deleteUser(this.userId)
+      .subscribe((users) => {
+        this.users = users;
+        this.router.navigate(['login']);
+      });
+    //   .subscribe((users) => {
+    //   this.users = users;
+    // });
+    // this.router.navigate(['login']);
+  }
+
   returnToProfile() {
     this.ngOnInit();
   }
