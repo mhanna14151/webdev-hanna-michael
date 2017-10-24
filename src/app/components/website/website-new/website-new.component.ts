@@ -18,6 +18,7 @@ export class WebsiteNewComponent implements OnInit {
   description: String;
   website: Website;
   websiteId: String;
+  websites: Website[];
 
   constructor(private userService: UserService,
               private websiteService: WebsiteService,
@@ -30,11 +31,21 @@ export class WebsiteNewComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
       this.websiteId = params['wid']
-      this.website = this.websiteService.findWebsiteById(this.websiteId);
+      this.websiteService.findWebsiteById(this.websiteId)
+        .subscribe((website: Website) => {
+          this.website = website;
+        });
       this.userService.findUserById(this.userId)
         .subscribe((user: User) => {
           this.user = user;
         });
+      this.route.params.subscribe(params => {
+        this.userId = params['uid'];
+        this.websiteService.findAllWebsitesForUser(this.userId)
+          .subscribe((websites: Website[]) => {
+            this.websites = websites;
+          });
+      });
     });
   }
 
@@ -45,8 +56,9 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   outputWebsitesForThisUser() {
-    const websiteList: Website[] = this.websiteService.findWebsitesByUser(this.userId);
-    return websiteList;
+    return this.websites;
+    // const websiteList: Website[] = this.websiteService.findAllWebsitesForUser(this.userId);
+    // return websiteList;
   }
 
   navigateToWebsiteEdit(ID) {

@@ -25,8 +25,11 @@ export class WebsiteListComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
+      this.websiteService.findAllWebsitesForUser(this.userId)
+        .subscribe((websites: Website[]) => {
+          this.websites = websites;
+        });
     });
-    this.websites = this.websiteService.findWebsitesByUser(this.userId);
     this.userService.findUserById(this.userId)
       .subscribe((user: User) => {
         this.user = user;
@@ -34,8 +37,11 @@ export class WebsiteListComponent implements OnInit {
   }
 
   outputWebsitesForThisUser() {
-    const websiteList: Website[] = this.websiteService.findWebsitesByUser(this.userId);
-    return websiteList;
+    console.log('this is not working??');
+    // console.log(this.websites);
+    return this.websites;
+    // const websiteList: Website[] = this.websiteService.findAllWebsitesForUser(this.userId);
+    // return websiteList;
   }
 
   returnToProfile() {
