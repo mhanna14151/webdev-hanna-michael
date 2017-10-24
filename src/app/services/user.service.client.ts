@@ -29,10 +29,16 @@ export class UserService {
 
   createUser(user: User) {
     const num: Number = (Math.floor(1 + (1000 - 1) * Math.random()));
+    const url = 'http://localhost:3100/api/user';
     user._id = num.toString();
-    this.users.push(user);
-    return user;
-
+    console.log('User in Create User Client: ' + user);
+    return this._http.post(url, user)
+      .map((response: Response) => {
+      return response.json();
+      });
+    // user._id = num.toString();
+    // this.users.push(user);
+    // return user;
   }
 
   findUserById(userId: String) {

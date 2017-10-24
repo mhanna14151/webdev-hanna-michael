@@ -131,14 +131,10 @@ module.exports = function(app) {
   //   res.json(user);
   // }
 
-  function createUser(req, res) {
-    "use strict";
-
-  }
 
   function updateUser(req, res) {
     // /api/user/:uid"
-    var userId = req.params['uid']
+    var userId = req.params['uid'];
     var newUser = req.body;
     console.log('users are: ' + users);
     console.log('UPDATE UPDATE UPDATE' + newUser);
@@ -153,7 +149,7 @@ module.exports = function(app) {
 
 
   function deleteUser(req, res) {
-    var userId = req.params['uid']
+    var userId = req.params['uid'];
     for (var i = 0; i < users.length; i++) {
       if (users[i]._id === userId) {
         users.splice(i, 1);
@@ -165,7 +161,12 @@ module.exports = function(app) {
   }
 
   function createUser(req, res) {
-    "use strict";
+    const user = req.body;
+    var newUser = new User(user._id, user.username, user.password, user.email, user.firstName, user.lastName);
+    // var newUser = new User('15', 'f', 'f', 'f@gmail.com', 'f', 'f');
+    console.log("user from Server: ");
+    users.push(newUser);
+    res.json(newUser);
 
   }
 
