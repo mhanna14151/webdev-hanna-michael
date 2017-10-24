@@ -11,20 +11,19 @@ import {User} from '../models/user.model.client';
 export class UserService {
 
   constructor(private _http: Http) { }
-    users: User[] = [
-      new User('123', 'alice', 'alice', 'alice@wonderland.com', 'Alice', 'Wonder'),
-      new User('234', 'bob', 'bob', 'bobmarley@burgers.com', 'Bob', 'Marley'),
-      new User('345', 'charly', 'charly', 'charlys@angels.com', 'Charly', 'Garcia'),
-      new User('456', 'jannunzi', 'jannunzi', 'jannunzi@webdev.com', 'Jose', 'Annunzi')
-  ];
-
+  //   users: User[] = [
+  //     new User('123', 'alice', 'alice', 'alice@wonderland.com', 'Alice', 'Wonder'),
+  //     new User('234', 'bob', 'bob', 'bobmarley@burgers.com', 'Bob', 'Marley'),
+  //     new User('345', 'charly', 'charly', 'charlys@angels.com', 'Charly', 'Garcia'),
+  //     new User('456', 'jannunzi', 'jannunzi', 'jannunzi@webdev.com', 'Jose', 'Annunzi')
+  // ];
 
   api = {
     'createUser'   : this.createUser,
     'findUserById' : this.findUserById,
     'findUserByUsername' : this.findUserByUsername,
     'updateUser' : this.updateUser,
-    'deleteUser' : this.deleteUser
+    // 'deleteUser' : this.deleteUser
   };
 
   createUser(user: User) {
@@ -32,10 +31,12 @@ export class UserService {
     const url = 'http://localhost:3100/api/user';
     user._id = num.toString();
     console.log('User in Create User Client: ' + user);
-    return this._http.post(url, user)
-      .map((response: Response) => {
-      return response.json();
-      });
+    // if (this.findUserByUsername(user.username) === null) {
+      return this._http.post(url, user)
+        .map((response: Response) => {
+          return response.json();
+        });
+    // }
     // user._id = num.toString();
     // this.users.push(user);
     // return user;
@@ -84,12 +85,13 @@ export class UserService {
     // }
   }
 
-  deleteUser(userId) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-        delete this.users[x];
-      }
-    }
-  }
+  // COME BACK AND IMPLEMENT
+  // deleteUser(userId) {
+  //   for (let x = 0; x < this.users.length; x++) {
+  //     if (this.users[x]._id === userId) {
+  //       delete this.users[x];
+  //     }
+  //   }
+  // }
 
 }

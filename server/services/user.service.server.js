@@ -82,7 +82,7 @@ module.exports = function(app) {
       if (user) {
         res.json(user);
       } else {
-        res.json({});
+        res.json(null);
       }
       return;
     }
@@ -94,7 +94,7 @@ module.exports = function(app) {
       if (user) {
         res.json(user);
       } else {
-        res.json({});
+        res.json(null);
       }
       return;
     }
@@ -111,15 +111,15 @@ module.exports = function(app) {
     res.json(user);
   }
 
-  function findUserByUsername(req, res) {
-    var username = req.params['username'];
-    console.log('USERNAME' + username);
-    var user = users.find(function (user) {
-      "use strict"
-      return user.username = username;
-    });
-    res.json(user);
-  }
+  // function findUserByUsername(req, res) {
+  //   var username = req.params['username'];
+  //   console.log('USERNAME' + username);
+  //   var user = users.find(function (user) {
+  //     "use strict"
+  //     return user.username = username;
+  //   });
+  //   res.json(user);
+  // }
 
 
   // function findUserByCredentials(req, res) {
@@ -164,11 +164,9 @@ module.exports = function(app) {
     const user = req.body;
     var newUser = new User(user._id, user.username, user.password, user.email, user.firstName, user.lastName);
     // var newUser = new User('15', 'f', 'f', 'f@gmail.com', 'f', 'f');
-    console.log("user from Server: ");
+    // console.log("user from Server: ");
     users.push(newUser);
     res.json(newUser);
-
   }
-
 
 };
