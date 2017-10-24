@@ -51,11 +51,6 @@ export class UserService {
         (response: Response) => {
           return response.json();
         });
-    // for (let x = 0; this.users.length; x++) {
-    //   if (this.users[x].username === user_name) {
-    //     return this.users[x];
-    //   }
-    // }
   }
 
   // Currently assumes usernames are unique
@@ -70,11 +65,17 @@ export class UserService {
 
   // Come back and check this
   updateUser(userId, user) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-        this.users[x] = user;
-      }
-    }
+    const newUser = new User(userId, user.username, user.password, user.email, user.firstName, user.lastName);
+    const url = 'http://localhost:3100/api/user/' + userId;
+    return this._http.put(url, newUser)
+      .map((response: Response) => {
+      return response.json();
+      });
+    // for (let x = 0; x < this.users.length; x++) {
+    //   if (this.users[x]._id === userId) {
+    //     this.users[x] = user;
+    //   }
+    // }
   }
 
   deleteUser(userId) {

@@ -13,6 +13,7 @@ import {User} from '../../../models/user.model.client';
 export class ProfileComponent implements OnInit {
   userId: String;
   user: User;
+  users: User[];
   username: String;
   email: String;
   firstName: String;
@@ -49,8 +50,11 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile(username: String, email: String, firstName: String, lastName: String) {
-    this.userService.updateUser(this.userId, new User(this.userId, username,
-      this.user.password, email, firstName, lastName));
+    const newUser = new User(this.userId, username, this.user.password, email, firstName, lastName);
+    this.userService.updateUser(this.userId, newUser)
+      .subscribe((users) => {
+      this.users = users;
+    });
   }
 
   returnToProfile() {

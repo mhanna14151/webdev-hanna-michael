@@ -71,6 +71,7 @@ module.exports = function(app) {
    * @param res
    */
   function findUsers(req, res) {
+    console.log('FIND USERS');
     var username = req.query["username"];
     var password = req.query["password"];
     if (username && password) {
@@ -101,6 +102,7 @@ module.exports = function(app) {
   }
 
   function findUserById(req, res) {
+    console.log('FIND USER BY ID');
     var userId = req.params["uid"];
     var user = users.find(function (user) {
       "use strict";
@@ -111,7 +113,7 @@ module.exports = function(app) {
 
   function findUserByUsername(req, res) {
     var username = req.params['username'];
-    console.log(username);
+    console.log('USERNAME' + username);
     var user = users.find(function (user) {
       "use strict"
       return user.username = username;
@@ -135,11 +137,34 @@ module.exports = function(app) {
   }
 
   function updateUser(req, res) {
-    "use strict";
-
+    // /api/user/:uid"
+    var userId = req.params['uid']
+    var newUser = req.body;
+    console.log('users are: ' + users);
+    console.log('UPDATE UPDATE UPDATE' + newUser);
+    for (var i = 0; i < users.length; i++) {
+      if (users[i]._id === userId) {
+        users[i] = newUser;
+        res.json(users);
+        return;
+      }
+    }
   }
 
+
   function deleteUser(req, res) {
+    var userId = req.params['uid']
+    for (var i = 0; i < users.length; i++) {
+      if (users[i]._id === userId) {
+        users.splice(i, 1);
+        var users = findUsers(req, res);
+        res.json(users);
+        return;
+      }
+    }
+  }
+
+  function createUser(req, res) {
     "use strict";
 
   }
