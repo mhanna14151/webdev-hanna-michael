@@ -28,7 +28,7 @@ export class WidgetService {
   createWidget(pageId, widget) {
     widget._id = Math.random().toString();
     widget.pageId = pageId;
-    const url = 'http://localhost:3100/api//page/' + pageId + '/widget';
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
     return this._http.post(url, widget)
       .map((response: Response) => {
       return response.json();

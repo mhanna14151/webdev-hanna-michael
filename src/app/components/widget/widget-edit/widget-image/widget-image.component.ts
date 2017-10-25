@@ -32,19 +32,27 @@ export class WidgetImageComponent implements OnInit {
       this.widgetID = params['wgid'];
       this.userID = params['uid'];
       this.websiteID = params['wid'];
-      this.widget = this.widgetService.findWidgetById(this.widgetID);
-      this.size = this.widget.size;
-      this.url = this.widget.url;
-      this.text = this.widget.text;
-      this.width = this.widget.width;
+      this.widgetService.findWidgetById(this.widgetID)
+        .subscribe((widget) => {
+          this.widget = widget;
+          this.widgetType = this.widget.widgetType;
+          this.size = this.widget.size;
+          this.url = this.widget.url;
+          this.text = this.widget.text;
+          this.width = this.widget.width;
+          // could put others here?
+        });
     });
   }
+
   // _id, widgetType, pageId, size, width, text, url
   updateWidgetImage(text: String, width: String, url: String) {
-    this.widgetService.updateWidget(this.widgetID,
-      new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, url));
-    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
-
+    const updatedWidget = new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, url);
+    this.widgetService.updateWidget(this.widgetID, updatedWidget)
+      .subscribe((widget) => {
+        this.widget = widget;
+        this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+      });
   }
 
   returnToPreviousSite() {

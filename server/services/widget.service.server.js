@@ -72,7 +72,7 @@ module.exports = function(app) {
 
   function createWidget(req, res) {
     const widget = req.body;
-    var newWidget = new Widget(widget._id, widget.widgetType, widget.pageId, widget.size, widget.width, width.text,
+    var newWidget = new Widget(widget._id, widget.widgetType, widget.pageId, widget.size, widget.width, widget.text,
       widget.url);
     widgets.push(newWidget);
     res.json(newWidget);

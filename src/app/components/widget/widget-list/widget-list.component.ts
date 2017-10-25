@@ -35,11 +35,14 @@ export class WidgetListComponent implements OnInit {
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
     });
-    this.widgets = this.widgetService.findWidgetsByPageId(this.pageID);
+    this.widgetService.findWidgetsByPageId(this.pageID)
+      .subscribe((widgets) => {
+        this.widgets = widgets;
+      });
   }
 
   outputWidgetsForThisPage() {
-    return this.widgetService.findWidgetsByPageId(this.pageID);
+    return this.widgets;
   }
 
   returnToProfile() {

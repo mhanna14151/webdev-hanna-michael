@@ -31,16 +31,25 @@ export class WidgetHeaderComponent implements OnInit {
       this.userID = params['uid'];
       this.websiteID = params['wid'];
     });
-    this.widget = this.widgetService.findWidgetById(this.widgetID);
-    this.text = this.widget.text;
-    this.size = this.widget.size;
+    this.widgetService.findWidgetById(this.widgetID)
+      .subscribe((widget) => {
+        this.widget = widget;
+        this.widgetType = this.widget.widgetType;
+        this.text = this.widget.text;
+        this.size = this.widget.size;
+        // could put others here?
+      });
   }
 
+  // may have to change the promise to widgets;
   updateWidgetHeader(text: String, size: Number) {
-    this.widgetService.updateWidget(this.widgetID,
-      new Widget(this.widgetID, 'HEADING', this.pageID, size, null, text, null));
-    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+    const updatedWidget = new Widget(this.widgetID, 'HEADING', this.pageID, size, null, text, null);
+    this.widgetService.updateWidget(this.widgetID, updatedWidget)
+      .subscribe((widget) => {
+      this.widget = widget;
+        this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
 
+      });
   }
 
   returnToPreviousSite() {

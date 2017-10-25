@@ -16,6 +16,7 @@ export class WidgetEditComponent implements OnInit {
   websiteId: String;
   website: Website;
   pageID: String;
+  widget: Widget;
   widgets: Widget[];
   widgetID: String;
   widgetType: String;
@@ -34,12 +35,16 @@ export class WidgetEditComponent implements OnInit {
       this.pageID = params['pid'];
       this.widgetID = params['wgid'];
     });
-    this.widgetType = this.widgetService.findWidgetById(this.widgetID).widgetType
-    this.widgets = this.widgetService.findWidgetsByPageId(this.pageID);
-    console.log(this.userId);
-    console.log('Website Id: ' + this.websiteId);
-    console.log('WIDGETS ARE THESE WIDGETS: ' + this.widgets);
-    console.log('Page Id: ' + this.pageID);
+    this.widgetService.findWidgetById(this.widgetID)
+      .subscribe((widget) => {
+      this.widget = widget;
+      this.widgetType = this.widget.widgetType;
+      // could put others here?
+      });
+    this.widgetService.findWidgetsByPageId(this.pageID)
+      .subscribe((widgets) => {
+      this.widgets = widgets;
+      });
   }
 
 
