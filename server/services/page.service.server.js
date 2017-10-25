@@ -21,13 +21,13 @@ module.exports = function(app) {
    * @param res
    */
   function findAllPagesForWebsite(req, res) {
-    var websiteId = req.params["wid"];
+    var websiteId = req.params['wid'];
     console.log('this is the wid from this thing  ' + websiteId);
     // var websiteId = req.query["wid"];
     var usersPages = [];
     console.log('length of pages ' + pages.length);
     for (var i = 0; i < pages.length; i++) {
-      if (pages[i].website._id === websiteId) {
+      if (pages[i].websiteId === websiteId) {
         usersPages.push(pages[i]);
       }
     }
@@ -58,11 +58,11 @@ module.exports = function(app) {
 
   function deletePage(req, res) {
     var pageId = req.params['pid'];
-    for (var i = 0; i < websites.length; i++) {
-      if (websites[i]._id === websiteId) {
-        websites.splice(i, 1);
+    for (var i = 0; i < pages.length; i++) {
+      if (pages[i]._id === pageId) {
+        pages.splice(i, 1);
         // var users = findUsers(req, res);
-        res.json(websites);
+        res.json(pages);
         return;
       }
     }

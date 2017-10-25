@@ -20,9 +20,9 @@ export class WebsiteEditComponent implements OnInit {
   websites: Website[];
 
   constructor(
-              private websiteService: WebsiteService,
-              private route: ActivatedRoute,
-              private router: Router) {
+    private websiteService: WebsiteService,
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -37,9 +37,9 @@ export class WebsiteEditComponent implements OnInit {
           this.description = this.website.description;
         });
     });
-      this.websiteService.findAllWebsitesForUser(this.userId)
-          .subscribe((websites: Website[]) => {
-            this.websites = websites;
+    this.websiteService.findAllWebsitesForUser(this.userId)
+      .subscribe((websites: Website[]) => {
+        this.websites = websites;
       });
   }
 
@@ -54,7 +54,14 @@ export class WebsiteEditComponent implements OnInit {
   }
 
   updateWebsite(ID, name: String, description: String) {
-    this.websiteService.updateWebsite(ID, new Website(ID, name, this.userId, description));
+    const updatedWebsite = new Website(ID, name, this.userId, description);
+    this.websiteService.updateWebsite(this.websiteId, updatedWebsite)
+      .subscribe((website) => {
+      this.website = website;
+      this.name = this.website.name;
+      // this.website.name = website.name;
+      });
+    // this.ngOnInit();
     this.router.navigate(['user/', this.userId, 'website']);
   }
 
@@ -80,7 +87,7 @@ export class WebsiteEditComponent implements OnInit {
       .subscribe((websites) => {
         this.websites = websites;
         this.router.navigate(['user', this.userId, 'website']);
-    });
+      });
   }
 
 }

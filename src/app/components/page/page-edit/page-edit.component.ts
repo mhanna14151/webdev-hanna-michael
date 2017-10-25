@@ -30,54 +30,59 @@ export class PageEditComponent implements OnInit {
       this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
-      this.page = this.pageService.findPageById(this.pageID);
-      this.name = this.page.name;
-      this.description = this.page.description;
+      this.pageService.findPageById(this.pageID)
+        .subscribe((page) => {
+          this.page = page;
+          this.name = this.page.name;
+          this.description = this.page.description;
+        });
+      this.pageService.findPagesByWebsiteId(this.websiteId)
+        .subscribe((pages) => {
+          this.pages = pages;
+        });
     });
-    this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
-    this.page = this.pageService.findPageById(this.pageID);
-    this.name = this.page.name;
-    this.description = this.page.description;
-    this.userService.findUserById(this.userId)
-      .subscribe((user: User) => {
-        this.user = user;
-      });
   }
 
   outputPagesForThisUser() {
-    const pageList: Page[] = this.pageService.findPagesByWebsiteId(this.websiteId);
-    return pageList;
+    return this.pages;
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
+    this.router.navigate(['user/', this.userId]);
   }
 
   navigateToWidget(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID, 'widget']);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID, 'widget']);
 
   }
 
   returnToPreviousPage() {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page']);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
   }
 
   navigateToCreateNewPage() {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', 'new']);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', 'new']);
   }
 
   navigateToPageEdit(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID]);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID]);
   }
 
   deleteThisPage(ID) {
-    this.pageService.deletePage(ID);
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page']);
+    this.pageService.deletePage(this.pageID)
+      .subscribe((pages) => {
+        this.pages = pages;
+        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+    });
   }
 
   updatePage(ID, name: String, description: String) {
-    this.pageService.updatePage(ID, new Page(ID, name, this.userId, description));
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page']);
-  }
+    const updatedPage = new Page(ID, name, this.userId, description);
+    this.pageService.updatePage(this.pageID, updatedPage)
+      .subscribe((pages) => {
+      this.pages = pages;
+        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
 
+      });
+  }
 }

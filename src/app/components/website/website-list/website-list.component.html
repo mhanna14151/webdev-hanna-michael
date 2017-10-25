@@ -27,7 +27,7 @@
 
 <!--Below the banner-->
 <div class="container-fluid top-margin">
-  <div *ngFor="let website of outputWebsitesForThisUser()" class = 'borderless'>
+  <div *ngFor="let website of websites" class = 'borderless'>
     <li class="list-group-item">
       <a (click)="navigateToPage(website._id)">
         {{website.name}}

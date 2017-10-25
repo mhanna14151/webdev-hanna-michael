@@ -28,35 +28,35 @@ export class PageNewComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
-      this.websiteId = params['wid'];
-      this.pageID = params['pid'];
-    });
-    this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
-    this.page = this.pageService.findPageById(this.pageID);
-    this.userService.findUserById(this.userId)
-      .subscribe((user: User) => {
-        this.user = user;
+        this.userId = params['uid'];
+        this.websiteId = params['wid'];
+        this.pageID = params['pid'];
+        this.pageService.findPageById(this.pageID)
+          .subscribe((page) => {
+          this.page = page;
+        });
+        this.pageService.findPagesByWebsiteId(this.websiteId)
+          .subscribe((pages) => {
+            this.pages = pages;
+          });
       });
-
   }
 
   outputPagesForThisUser() {
-    const pageList: Page[] = this.pageService.findPagesByWebsiteId(this.websiteId);
-    return pageList;
+    return this.pages;
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
+    this.router.navigate(['user/', this.userId]);
   }
 
   navigateToWidget(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID, 'widget']);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID, 'widget']);
 
   }
 
   returnToPreviousPage() {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page']);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
   }
 
   navigateToCreateNewPage() {
@@ -64,14 +64,16 @@ export class PageNewComponent implements OnInit {
   }
 
   navigateToPageEdit(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page', ID]);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID]);
   }
 
   createNewPage(name, description) {
     const newPage: Page = new Page(null, name, this.websiteId, description);
-    this.pageService.createPage(this.websiteId, newPage);
-    this.router.navigate(['user/', this.user._id, 'website', this.websiteId, 'page']);
-
+    this.pageService.createPage(this.websiteId, newPage)
+      .subscribe((pages) => {
+      this.pages = pages;
+      this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+      });
   }
 
 }

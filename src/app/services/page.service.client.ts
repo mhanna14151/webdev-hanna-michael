@@ -59,7 +59,7 @@ export class PageService {
       .map((response: Response) => {
         return response.json();
       });
-    }
+  }
 
   // Removes the page from local pages array whose _id matches the pageId parameter
   deletePage(pageId) {

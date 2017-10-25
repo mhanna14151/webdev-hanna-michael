@@ -18,8 +18,7 @@ export class PageListComponent implements OnInit {
   pages: Page[];
   pageID: String;
 
-  constructor(private userService: UserService,
-              private pageService: PageService,
+  constructor(private pageService: PageService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -28,17 +27,15 @@ export class PageListComponent implements OnInit {
       this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
+      this.pageService.findPagesByWebsiteId(this.websiteId)
+        .subscribe((pages) => {
+          this.pages = pages;
+        });
     });
-    this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
-    this.userService.findUserById(this.userId)
-      .subscribe((user: User) => {
-        this.user = user;
-      });
-
   }
 
   outputPagesForThisUser() {
-    return this.pageService.findPagesByWebsiteId(this.websiteId);
+    return this.pages;
   }
 
   returnToProfile() {
