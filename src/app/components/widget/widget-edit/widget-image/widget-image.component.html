@@ -31,7 +31,6 @@
     <!--Content on the Left-->
     <!--Content on the Right, Main Column.-->
     <div class="paddingWithNoTop small-top-Margin">
-
       <label>Name</label>
       <input class="form-control"
              type = "text"
@@ -54,9 +53,16 @@
              id = "width"
              [(ngModel)] = "width" name = "width">
       <label>Upload</label>
-      <div class = "form-control">
-        <input type ="file"  name = "img">
-      </div>
+      <form ngNoForm action="http://localhost:3100/api/upload" method="post" enctype="multipart/form-data">
+        <input  name="myFile"   type="file" class="form-control"/>
+        <input  name="widgetId" value="{{widgetID}}"   style="display: none"/>
+        <input  name="websiteId" value="{{websiteID}}"   style="display: none"/>
+        <input name="width" value = "{{width}}" style="display: none"/>
+        <input  name="pageId" value="{{pageID}}"   style="display: none"/>
+        <input  name="userId" value="{{userID}}"   style="display: none"/>
+        <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+        <br/>
+      </form>
       <a class="btn btn-danger btn-block moh-top-margin"
          (click)="deleteThisWidget(widgetID)">Delete</a>
     </div>
