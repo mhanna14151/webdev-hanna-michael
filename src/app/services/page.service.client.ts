@@ -13,12 +13,6 @@ export class PageService {
   constructor(private _http: Http) {
   }
 
-  pages: Page[] = [
-    new Page('321', 'Post 1', '456', 'Lorem'),
-    new Page('432', 'Post 2', '456', 'Lorem'),
-    new Page('543', 'Post 3', '456', 'Lorem')
-  ];
-
   api = {
     'createPage': this.createPage,
     'findPageByWebsiteId': this.findPagesByWebsiteId,
