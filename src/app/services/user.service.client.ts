@@ -11,12 +11,8 @@ import {User} from '../models/user.model.client';
 export class UserService {
 
   constructor(private _http: Http) { }
-  //   users: User[] = [
-  //     new User('123', 'alice', 'alice', 'alice@wonderland.com', 'Alice', 'Wonder'),
-  //     new User('234', 'bob', 'bob', 'bobmarley@burgers.com', 'Bob', 'Marley'),
-  //     new User('345', 'charly', 'charly', 'charlys@angels.com', 'Charly', 'Garcia'),
-  //     new User('456', 'jannunzi', 'jannunzi', 'jannunzi@webdev.com', 'Jose', 'Annunzi')
-  // ];
+
+  baseUrl = environment.baseUrl;
 
   api = {
     'createUser'   : this.createUser,
@@ -27,8 +23,9 @@ export class UserService {
   };
 
   createUser(user: User) {
+    console.log(this.baseUrl, 'is the base url');
     const num: Number = (Math.floor(1 + (1000 - 1) * Math.random()));
-    const url = 'http://localhost:3100/api/user';
+    const url = this.baseUrl + '/api/user';
     user._id = num.toString();
     console.log('User in Create User Client: ' + user);
     // if (this.findUserByUsername(user.username) === null) {
@@ -43,7 +40,7 @@ export class UserService {
   }
 
   findUserById(userId: String) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseUrl + '/api/user/' + userId;
     return this._http.get(url)
       .map(
         (response: Response) => {
@@ -52,7 +49,7 @@ export class UserService {
   }
 
   findUserByUsername(user_name: String) {
-    const url = 'http://localhost:3100/api/user?username=' + user_name;
+    const url = this.baseUrl + '/api/user?username=' + user_name;
     return this._http.get(url)
       .map(
         (response: Response) => {
@@ -62,7 +59,7 @@ export class UserService {
 
   // Currently assumes usernames are unique
   findUserByCredentials(username: String, password: String) {
-    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    const url = this.baseUrl + '/api/user?username=' + username + '&password=' + password;
     return this._http.get(url)
       .map(
         (response: Response) => {
@@ -73,7 +70,7 @@ export class UserService {
   // Come back and check this
   updateUser(userId, user) {
     const newUser = new User(userId, user.username, user.password, user.email, user.firstName, user.lastName);
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseUrl + '/api/user/' + userId;
     return this._http.put(url, newUser)
       .map((response: Response) => {
         return response.json();
@@ -87,7 +84,7 @@ export class UserService {
 
   // COME BACK AND IMPLEMENT
   deleteUser(userId) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseUrl + '/api/user/' + userId;
     return this._http.delete(url)
       .map(
         (response: Response) => {

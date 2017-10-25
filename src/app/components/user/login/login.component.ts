@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   errorFlag: boolean;
   errorMsg: String;
 
-
   constructor(private router: Router, private userService: UserService) { }
   login(username: String, password: String) {
     this.userService.findUserByCredentials(username, password)

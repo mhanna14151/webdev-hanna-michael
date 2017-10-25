@@ -20,6 +20,7 @@ export class WidgetImageComponent implements OnInit {
   url: String;
   width: String;
   widgetType: String;
+  myFile: File;
 
   constructor(private widgetService: WidgetService,
               private router: Router,
@@ -74,6 +75,16 @@ export class WidgetImageComponent implements OnInit {
         this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
       });
   }
+
+  // uploadImage(text, width, myFile) {
+  //   const updatedWidget = new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, myFile);
+  //   updatedWidget.url = '/assets/uploads/'+ myFile.;
+  //   this.widgetService.updateWidget(this.widgetID, updatedWidget)
+  //     .subscribe((widget) => {
+  //       this.widget = widget;
+  //       this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+  //     });
+  // }
 
   // COMMENTED OUT IN CASE I WANT TO BRING BACK THE DOUBLE COLUMNS WITH THE SIDEBAR
   // navigateToWidgetChooser() {

@@ -114,8 +114,9 @@ module.exports = function(app) {
     widget.url = '/assets/uploads/'+filename;
     console.log('this is the URL', widget.url);
 
-    var callbackUrl   = "%/user/"+userId+"/website/"+websiteId+"/page/" + pageId + "/widgets";
-
+    var callbackUrl   = "/user/"+userId+"/website/"+websiteId+"/page/" + pageId + "/widgets";
+//http://localhost:3100/user/456/website/456/page/321/widget
+//     api/%25/user/456/website/456/page/321/widgets
     res.redirect(callbackUrl);
   }
 
