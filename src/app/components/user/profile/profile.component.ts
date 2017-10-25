@@ -30,19 +30,12 @@ export class ProfileComponent implements OnInit {
       this.userService.findUserById(this.userId)
         .subscribe((user: User) => {
         this.user = user;
-        // console.log('entered here: ' + this.user);
           this.username = this.user.username;
           this.email = this.user.email;
           this.firstName = this.user.firstName;
           this.lastName = this.user.lastName;
       });
-      // console.log(this.user);
-      // this.username = this.user.username;
-      // this.email = this.user.email;
-      // this.firstName = this.user.firstName;
-      // this.lastName = this.user.lastName;
     });
-    // console.log('this is the user now: ' + this.user);
   }
 
   navigateToUsersWebsite() {

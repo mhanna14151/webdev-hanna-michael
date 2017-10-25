@@ -19,7 +19,7 @@ export class WebsiteEditComponent implements OnInit {
   websiteId: String;
   websites: Website[];
 
-  constructor(private userService: UserService,
+  constructor(
               private websiteService: WebsiteService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -28,19 +28,22 @@ export class WebsiteEditComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
-      this.websiteId = params['wid']
+      this.websiteId = params['wid'];
+    });
+    console.log('the websiteId is this: ' + this.websiteId);
       this.websiteService.findWebsiteById(this.websiteId)
         .subscribe((website: Website) => {
+        console.log('before');
         this.website = website;
+        console.log('after');
+        console.log('website from NgInit: ' + website);
+        this.name = this.website.name;
+        this.description = this.website.description;
       });
-      this.userService.findUserById(this.userId)
-        .subscribe((user: User) => {
-          this.user = user;
-        });
-      this.name = this.website.name;
-      this.description = this.website.description;
-    });
-    this.websites = this.outputWebsitesForThisUser();
+      this.websiteService.findAllWebsitesForUser(this.userId)
+          .subscribe((websites: Website[]) => {
+            this.websites = websites;
+      });
   }
 
   outputWebsitesForThisUser() {

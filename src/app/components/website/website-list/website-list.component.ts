@@ -17,7 +17,7 @@ export class WebsiteListComponent implements OnInit {
   websiteId: String;
   websites: Website[];
 
-  constructor(private userService: UserService,
+  constructor(
               private websiteService: WebsiteService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -26,22 +26,14 @@ export class WebsiteListComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
       this.websiteService.findAllWebsitesForUser(this.userId)
-        .subscribe((websites: Website[]) => {
+        .subscribe((websites) => {
           this.websites = websites;
         });
     });
-    this.userService.findUserById(this.userId)
-      .subscribe((user: User) => {
-        this.user = user;
-      });
   }
 
   outputWebsitesForThisUser() {
-    console.log('this is not working??');
-    // console.log(this.websites);
     return this.websites;
-    // const websiteList: Website[] = this.websiteService.findAllWebsitesForUser(this.userId);
-    // return websiteList;
   }
 
   returnToProfile() {

@@ -12,11 +12,11 @@ module.exports = function(app) {
     new Website('789', 'Chess', '234', 'Lorem')
   ];
 
-  app.get("/api/website/:websiteId", findWebsiteById);
-  app.put("/api/website/:websiteId", updateWebsite);
-  app.delete("/api/website/:websiteId", deleteWebsite);
-  app.post("/api/user/:userId/website", createWebsite);
-  app.get("/api/user/:userId/website", findAllWebsitesForUser);
+  app.get("/api/user/:uid/website", findAllWebsitesForUser);
+  app.get("/api/website/:wid", findWebsiteById);
+  app.put("/api/website/:wid", updateWebsite);
+  app.delete("/api/website/:wid", deleteWebsite);
+  app.post("/api/user/:uid/website", createWebsite);
 
 
 
@@ -27,11 +27,16 @@ module.exports = function(app) {
    * @param res
    */
   function findAllWebsitesForUser(req, res) {
-    var userId = req.query["uid"];
-    var websiteId = req.query["wid"];
-    var usersWebsites: Website[];
-    for (var i = 0; i < websites.legnth; i++) {
-      if (websites[i].developerId = userId) {
+    var userId = req.params["uid"];
+    console.log('this is the uid from this thing  ' + userId);
+    // var websiteId = req.query["wid"];
+    var usersWebsites = [];
+    console.log('length of websites ' + websites.length);
+    for (var i = 0; i < websites.length; i++) {
+      console.log('entering for loop');
+      console.log('HIIIIIIII' + websites[i]);
+      if (websites[i].developerId === userId) {
+        console.log('HIIIIIIII' + websites[i]);
         usersWebsites.push(websites[i]);
       }
     }
@@ -40,7 +45,7 @@ module.exports = function(app) {
 
   function findWebsiteById(req, res) {
     var websiteId = req.params["wid"];
-    var website = users.find(function (website) {
+    var website = websites.find(function (website) {
       "use strict";
       return website._id === websiteId
     });
@@ -62,7 +67,7 @@ module.exports = function(app) {
 
   function deleteWebsite(req, res) {
     var websiteId = req.params['wid'];
-    for (var i = 0; i < users.length; i++) {
+    for (var i = 0; i < websites.length; i++) {
       if (websites[i]._id === websiteId) {
         websites.splice(i, 1);
         // var users = findUsers(req, res);
