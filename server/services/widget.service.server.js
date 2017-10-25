@@ -60,8 +60,8 @@ module.exports = function(app) {
   function deleteWidget(req, res) {
     var widgetId = req.params['wgid'];
     for (var i = 0; i < widgets.length; i++) {
-      if (widget[i]._id === widgetId) {
-        widgetId.splice(i, 1);
+      if (widgets[i]._id === widgetId) {
+        widgets.splice(i, 1);
         // var users = findUsers(req, res);
         res.json(widgets);
         return;

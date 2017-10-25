@@ -68,10 +68,12 @@ export class WidgetImageComponent implements OnInit {
   }
 
   deleteThisWidget(ID) {
-    this.widgetService.deleteWidget(ID);
-    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+    this.widgetService.deleteWidget(this.widgetID)
+      .subscribe(() => {
+        // this.widgets = widgets;
+        this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+      });
   }
-
   // COMMENTED OUT IN CASE I WANT TO BRING BACK THE DOUBLE COLUMNS WITH THE SIDEBAR
   // navigateToWidgetChooser() {
   //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
