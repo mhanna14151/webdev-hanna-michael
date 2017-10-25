@@ -40,8 +40,12 @@ export class WebsiteNewComponent implements OnInit {
 
   createNewWebsite(name, description) {
     const newWebsite: Website = new Website(null, name, this.userId, description);
-    this.websiteService.createWebsite(this.userId, newWebsite);
-    this.router.navigate(['user/', this.userId, 'website']);
+    this.websiteService.createWebsite(this.userId, newWebsite)
+      .subscribe((websites) => {
+      this.websites = websites;
+        this.router.navigate(['user/', this.userId, 'website']);
+      });
+
   }
 
   outputWebsitesForThisUser() {
@@ -51,7 +55,7 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   navigateToWebsiteEdit(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', ID]);
+    this.router.navigate(['user/', this.userId, 'website', ID]);
   }
 
 
@@ -60,15 +64,15 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   navigateToWebsiteNew() {
-    this.router.navigate(['user/', this.user._id, 'website', 'new']);
+    this.router.navigate(['user/', this.userId, 'website', 'new']);
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
+    this.router.navigate(['user/', this.userId]);
   }
 
   navigateToPage(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', ID, 'page']);
+    this.router.navigate(['user/', this.userId, 'website', ID, 'page']);
 
   }
 

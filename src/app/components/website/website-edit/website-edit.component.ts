@@ -29,17 +29,14 @@ export class WebsiteEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
       this.websiteId = params['wid'];
-    });
-    console.log('the websiteId is this: ' + this.websiteId);
       this.websiteService.findWebsiteById(this.websiteId)
         .subscribe((website: Website) => {
-        console.log('before');
-        this.website = website;
-        console.log('after');
-        console.log('website from NgInit: ' + website);
-        this.name = this.website.name;
-        this.description = this.website.description;
-      });
+          this.website = website;
+          console.log('website from NgInit: ' + website);
+          this.name = this.website.name;
+          this.description = this.website.description;
+        });
+    });
       this.websiteService.findAllWebsitesForUser(this.userId)
           .subscribe((websites: Website[]) => {
             this.websites = websites;
@@ -53,7 +50,7 @@ export class WebsiteEditComponent implements OnInit {
   }
 
   navigateToWebsiteEdit(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', ID]);
+    this.router.navigate(['user/', this.userId, 'website', ID]);
   }
 
   updateWebsite(ID, name: String, description: String) {
@@ -66,21 +63,24 @@ export class WebsiteEditComponent implements OnInit {
   }
 
   navigateToWebsiteNew() {
-    this.router.navigate(['user/', this.user._id, 'website', 'new']);
+    this.router.navigate(['user/', this.userId, 'website', 'new']);
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.user._id]);
+    this.router.navigate(['user/', this.userId]);
   }
 
   navigateToPage(ID) {
-    this.router.navigate(['user/', this.user._id, 'website', ID, 'page']);
+    this.router.navigate(['user/', this.userId, 'website', ID, 'page']);
 
   }
 
   deleteThisWebsite(webID) {
-    this.websiteService.deleteWebsite(webID);
-    this.router.navigate(['user', this.userId, 'website']);
+    this.websiteService.deleteWebsite(this.websiteId)
+      .subscribe((websites) => {
+        this.websites = websites;
+        this.router.navigate(['user', this.userId, 'website']);
+    });
   }
 
 }

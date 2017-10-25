@@ -25,7 +25,7 @@ export class WebsiteService {
   createWebsite(userId, website) {
     website._id = Math.random().toString();
     website.developerId = userId;
-    const url = 'http://localhost:3100.api/' + userId + '/website';
+    const url = 'http://localhost:3100/api/user/' + userId + '/website';
     return this._http.post(url, website)
       .map((response: Response) => {
       return response.json();
