@@ -26,46 +26,47 @@ export class PageService {
   createPage(websiteId, page) {
     page._id = Math.random().toString();
     page.websiteId = websiteId;
-    this.pages.push(page);
-    return page;
+    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    return this._http.post(url, page)
+      .map((response: Response) => {
+      return response.json();
+    });
   }
 
   // Retrieves the pages in local pages array whose websiteId matches the parameter websiteId
   findPagesByWebsiteId(websiteId) {
-    const pageList: Page[] = [];
-    for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x].websiteId === websiteId) {
-        pageList.push(this.pages[x]);
-      }
-    }
-    return pageList;
+    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    return this._http.get(url)
+      .map((response: Response) => {
+      return response.json();
+    });
   }
-
 
   // Retrieves the page in local pages array whose _id matches the pageId parameter
   findPageById(pageId) {
-    for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x]._id === pageId) {
-        return this.pages[x];
-      }
-    }
+    const url = 'http://localhost:3100/api/page/' + pageId;
+    return this._http.get(url)
+      .map((response: Response) => {
+      return response.json();
+    });
   }
 
   // Updates the page in local pages array whose _id matches the pageId parameter
   updatePage(pageId, page) {
-    for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x]._id === pageId) {
-        this.pages[x] = page;
-      }
+    const url = 'http://localhost:3100/api/page/' + pageId;
+    const newPage = new Page(pageId, page.name, page.websiteId, page.description);
+    return this._http.put(url, newPage)
+      .map((response: Response) => {
+        return response.json();
+      });
     }
-  }
 
   // Removes the page from local pages array whose _id matches the pageId parameter
   deletePage(pageId) {
-    for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x]._id === pageId) {
-        this.pages.splice(x, 1);      }
-    }
+    const url = 'http://localhost:3100/api/page/' + pageId;
+    return this._http.delete(url)
+      .map((response: Response) => {
+      return response.json();
+    });
   }
-
 }
