@@ -70,8 +70,8 @@ export class PageNewComponent implements OnInit {
   createNewPage(name, description) {
     const newPage: Page = new Page(null, name, this.websiteId, description);
     this.pageService.createPage(this.websiteId, newPage)
-      .subscribe((pages) => {
-      this.pages = pages;
+      .subscribe((page) => {
+      this.page = page;
       this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
       });
   }

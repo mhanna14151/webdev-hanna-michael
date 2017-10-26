@@ -45,7 +45,6 @@ export class WebsiteService {
   // retrieves the website in local websites array whose _id matches the websiteId parameter
   findWebsiteById(websiteId) {
     const url = this.baseUrl + '/api/website/' + websiteId;
-    console.log('websiteId from findWebsiteById: ' + websiteId);
     return this._http.get(url)
       .map(
         (response: Response) => {

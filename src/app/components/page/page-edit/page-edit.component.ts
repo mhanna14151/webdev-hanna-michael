@@ -82,7 +82,6 @@ export class PageEditComponent implements OnInit {
       .subscribe((page) => {
       this.page = page;
         this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
-
       });
   }
 }

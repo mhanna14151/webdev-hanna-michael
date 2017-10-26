@@ -19,8 +19,6 @@ module.exports = function(app) {
   app.post("/api/user/:uid/website", createWebsite);
 
 
-
-
   /**
    * Returns a different set of users based on conditions.
    * @param req

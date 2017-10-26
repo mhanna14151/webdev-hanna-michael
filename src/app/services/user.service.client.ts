@@ -23,11 +23,9 @@ export class UserService {
   };
 
   createUser(user: User) {
-    console.log(this.baseUrl, 'is the base url');
     const num: Number = (Math.floor(1 + (1000 - 1) * Math.random()));
     const url = this.baseUrl + '/api/user';
     user._id = num.toString();
-    console.log('User in Create User Client: ' + user);
     // if (this.findUserByUsername(user.username) === null) {
     return this._http.post(url, user)
       .map((response: Response) => {

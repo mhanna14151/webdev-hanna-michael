@@ -49,12 +49,11 @@ module.exports = function(app) {
     for (var i = 0; i < pages.length; i++) {
       if (pages[i]._id === pageId) {
         pages[i] = newPage;
-        res.json(pages);
+        res.json(newPage);
         return;
       }
     }
   }
-
 
   function deletePage(req, res) {
     var pageId = req.params['pid'];
