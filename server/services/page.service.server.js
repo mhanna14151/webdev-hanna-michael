@@ -3,9 +3,9 @@ var Page = require('../model/page.model.server');
 module.exports = function(app) {
 
   var pages = [
-    new Page('321', 'Post 1', '456', 'Lorem'),
-    new Page('432', 'Post 2', '456', 'Lorem'),
-    new Page('543', 'Post 3', '456', 'Lorem')
+    new Page("321", "Post 1", "456", "Lorem"),
+    new Page("432", "Post 2", "456", "Lorem"),
+    new Page("543", "Post 3", "456", "Lorem")
   ];
 
   app.get("/api/website/:wid/page", findAllPagesForWebsite);

@@ -3,10 +3,10 @@ var User = require('../model/user.model.server');
 module.exports = function(app) {
 
   var users = [
-    new User('123', 'alice', 'alice', 'alice@wonderland.com', 'Alice', 'Wonder'),
-    new User('234', 'bob', 'bob', 'bobmarley@burgers.com', 'Bob', 'Marley'),
-    new User('345', 'charly', 'charly', 'charlys@angels.com', 'Charly', 'Garcia'),
-    new User('456', 'jannunzi', 'jannunzi', 'jannunzi@webdev.com', 'Jose', 'Annunzi')
+    new User("123", "alice", "alice", "alice@wonderland.com", "Alice", "Wonder"),
+    new User("234", "bob", "bob", "bobmarley@burgers.com", "Bob", "Marley"),
+    new User("345", "charly", "charly", "charlys@angels.com", "Charly", "Garcia"),
+    new User("456", "jannunzi", "jannunzi", "jannunzi@webdev.com", "Jose", "Annunzi")
   ];
 
   app.get("/api/user/:uid", findUserById);
