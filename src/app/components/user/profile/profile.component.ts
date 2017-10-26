@@ -56,10 +56,6 @@ export class ProfileComponent implements OnInit {
         this.users = users;
         this.router.navigate(['login']);
       });
-    //   .subscribe((users) => {
-    //   this.users = users;
-    // });
-    // this.router.navigate(['login']);
   }
 
   returnToProfile() {

@@ -30,10 +30,10 @@ module.exports = function(app) {
    * @param res
    */
   function findAllWidgetsForPage(req, res) {
-    var widgetId = req.params['wgid'];
+    var pageId = req.params['pid'];
     var usersWidgets = [];
     for (var i = 0; i < widgets.length; i++) {
-      if (widgets[i].widgetID === widgetId) {
+      if (widgets[i].pageId === pageId) {
         usersWidgets.push(widgets[i]);
       }
     }
@@ -84,7 +84,6 @@ module.exports = function(app) {
   }
 
   function uploadImage(req, res) {
-
     // console.log('uploadImage');
     var widgetId      = req.body.widgetId;
     // console.log('the id YES: ' + widgetId);
@@ -114,10 +113,6 @@ module.exports = function(app) {
     widget.url = '/assets/uploads/'+filename;
     // console.log('this is the URL', widget.url);
 
-    // var callbackUrl   = baseUrl + "/user/"+userId+"/website/"+websiteId+"/page/" + pageId + "/widgets";
-//http://localhost:3100/user/456/website/456/page/321/widget
-//     api/%25/user/456/website/456/page/321/widgets
-//     res.redirect(callbackUrl);
   }
 
   /**

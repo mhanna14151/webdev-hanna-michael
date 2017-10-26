@@ -24,7 +24,7 @@
 
 <!--Below the banner-->
 <div class="container-fluid top-margin bottomPadding">
-  <div *ngFor="let widget of outputWidgetsForThisPage()" class = 'borderless'>
+  <div *ngFor="let widget of widgets" class = 'borderless'>
     <div [ngSwitch]="widget.widgetType">
       <!--HEADER CASE-->
       <div *ngSwitchCase="'HEADING'" class = "moh-widget bottomPadding">

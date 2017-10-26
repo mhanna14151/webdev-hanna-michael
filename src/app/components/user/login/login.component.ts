@@ -20,10 +20,11 @@ export class LoginComponent implements OnInit {
       .subscribe((user: User)  => {
         if (user) {
           this.router.navigate(['user/', user._id]);
+        } else {
+          this.errorFlag = true;
+          this.errorMsg = 'Username and/or password is incorrect';
         }
     });
-    this.errorFlag = true;
-    this.errorMsg = 'Username and/or password is incorrect';
   }
 
   ngOnInit() {

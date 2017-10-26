@@ -79,41 +79,4 @@ export class WidgetImageComponent implements OnInit {
       });
   }
 
-  // updateImage(text: String, width: String) {
-  //   const updatedWidget = new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, this.widget.url);
-  //   this.widgetService.updateWidget(this.widgetID, updatedWidget)
-  //     .subscribe((widget) => {
-  //       this.widget = widget;
-  //       this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
-  //     });
-  // }
-
-
-  // uploadImage(text, width, myFile) {
-  //   const updatedWidget = new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, myFile);
-  //   updatedWidget.url = '/assets/uploads/'+ myFile.;
-  //   this.widgetService.updateWidget(this.widgetID, updatedWidget)
-  //     .subscribe((widget) => {
-  //       this.widget = widget;
-  //       this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
-  //     });
-  // }
-
-  // COMMENTED OUT IN CASE I WANT TO BRING BACK THE DOUBLE COLUMNS WITH THE SIDEBAR
-  // navigateToWidgetChooser() {
-  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
-  // }
-  //
-  // createNewWidget(type: String) {
-  //   this.widgetType = type;
-  //   this.widget = this.widgetService.createWidget(this.pageID,
-  //     new Widget(null, this.widgetType, this.pageID, null, null, null, null));
-  //   this.widgetID = this.widget._id;
-  //   this.widgetService.deleteWidget(this.widgetID);
-  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
-  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget',
-  //     this.widgetID]);
-  // }
-
-
 }
