@@ -53,14 +53,14 @@
              id = "width"
              [(ngModel)] = "width" name = "width">
       <label>Upload</label>
-      <form ngNoForm action="http://localhost:3100/api/upload" method="post" enctype="multipart/form-data">
+      <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
         <input  name="myFile"   type="file" class="form-control"/>
         <input  name="widgetId" value="{{widgetID}}"   style="display: none"/>
         <input  name="websiteId" value="{{websiteID}}"   style="display: none"/>
-        <input name="width" value = "{{width}}" style="display: none"/>
         <input  name="pageId" value="{{pageID}}"   style="display: none"/>
         <input  name="userId" value="{{userID}}"   style="display: none"/>
-        <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+        <button type="submit" class="btn btn-block btn-primary"
+        (click)="updateWidgetImage(text, width, url)">Upload Image</button>
         <br/>
       </form>
       <a class="btn btn-danger btn-block moh-top-margin"

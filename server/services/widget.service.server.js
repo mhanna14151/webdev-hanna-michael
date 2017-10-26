@@ -6,7 +6,6 @@ module.exports = function(app) {
   // var upload = multer({ dest:'/Users/hannam/neu/webdev/src/assets/uploads'});
   var upload = multer({ dest:__dirname + '/../../dist/assets/uploads'});
 
-
   var widgets = [
     new Widget('123', 'HEADING', '321', 2, null, 'Gizmodo', null),
     new Widget('234', 'HEADING', '321', 4, null, 'Lorem ipsum', null),
@@ -86,13 +85,14 @@ module.exports = function(app) {
 
   function uploadImage(req, res) {
 
-    console.log('uploadImage');
+    // console.log('uploadImage');
     var widgetId      = req.body.widgetId;
-    console.log('the id YES: ' + widgetId);
+    // console.log('the id YES: ' + widgetId);
     var width         = req.body.width;
-    console.log('the width', width);
+    // console.log('the width', width);
     var myFile        = req.file;
-    console.log('the file YES', myFile);
+    // console.log('the file YES', myFile);
+    // var baseUrl = 'localhost:3100/user/'+userId+"/website/"+websiteId+"/page/" + pageId + "/widgets";
 
     var userId = req.body.userId;
     console.log('userId', userId);
@@ -108,16 +108,16 @@ module.exports = function(app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    console.log('Attempting to find the widget');
+    // console.log('Attempting to find the widget');
     widget = getWidgetById(widgetId);
-    console.log('CAN WE FIND THE WIDGET: ' + widget);
+    // console.log('CAN WE FIND THE WIDGET: ' + widget);
     widget.url = '/assets/uploads/'+filename;
-    console.log('this is the URL', widget.url);
+    // console.log('this is the URL', widget.url);
 
-    var callbackUrl   = "/user/"+userId+"/website/"+websiteId+"/page/" + pageId + "/widgets";
+    // var callbackUrl   = baseUrl + "/user/"+userId+"/website/"+websiteId+"/page/" + pageId + "/widgets";
 //http://localhost:3100/user/456/website/456/page/321/widget
 //     api/%25/user/456/website/456/page/321/widgets
-    res.redirect(callbackUrl);
+//     res.redirect(callbackUrl);
   }
 
   /**

@@ -14,6 +14,8 @@ export class WidgetService {
   constructor(private _http: Http) {
   }
 
+  baseUrl = environment.baseUrl;
+
   api = {
     'createWidget': this.createWidget,
     'findWidgetsByPageId': this.findWidgetsByPageId,
@@ -28,7 +30,7 @@ export class WidgetService {
   createWidget(pageId, widget) {
     widget._id = Math.random().toString();
     widget.pageId = pageId;
-    const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+    const url = this.baseUrl + '/api/page/' + pageId + '/widget';
     return this._http.post(url, widget)
       .map((response: Response) => {
       return response.json();
@@ -36,7 +38,7 @@ export class WidgetService {
   }
 
   findPagesByWebsiteId(websiteId) {
-    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    const url = this.baseUrl + '/api/website/' + websiteId + '/page';
     return this._http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -45,7 +47,7 @@ export class WidgetService {
 
   // Retrieves the widgets in local widgets array whose pageId matches the parameter pageId
   findWidgetsByPageId(ID) {
-    const url = 'http://localhost:3100/api/page/' + ID + '/widget';
+    const url = this.baseUrl + '/api/page/' + ID + '/widget';
     return this._http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -54,7 +56,7 @@ export class WidgetService {
 
   // Retrieves the widget in local widgets array whose _id matches the widgetId parameter
   findWidgetById(widgetId) {
-    const url = 'http://localhost:3100/api/widget/' + widgetId;
+    const url = this.baseUrl + '/api/widget/' + widgetId;
     return this._http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -63,7 +65,7 @@ export class WidgetService {
 
   // Updates the widget in local widgets array whose _id matches the widgetId parameter
   updateWidget(widgetId, widget) {
-    const url = 'http://localhost:3100/api/widget/' + widgetId;
+    const url = this.baseUrl + '/api/widget/' + widgetId;
     const newWidget = new Widget(widgetId, widget.widgetType, widget.pageId, widget.size, widget.width,
       widget.text, widget.url);
     return this._http.put(url, newWidget)
@@ -74,7 +76,7 @@ export class WidgetService {
 
   // Removes the widget from local widgets array whose _id matches the widgetId parameter
   deleteWidget(widgetId) {
-    const url = 'http://localhost:3100/api/widget/' + widgetId;
+    const url = this.baseUrl + '/api/widget/' + widgetId;
     return this._http.delete(url)
       .map((response: Response) => {
         return response.json();

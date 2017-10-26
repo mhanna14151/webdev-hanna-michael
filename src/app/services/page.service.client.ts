@@ -13,6 +13,8 @@ export class PageService {
   constructor(private _http: Http) {
   }
 
+  baseUrl = environment.baseUrl;
+
   api = {
     'createPage': this.createPage,
     'findPageByWebsiteId': this.findPagesByWebsiteId,
@@ -26,7 +28,7 @@ export class PageService {
   createPage(websiteId, page) {
     page._id = Math.random().toString();
     page.websiteId = websiteId;
-    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    const url = this.baseUrl + '/api/website/' + websiteId + '/page';
     return this._http.post(url, page)
       .map((response: Response) => {
       return response.json();
@@ -35,7 +37,7 @@ export class PageService {
 
   // Retrieves the pages in local pages array whose websiteId matches the parameter websiteId
   findPagesByWebsiteId(websiteId) {
-    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    const url = this.baseUrl + '/api/website/' + websiteId + '/page';
     return this._http.get(url)
       .map((response: Response) => {
       return response.json();
@@ -44,7 +46,7 @@ export class PageService {
 
   // Retrieves the page in local pages array whose _id matches the pageId parameter
   findPageById(pageId) {
-    const url = 'http://localhost:3100/api/page/' + pageId;
+    const url = this.baseUrl + '/api/page/' + pageId;
     return this._http.get(url)
       .map((response: Response) => {
       return response.json();
@@ -53,7 +55,7 @@ export class PageService {
 
   // Updates the page in local pages array whose _id matches the pageId parameter
   updatePage(pageId, page) {
-    const url = 'http://localhost:3100/api/page/' + pageId;
+    const url = this.baseUrl + '/api/page/' + pageId;
     const newPage = new Page(pageId, page.name, page.websiteId, page.description);
     return this._http.put(url, newPage)
       .map((response: Response) => {
@@ -63,7 +65,7 @@ export class PageService {
 
   // Removes the page from local pages array whose _id matches the pageId parameter
   deletePage(pageId) {
-    const url = 'http://localhost:3100/api/page/' + pageId;
+    const url = this.baseUrl + '/api/page/' + pageId;
     return this._http.delete(url)
       .map((response: Response) => {
       return response.json();

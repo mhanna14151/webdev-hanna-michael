@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
+import {environment} from "../../../../../environments/environment";
+
 
 @Component({
   selector: 'app-widget-image',
@@ -20,7 +22,8 @@ export class WidgetImageComponent implements OnInit {
   url: String;
   width: String;
   widgetType: String;
-  myFile: File;
+
+  baseUrl = environment.baseUrl;
 
   constructor(private widgetService: WidgetService,
               private router: Router,
@@ -75,6 +78,16 @@ export class WidgetImageComponent implements OnInit {
         this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
       });
   }
+
+  // updateImage(text: String, width: String) {
+  //   const updatedWidget = new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, this.widget.url);
+  //   this.widgetService.updateWidget(this.widgetID, updatedWidget)
+  //     .subscribe((widget) => {
+  //       this.widget = widget;
+  //       this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+  //     });
+  // }
+
 
   // uploadImage(text, width, myFile) {
   //   const updatedWidget = new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, myFile);
