@@ -30,7 +30,8 @@ import { PageService } from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
 import { BannerForHomePageComponent } from './components/banner-for-home-page/banner-for-home-page.component';
 import { BannerForWebDevAssignmentComponent } from './components/banner-for-web-dev-assignment/banner-for-web-dev-assignment.component';
-import {WebsiteEditComponent} from "./components/website/website-edit/website-edit.component";
+import {WebsiteEditComponent} from './components/website/website-edit/website-edit.component';
+import { ExterminateComponent } from './components/exterminate/exterminate.component';
 
 @NgModule({
   // Declared components here
@@ -55,6 +56,7 @@ import {WebsiteEditComponent} from "./components/website/website-edit/website-ed
     WidgetYoutubeComponent,
     BannerForHomePageComponent,
     BannerForWebDevAssignmentComponent,
+    ExterminateComponent,
   ],
   imports: [
     BrowserModule,

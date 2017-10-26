@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
       this.userService.deleteUser(this.userId)
         .subscribe((users) => {
           this.users = users;
-          this.router.navigate(['']);
+          this.router.navigate(['exterminate']);
         });
     } else {
       // do nothing.
