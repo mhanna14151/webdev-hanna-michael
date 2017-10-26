@@ -112,7 +112,11 @@ module.exports = function(app) {
     // console.log('CAN WE FIND THE WIDGET: ' + widget);
     widget.url = '/assets/uploads/'+filename;
     // console.log('this is the URL', widget.url);
-    return;
+
+    var callbackUrl   = "/user/"+userId+"/website/"+websiteId+ '/page/' + pageId + '/widget';
+
+    res.redirect(callbackUrl);
+
 
   }
 
