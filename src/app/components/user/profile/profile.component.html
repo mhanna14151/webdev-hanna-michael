@@ -8,7 +8,7 @@
       </a>
     </div>
 
-    <!--tick mark-->
+    <!--checkmark-->
     <div class="navbar-text pull-right">
       <a class="navbar-link">
         <span (click)="updateProfile(username,email,firstName,lastName)"
@@ -66,7 +66,7 @@
           (click)="navigateToUsersWebsite()">
     Websites
   </button>
-  <a class="btn btn-danger btn-block "
+  <a class="btn btn-warning btn-block "
      [routerLink]="['/login']">Logout</a>
   <button class = "btn btn-danger btn-block"
           (click)="terminateAccount()">
@@ -74,21 +74,12 @@
   </button>
 </div>
 
-<!--NEED TO COME BACK TO THIS-->
 <!--Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid bg-primary">
     <p class="navbar-text pull-right">
-      <!--"[routerLink] = "['user/", :uid']">-->
         <span (click)="returnToProfile()" class="glyphicon glyphicon-user whiteText"></span>
     </p>
   </div>
 </nav>
 
-<!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
-  <!--<div class="container-fluid bg-primary">-->
-    <!--<div class="navbar-text pull-right">-->
-      <!--<span (click)= reload() class="glyphicon glyphicon-user whiteText"></span>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</nav>-->

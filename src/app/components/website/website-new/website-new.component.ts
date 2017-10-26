@@ -50,8 +50,6 @@ export class WebsiteNewComponent implements OnInit {
 
   outputWebsitesForThisUser() {
     return this.websites;
-    // const websiteList: Website[] = this.websiteService.findAllWebsitesForUser(this.userId);
-    // return websiteList;
   }
 
   navigateToWebsiteEdit(ID) {

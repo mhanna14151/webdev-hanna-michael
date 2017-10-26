@@ -37,11 +37,9 @@ export class WidgetHeaderComponent implements OnInit {
         this.widgetType = this.widget.widgetType;
         this.text = this.widget.text;
         this.size = this.widget.size;
-        // could put others here?
       });
   }
 
-  // may have to change the promise to widgets;
   updateWidgetHeader(text: String, size: Number) {
     const updatedWidget = new Widget(this.widgetID, 'HEADING', this.pageID, size, null, text, null);
     this.widgetService.updateWidget(this.widgetID, updatedWidget)
@@ -71,23 +69,5 @@ export class WidgetHeaderComponent implements OnInit {
         this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
       });
   }
-
-  // COMMENTED OUT IN CASE I WANT TO BRING BACK THE DOUBLE COLUMNS WITH THE SIDEBAR
-  // navigateToWidgetChooser() {
-  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget', 'new']);
-  // }
-  //
-  // createNewWidget(type: String) {
-  //   this.widgetService.deleteWidget(this.widgetID);
-  //   this.widgetType = type;
-  //   this.widget = this.widgetService.createWidget(this.pageID,
-  //     new Widget(null, this.widgetType, this.pageID, null, null, null, null));
-  //   this.widgetID = this.widget._id;
-  //   this.widgetService.deleteWidget(this.widgetID);
-  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
-  //   this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget',
-  //     this.widgetID]);
-  // }
-
 
 }

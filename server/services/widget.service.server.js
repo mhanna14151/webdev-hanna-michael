@@ -2,8 +2,7 @@ var Widget = require('../model/widget.model.server');
 
 module.exports = function(app) {
 
-  var multer = require('multer'); // npm install multer --save // DONE
-  // var upload = multer({ dest:'/Users/hannam/neu/webdev/src/assets/uploads'});
+  var multer = require('multer');
   var upload = multer({ dest:__dirname + '/../../dist/assets/uploads'});
 
   var widgets = [
@@ -67,13 +66,11 @@ module.exports = function(app) {
     for (var i = 0; i < widgets.length; i++) {
       if (widgets[i]._id === widgetId) {
         widgets.splice(i, 1);
-        // var users = findUsers(req, res);
         res.json(widgets);
         return;
       }
     }
   }
-  //function Widget(_id, widgetType, pageId, size, width, text, url) {
 
   function createWidget(req, res) {
     const widget = req.body;
@@ -84,21 +81,13 @@ module.exports = function(app) {
   }
 
   function uploadImage(req, res) {
-    // console.log('uploadImage');
     var widgetId      = req.body.widgetId;
-    // console.log('the id YES: ' + widgetId);
     var width         = req.body.width;
-    // console.log('the width', width);
     var myFile        = req.file;
-    // console.log('the file YES', myFile);
-    // var baseUrl = 'localhost:3100/user/'+userId+"/website/"+websiteId+"/page/" + pageId + "/widgets";
 
     var userId = req.body.userId;
-    console.log('userId', userId);
     var websiteId = req.body.websiteId;
-    console.log('websiteId', websiteId);
     var pageId = req.body.pageId;
-    console.log('pageId', pageId);
 
     var originalname  = myFile.originalname; // file name on user's computer
     var filename      = myFile.filename;     // new file name in upload folder
@@ -107,16 +96,11 @@ module.exports = function(app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    // console.log('Attempting to find the widget');
     widget = getWidgetById(widgetId);
-    // console.log('CAN WE FIND THE WIDGET: ' + widget);
     widget.url = '/assets/uploads/'+filename;
-    // console.log('this is the URL', widget.url);
 
     var callbackUrl   = "/user/"+userId+"/website/"+websiteId+ '/page/' + pageId + '/widget';
-
     res.redirect(callbackUrl);
-
 
   }
 

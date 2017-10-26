@@ -10,8 +10,6 @@ module.exports = function(app) {
   ];
 
   app.get("/api/user/:uid", findUserById);
-  // app.get("/api/user?username=username&password=password", findUserByCredentials);
-  // app.get("/api/user?username=username", findUserByUsername);
   app.put("/api/user/:uid", updateUser);
   app.delete("/api/user/:uid", deleteUser);
   app.get("/api/user", findUsers); // find users by user names, credentials, or all users.
@@ -20,12 +18,14 @@ module.exports = function(app) {
 
   /**
    * Returns a different set of users based on conditions.
-   * @param req
-   * @param res
+   * -- findUserByCredentials -> Used for login
+   * -- findUserByUserName -> Used to Check if a user is already registered
+   * -- findAllUsers -> Adminstrative Purposes
    */
   function findUsers(req, res) {
     var username = req.query["username"];
     var password = req.query["password"];
+    // findUserByCredentials
     if (username && password) {
       var user = users.find(function (user) {
         "use strict";
@@ -38,6 +38,7 @@ module.exports = function(app) {
       }
       return;
     }
+    // findUserByUserName
     else if (username) {
       var user = users.find(function (user) {
         "use strict";
@@ -50,6 +51,7 @@ module.exports = function(app) {
       }
       return;
     }
+    //findAllUsers
     res.json(users);
   }
 
@@ -62,29 +64,7 @@ module.exports = function(app) {
     res.json(user);
   }
 
-  // function findUserByUsername(req, res) {
-  //   var username = req.params['username'];
-  //   console.log('USERNAME' + username);
-  //   var user = users.find(function (user) {
-  //     "use strict"
-  //     return user.username = username;
-  //   });
-  //   res.json(user);
-  // }
-
-
-  // function findUserByCredentials(req, res) {
-  //   var userId = req.params["uid"];
-  //   var user = users.find(function (user) {
-  //     "use strict";
-  //     return user._id === userId
-  //   });
-  //   res.json(user);
-  // }
-
-
   function updateUser(req, res) {
-    // /api/user/:uid"
     var userId = req.params['uid'];
     var newUser = req.body;
     for (var i = 0; i < users.length; i++) {
@@ -96,13 +76,11 @@ module.exports = function(app) {
     }
   }
 
-
   function deleteUser(req, res) {
     var userId = req.params['uid'];
     for (var i = 0; i < users.length; i++) {
       if (users[i]._id === userId) {
         users.splice(i, 1);
-        // var users = findUsers(req, res);
         res.json(users);
         return;
       }

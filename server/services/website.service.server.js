@@ -28,15 +28,10 @@ module.exports = function(app) {
    */
   function findAllWebsitesForUser(req, res) {
     var userId = req.params["uid"];
-    console.log('this is the uid from this thing  ' + userId);
     // var websiteId = req.query["wid"];
     var usersWebsites = [];
-    console.log('length of websites ' + websites.length);
     for (var i = 0; i < websites.length; i++) {
-      console.log('entering for loop');
-      console.log('HIIIIIIII' + websites[i]);
       if (websites[i].developerId === userId) {
-        console.log('HIIIIIIII' + websites[i]);
         usersWebsites.push(websites[i]);
       }
     }
@@ -80,8 +75,6 @@ module.exports = function(app) {
   function createWebsite(req, res) {
     const website = req.body;
     var newWebsite = new Website(website._id, website.name, website.developerId, website.description);
-    // var newUser = new User('15', 'f', 'f', 'f@gmail.com', 'f', 'f');
-    // console.log("user from Server: ");
     websites.push(newWebsite);
     res.json(newWebsite);
   }

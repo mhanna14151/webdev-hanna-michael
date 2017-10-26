@@ -45,8 +45,6 @@ export class WebsiteEditComponent implements OnInit {
 
   outputWebsitesForThisUser() {
     return this.websites;
-    // const websiteList: Website[] = this.websiteService.findAllWebsitesForUser(this.userId);
-    // return websiteList;
   }
 
   navigateToWebsiteEdit(ID) {
@@ -59,9 +57,7 @@ export class WebsiteEditComponent implements OnInit {
       .subscribe((website) => {
       this.website = website;
       this.name = this.website.name;
-      // this.website.name = website.name;
       });
-    // this.ngOnInit();
     this.router.navigate(['user/', this.userId, 'website']);
   }
 

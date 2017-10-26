@@ -51,11 +51,16 @@ export class ProfileComponent implements OnInit {
   }
 
   terminateAccount() {
-    this.userService.deleteUser(this.userId)
-      .subscribe((users) => {
-        this.users = users;
-        this.router.navigate(['login']);
-      });
+    const exterminate = window.confirm('Are you sure you wish for your account to be EXTERMINATED????');
+    if (exterminate === true) {
+      this.userService.deleteUser(this.userId)
+        .subscribe((users) => {
+          this.users = users;
+          this.router.navigate(['']);
+        });
+    } else {
+      // do nothing.
+    }
   }
 
   returnToProfile() {

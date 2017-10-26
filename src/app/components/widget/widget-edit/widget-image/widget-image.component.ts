@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
-import {environment} from "../../../../../environments/environment";
+import {environment} from '../../../../../environments/environment';
 
 
 @Component({
@@ -44,12 +44,10 @@ export class WidgetImageComponent implements OnInit {
           this.url = this.widget.url;
           this.text = this.widget.text;
           this.width = this.widget.width;
-          // could put others here?
         });
     });
   }
 
-  // _id, widgetType, pageId, size, width, text, url
   updateWidgetImage(text: String, width: String, url: String) {
     const updatedWidget = new Widget(this.widgetID, 'IMAGE', this.pageID, null, width, text, url);
     this.widgetService.updateWidget(this.widgetID, updatedWidget)
