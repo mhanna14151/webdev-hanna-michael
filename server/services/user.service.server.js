@@ -75,13 +75,18 @@ module.exports = function(app) {
   function updateUser(req, res) {
     var userId = req.params['uid'];
     var newUser = req.body;
-    for (var i = 0; i < users.length; i++) {
-      if (users[i]._id === userId) {
-        users[i] = newUser;
-        res.json(users);
-        return;
-      }
-    }
+    userModel.updateUser(userId, newUser)
+      .then(function (status) {
+        res.send(status);
+        //   });
+        // for (var i = 0; i < users.length; i++) {
+        //   if (users[i]._id === userId) {
+        //     users[i] = newUser;
+        //     res.json(users);
+        //     return;
+        //   }
+        // }
+      });
   }
 
   function deleteUser(req, res) {
@@ -96,13 +101,13 @@ module.exports = function(app) {
   }
 
   function createUser(req, res) {
-    const newUser = req.body;
+    var newUser = req.body;
     userModel
       .createUser(newUser)
       .then(function(user) {
-        "use strict";
+        "use ";
         res.json(user);
-      });
+      })
 
 
     // var newUser = new User(user.username, user.password, user.email, user.firstName, user.lastName);
