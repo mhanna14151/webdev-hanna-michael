@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile(username: String, email: String, firstName: String, lastName: String) {
-    const newUser = new User(this.userId, username, this.user.password, email, firstName, lastName);
+    const newUser = new User(username, this.user.password, email, firstName, lastName);
     this.userService.updateUser(this.userId, newUser)
       .subscribe((users) => {
       this.users = users;

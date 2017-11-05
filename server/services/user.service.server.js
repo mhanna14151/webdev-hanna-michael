@@ -32,47 +32,44 @@ module.exports = function(app) {
     var password = req.query["password"];
     // findUserByCredentials
     if (username && password) {
-      userModel.findUserByCredentials(username, password);
-      res.json({});
+      var promise = userModel
+        .findUserByCredentials(username, password);
+      promise.then(function(user) {
+        res.json(user);
+      });
       return;
-
-
-
-      // var user = users.find(function (user) {
-      //   "use strict";
-      //   return user.username === username && user.password === password;}
-      // );
-      // if (user) {
-      //   res.json(user);
-      // } else {
-      //   res.json(null);
-      // }
-      // return;
     }
     // findUserByUserName
     else if (username) {
-      var user = users.find(function (user) {
-        "use strict";
-        return user.username === username;}
-      );
-      if (user) {
-        res.json(user);
-      } else {
-        res.json(null);
-      }
+      var promise = userModel
+        .findUserByUserName(username);
+        promise.then(function (user) {
+          res.json(user)
+        });
       return;
     }
-    //findAllUsers
+    var promise = userModel
+      .findAllUsers();
+    promise.then(function(users) {
+      "use strict";
+      res.json(users)
+    });
     res.json(users);
   }
 
   function findUserById(req, res) {
     var userId = req.params["uid"];
-    var user = users.find(function (user) {
+    var promise = userModel
+      .findUserById(userId);
+    promise.then(function(user) {
       "use strict";
-      return user._id === userId
+      res.json(user)
     });
-    res.json(user);
+    // var user = users.find(function (user) {
+    //   "use strict";
+    //   return user._id === userId
+    // });
+    // res.json(user);
   }
 
   function updateUser(req, res) {
@@ -99,10 +96,18 @@ module.exports = function(app) {
   }
 
   function createUser(req, res) {
-    const user = req.body;
-    var newUser = new User(user._id, user.username, user.password, user.email, user.firstName, user.lastName);
-    users.push(newUser);
-    res.json(newUser);
+    const newUser = req.body;
+    userModel
+      .createUser(newUser)
+      .then(function(user) {
+        "use strict";
+        res.json(user);
+      });
+
+
+    // var newUser = new User(user.username, user.password, user.email, user.firstName, user.lastName);
+    // users.push(newUser);
+    // res.json(newUser);
   }
 
 };

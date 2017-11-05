@@ -25,7 +25,6 @@ export class UserService {
   createUser(user: User) {
     const num: Number = (Math.floor(1 + (1000 - 1) * Math.random()));
     const url = this.baseUrl + '/api/user';
-    user._id = num.toString();
     // if (this.findUserByUsername(user.username) === null) {
     return this._http.post(url, user)
       .map((response: Response) => {
@@ -67,7 +66,7 @@ export class UserService {
 
   // Come back and check this
   updateUser(userId, user) {
-    const newUser = new User(userId, user.username, user.password, user.email, user.firstName, user.lastName);
+    const newUser = new User(user.username, user.password, user.email, user.firstName, user.lastName);
     const url = this.baseUrl + '/api/user/' + userId;
     return this._http.put(url, newUser)
       .map((response: Response) => {
