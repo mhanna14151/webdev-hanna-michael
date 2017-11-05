@@ -1,6 +1,9 @@
 var User = require('../model/user.model.server');
 
+
 module.exports = function(app) {
+
+  var userModel = require("../../models/user/user.model.server");
 
   var users = [
     new User("123", "alice", "alice", "alice@wonderland.com", "Alice", "Wonder"),
@@ -8,6 +11,8 @@ module.exports = function(app) {
     new User("345", "charly", "charly", "charlys@angels.com", "Charly", "Garcia"),
     new User("456", "jannunzi", "jannunzi", "jannunzi@webdev.com", "Jose", "Annunzi")
   ];
+
+
 
   app.get("/api/user/:uid", findUserById);
   app.put("/api/user/:uid", updateUser);
@@ -27,16 +32,22 @@ module.exports = function(app) {
     var password = req.query["password"];
     // findUserByCredentials
     if (username && password) {
-      var user = users.find(function (user) {
-        "use strict";
-        return user.username === username && user.password === password;}
-      );
-      if (user) {
-        res.json(user);
-      } else {
-        res.json(null);
-      }
+      userModel.findUserByCredentials(username, password);
+      res.json({});
       return;
+
+
+
+      // var user = users.find(function (user) {
+      //   "use strict";
+      //   return user.username === username && user.password === password;}
+      // );
+      // if (user) {
+      //   res.json(user);
+      // } else {
+      //   res.json(null);
+      // }
+      // return;
     }
     // findUserByUserName
     else if (username) {
