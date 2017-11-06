@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
-import { Router } from '@angular/router';
-import {Website} from '../models/website.model.client';
 import {Widget} from '../models/widget.model.client';
 
 

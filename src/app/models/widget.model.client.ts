@@ -1,5 +1,3 @@
-import {Url} from 'url';
-
 export class Widget {
   _id: String;
   widgetType: String;
@@ -7,7 +5,7 @@ export class Widget {
   size: Number;
   width: String;
   text: String;
-  url: string;
+  url: String;
 
   constructor(_id, widgetType, pageId, size, width, text, url) {
     this._id = _id;
