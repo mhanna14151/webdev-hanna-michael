@@ -111,7 +111,6 @@ module.exports = function(app) {
     userModel
       .createUser(newUser)
       .then(function(user) {
-        "use ";
         res.json(user);
       })
 

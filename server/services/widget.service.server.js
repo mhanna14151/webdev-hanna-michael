@@ -2,6 +2,9 @@ var Widget = require('../model/widget.model.server');
 
 module.exports = function(app) {
 
+  var widgetModel = require("../../models/widget/widget.model.server");
+
+
   var multer = require('multer');
   var upload = multer({ dest:__dirname + '/../../dist/assets/uploads'});
 
@@ -30,54 +33,72 @@ module.exports = function(app) {
    */
   function findAllWidgetsForPage(req, res) {
     var pageId = req.params['pid'];
-    var usersWidgets = [];
-    for (var i = 0; i < widgets.length; i++) {
-      if (widgets[i].pageId === pageId) {
-        usersWidgets.push(widgets[i]);
-      }
-    }
-    res.json(usersWidgets);
+    widgetModel
+      .findAllWidgetsForPage()
+      .then(function(widgets) {
+        res.json(widgets);
+      });
+
+
+    // var usersWidgets = [];
+    // for (var i = 0; i < widgets.length; i++) {
+    //   if (widgets[i].pageId === pageId) {
+    //     usersWidgets.push(widgets[i]);
+    //   }
+    // }
+    // res.json(usersWidgets);
   }
+
 
   function findWidgetById(req, res) {
     var widgetId = req.params["wgid"];
-    var widget = widgets.find(function (widget) {
-      "use strict";
-      return widget._id === widgetId
-    });
-    res.json(widget);
+    widgetModel.findWidgetById(widgetId)
+      .then(function(widget) {
+        "use strict";
+        res.json(widget);
+      });
+    //
+    //
+    // var widget = widgets.find(function (widget) {
+    //   "use strict";
+    //   return widget._id === widgetId
+    // });
+    // res.json(widget);
   }
 
   function updateWidget(req, res) {
     var widgetId = req.params['wgid'];
     var newWidget = req.body;
-    for (var i = 0; i < widgets.length; i++) {
-      if (widgets[i]._id === widgetId) {
-        widgets[i] = newWidget;
-        res.json(widgets);
-        return;
-      }
-    }
+    widgetModel.updatePage(widgetId, newWidget)
+      .then(function (status) {
+        res.send(status);
+      });
   }
 
 
   function deleteWidget(req, res) {
     var widgetId = req.params['wgid'];
-    for (var i = 0; i < widgets.length; i++) {
-      if (widgets[i]._id === widgetId) {
-        widgets.splice(i, 1);
-        res.json(widgets);
-        return;
-      }
-    }
+    widgetModel.deleteWidget(widgetId)
+      .then(function(status) {
+        "use strict";
+        res.send(status);
+      });
   }
 
   function createWidget(req, res) {
+    var pageId = req.params['pid'];
     const widget = req.body;
-    var newWidget = new Widget(widget._id, widget.widgetType, widget.pageId, widget.size, widget.width, widget.text,
-      widget.url);
-    widgets.push(newWidget);
-    res.json(newWidget);
+    widget.pageId = pageId;
+    delete widget._id;
+    widgetModel
+      .createWidget(widget)
+      .then(function(widget) {
+        widgetModel
+          .findAllWidgetsForPage(pageId)
+          .then(function(widgets) {
+            res.json(widgets);
+          });
+      });
   }
 
   function uploadImage(req, res) {
