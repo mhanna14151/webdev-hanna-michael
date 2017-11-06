@@ -32,7 +32,6 @@ export class WebsiteEditComponent implements OnInit {
       this.websiteService.findWebsiteById(this.websiteId)
         .subscribe((website: Website) => {
           this.website = website;
-          console.log('website from NgInit: ' + website);
           this.name = this.website.name;
           this.description = this.website.description;
         });
@@ -57,8 +56,8 @@ export class WebsiteEditComponent implements OnInit {
       .subscribe((website) => {
       this.website = website;
       this.name = this.website.name;
+      this.router.navigate(['user/', this.userId, 'website']);
       });
-    this.router.navigate(['user/', this.userId, 'website']);
   }
 
   navigateToUsersWebsite() {

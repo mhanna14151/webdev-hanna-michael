@@ -1,38 +1,48 @@
 var mongoose = require('mongoose');
-var UserSchema = require("./model.schema.server");
+var WebsiteSchema = require("./website.schema.server");
 var WebsiteModel = mongoose.model("WebsiteModel", WebsiteSchema);
+var UserModel = require('../user/user.model.server');
 
-// PageModel.findUserById = findUserById;
-// PageModel.createUser = createUser;
-// PageModel.findAllUsers = findAllUsers;
-// PageModel.findUserByCredentials = findUserByCredentials;
+WebsiteModel.createWebsiteForUser = createWebsiteForUser;
+WebsiteModel.findAllWebsitesForUser = findAllWebsitesForUser;
+WebsiteModel.findWebsiteById = findWebsiteById;
+WebsiteModel.updateWebsite = updateWebsite;
+WebsiteModel.deleteWebsite = deleteWebsite;
 
 module.exports = WebsiteModel;
-//
-// function findUserByCredentials(username, password) {
-//   UserModel.find({username: username, password: password},
-//     function(err, user) {
-//       console.log(user);
-//     });
-// }
-//
-//
-// function createUser(user) {
-//   UserModel.create(user, function(err, doc) {
-//     console.log(err);
-//     console.log(doc);
-//   });
-// }
-//
-//
-// function findAllUsers() {
-//   UserModel.find(function(err, docs) {
-//     console.log(docs);
-//   });
-// }
-//
-// function findUserById(userId) {
-//   UserModel.findById(userId, function(err, docs) {
-//     console.log(docs);
-//   });
-// }
+
+function createWebsiteForUser(website) {
+  // return WebsiteModel.create(website);
+
+  var newWebsite = null;
+  return WebsiteModel
+    .create(website)
+    .then(function (website) {
+      newWebsite = website;
+      UserModel
+        .findUserById(newWebsite.developerId)
+        .then(function (user) {
+          user.websites.push(newWebsite);
+          return user.save();
+        });
+    });
+}
+
+
+function findAllWebsitesForUser(userId) {
+  return WebsiteModel.find({developerId: userId})
+    .populate('developerId', 'username')
+    .exec();
+}
+
+function findWebsiteById(websiteId) {
+  return WebsiteModel.findOne({_id: websiteId});
+}
+
+function updateWebsite(websiteId, website) {
+  return WebsiteModel.updateOne({_id: websiteId}, website);
+}
+
+function deleteWebsite(websiteId) {
+  return WebsiteModel.deleteOne({_id: websiteId});
+}

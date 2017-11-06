@@ -1,4 +1,3 @@
-
 function User(username, password, email, firstName, lastName) {
   // this._id = _id;
   this.username = username;

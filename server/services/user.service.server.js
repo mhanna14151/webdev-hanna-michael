@@ -91,13 +91,19 @@ module.exports = function(app) {
 
   function deleteUser(req, res) {
     var userId = req.params['uid'];
-    for (var i = 0; i < users.length; i++) {
-      if (users[i]._id === userId) {
-        users.splice(i, 1);
-        res.json(users);
-        return;
-      }
-    }
+    userModel.deleteUser(userId)
+      .then(function(status) {
+        "use strict";
+        res.send(status);
+      });
+    //
+    // for (var i = 0; i < users.length; i++) {
+    //   if (users[i]._id === userId) {
+    //     users.splice(i, 1);
+    //     res.json(users);
+    //     return;
+    //   }
+    // }
   }
 
   function createUser(req, res) {

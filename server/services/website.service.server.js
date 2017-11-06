@@ -2,6 +2,9 @@ var Website = require('../model/website.model.server');
 
 module.exports = function(app) {
 
+  var websiteModel = require("../../models/website/website.model.server");
+
+
   var websites = [
     new Website("123", "Facebook", "456", "Lorem"),
     new Website("234", "Tweeter", "456", "Lorem"),
@@ -26,55 +29,90 @@ module.exports = function(app) {
    */
   function findAllWebsitesForUser(req, res) {
     var userId = req.params["uid"];
+    // var promise = websiteModel
+    //   .findAllWebsitesForUser(userId);
+    // promise.then(function (websites) {
+    //   res.json(websites)
+    // });
+    //
+    websiteModel.findAllWebsitesForUser(userId)
+      .then(function(websites) {
+        res.json(websites);
+    });
+
+    // return;
+
+
     // var websiteId = req.query["wid"];
-    var usersWebsites = [];
-    for (var i = 0; i < websites.length; i++) {
-      if (websites[i].developerId === userId) {
-        usersWebsites.push(websites[i]);
-      }
-    }
-    res.json(usersWebsites);
+    // var usersWebsites = [];
+    // // for (var i = 0; i < websites.length; i++) {
+    // //   if (websites[i].developerId === userId) {
+    // //     usersWebsites.push(websites[i]);
+    // //   }
+    // // }
+    // // res.json(usersWebsites);
   }
 
   function findWebsiteById(req, res) {
     var websiteId = req.params["wid"];
-    var website = websites.find(function (website) {
+    var promise = websiteModel
+      .findWebsiteById(websiteId);
+    promise.then(function(website) {
       "use strict";
-      return website._id === websiteId
+      res.json(website)
     });
-    res.json(website);
+    // var websiteId = req.params["wid"];
+    // var website = websites.find(function (website) {
+    //   "use strict";
+    //   return website._id === websiteId
+    // });
+    // res.json(website);
   }
 
   function updateWebsite(req, res) {
     var websiteId = req.params['wid'];
     var newWebsite = req.body;
-    for (var i = 0; i < websites.length; i++) {
-      if (websites[i]._id === websiteId) {
-        websites[i] = newWebsite;
-        res.json(websites);
-        return;
-      }
-    }
+
+    websiteModel.updateWebsite(websiteId, newWebsite)
+      .then(function (status) {
+        res.send(status);
+      });
+    //
+    //
+    //
+    // for (var i = 0; i < websites.length; i++) {
+    //   if (websites[i]._id === websiteId) {
+    //     websites[i] = newWebsite;
+    //     res.json(websites);
+    //     return;
+    //   }
+    // }
   }
 
 
   function deleteWebsite(req, res) {
     var websiteId = req.params['wid'];
-    for (var i = 0; i < websites.length; i++) {
-      if (websites[i]._id === websiteId) {
-        websites.splice(i, 1);
-        // var users = findUsers(req, res);
-        res.json(websites);
-        return;
-      }
-    }
+    websiteModel.deleteWebsite(websiteId)
+      .then(function(status) {
+        res.send(status);
+      });
   }
 
   function createWebsite(req, res) {
-    const website = req.body;
-    var newWebsite = new Website(website._id, website.name, website.developerId, website.description);
-    websites.push(newWebsite);
-    res.json(newWebsite);
+    var userId = req.params['uid'];
+    var website = req.body;
+    website.developerId = userId;
+    delete website._id;
+
+    websiteModel
+      .createWebsiteForUser(website)
+      .then(function(website) {
+        websiteModel
+          .findAllWebsitesForUser(userId)
+          .then(function(websites) {
+            res.json(websites);
+          });
+      });
   }
 
 };

@@ -24,12 +24,12 @@ export class WebsiteService {
   // adds the website parameter instance to the local websites array.
   // The new website's developerId is set to the userId parameter
   createWebsite(userId, website) {
-    website._id = Math.random().toString();
-    website.developerId = userId;
+    // website._id = Math.random().toString();
+    // website.developerId = userId;
     const url = this.baseUrl + '/api/user/' + userId + '/website';
     return this._http.post(url, website)
       .map((response: Response) => {
-      return response.json();
+        return response.json();
       });
   }
 
