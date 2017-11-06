@@ -21,7 +21,6 @@ module.exports = function(app) {
   app.delete("/api/website/:wid", deleteWebsite);
   app.post("/api/user/:uid/website", createWebsite);
 
-
   /**
    * Returns a different set of users based on conditions.
    * @param req
@@ -58,7 +57,6 @@ module.exports = function(app) {
     var promise = websiteModel
       .findWebsiteById(websiteId);
     promise.then(function(website) {
-      "use strict";
       res.json(website)
     });
     // var websiteId = req.params["wid"];

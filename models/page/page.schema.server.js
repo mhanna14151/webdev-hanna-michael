@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
-var PageSchema = require("./page.schema.server");
-var PageModel = mongoose.model("PageModel", PageSchema);
-PageModel.createPage = createPage;
-PageModel.findAllPagesForWebsite = findAllPagesForWebsite;
-PageModel.findPageByid = findPageById;
-PageModel.updatePage = updatePage;
-PageModel.deletePage = deletePage;
+var WidgetSchema = require('../widget/widget.schema.server');
 
-module.exports = PageModel;
+var PageSchema = mongoose.Schema({
+  websiteId: {type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'},
+  name: String,
+  title: String,
+  description: String,
+  widgets: [WidgetSchema],
+  dateCreated: Date
+}, {collection: 'page'});
 
-
+module.exports = PageSchema;

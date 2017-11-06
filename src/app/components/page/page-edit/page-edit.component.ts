@@ -77,10 +77,10 @@ export class PageEditComponent implements OnInit {
   }
 
   updatePage(ID, name: String, description: String) {
-    const updatedPage = new Page(ID, name, this.userId, description);
+    const updatedPage = new Page(ID, name, this.websiteId, description);
     this.pageService.updatePage(this.pageID, updatedPage)
       .subscribe((page) => {
-      this.page = page;
+        this.page = page;
         this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
       });
   }

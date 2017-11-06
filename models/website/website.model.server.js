@@ -44,5 +44,18 @@ function updateWebsite(websiteId, website) {
 }
 
 function deleteWebsite(websiteId) {
+  var websiteThis = WebsiteModel.findWebsiteById(websiteId)
+    .then(function(website) {
+      websiteThis = website;
+      UserModel.findUserById(websiteThis.developerId)
+        .then(function(user) {
+          for (var i = 0; i < user.websites.length; i++) {
+            if (user.websites[i]._id = websiteId) {
+              user.websites.splice(i, 1);
+              user.save();
+            }
+          }
+        });
+    });
   return WebsiteModel.deleteOne({_id: websiteId});
 }

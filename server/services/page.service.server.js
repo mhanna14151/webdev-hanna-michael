@@ -2,6 +2,8 @@ var Page = require('../model/page.model.server');
 
 module.exports = function(app) {
 
+  var pageModel = require("../../models/page/page.model.server");
+
   var pages = [
     new Page("321", "Post 1", "456", "Lorem"),
     new Page("432", "Post 2", "456", "Lorem"),
@@ -22,58 +24,93 @@ module.exports = function(app) {
    */
   function findAllPagesForWebsite(req, res) {
     var websiteId = req.params['wid'];
-    console.log('this is the wid from this thing  ' + websiteId);
-    // var websiteId = req.query["wid"];
-    var usersPages = [];
-    console.log('length of pages ' + pages.length);
-    for (var i = 0; i < pages.length; i++) {
-      if (pages[i].websiteId === websiteId) {
-        usersPages.push(pages[i]);
-      }
-    }
-    res.json(usersPages);
+    pageModel
+      .findAllPagesForWebsite(websiteId)
+      .then(function(pages) {
+        res.json(pages);
+      });
+    // var usersPages = [];
+    // console.log('length of pages ' + pages.length);
+    // for (var i = 0; i < pages.length; i++) {
+    //   if (pages[i].websiteId === websiteId) {
+    //     usersPages.push(pages[i]);
+    //   }
+    // }
+    // res.json(usersPages);
   }
 
   function findPageById(req, res) {
     var pageId = req.params["pid"];
-    var page = pages.find(function (page) {
-      "use strict";
-      return page._id === pageId
+    var promise = pageModel
+      .findPageById(pageId);
+    promise.then(function(page) {
+      res.json(page)
     });
-    res.json(page);
+    //
+    // var page = pages.find(function (page) {
+    //   return page._id === pageId
+    // });
+    // res.json(page);
   }
 
   function updatePage(req, res) {
     var pageId = req.params['pid'];
     var newPage = req.body;
-    for (var i = 0; i < pages.length; i++) {
-      if (pages[i]._id === pageId) {
-        pages[i] = newPage;
-        res.json(newPage);
-        return;
-      }
-    }
+
+    pageModel.updatePage(pageId, newPage)
+      .then(function (status) {
+        res.send(status);
+      });
+    // //
+    // // for (var i = 0; i < pages.length; i++) {
+    // //   if (pages[i]._id === pageId) {
+    // //     pages[i] = newPage;
+    // //     res.json(newPage);
+    // //     return;
+    // //   }
+    // }
   }
 
   function deletePage(req, res) {
     var pageId = req.params['pid'];
-    for (var i = 0; i < pages.length; i++) {
-      if (pages[i]._id === pageId) {
-        pages.splice(i, 1);
-        // var users = findUsers(req, res);
-        res.json(pages);
-        return;
-      }
-    }
+    pageModel.deletePage(pageId)
+      .then(function(status) {
+        "use strict";
+        res.send(status);
+      });
+    //
+    //
+    // for (var i = 0; i < pages.length; i++) {
+    //   if (pages[i]._id === pageId) {
+    //     pages.splice(i, 1);
+    //     // var users = findUsers(req, res);
+    //     res.json(pages);
+    //     return;
+    //   }
+    // }
   }
 
   function createPage(req, res) {
+    var websiteId = req.params['wid'];
     const page = req.body;
-    var newPage = new Page(page._id, page.name, page.websiteId, page.description);
-    // var newUser = new User('15', 'f', 'f', 'f@gmail.com', 'f', 'f');
-    // console.log("user from Server: ");
-    pages.push(newPage);
-    res.json(newPage);
+    page.websiteId = websiteId;
+    delete page._id;
+
+    pageModel
+      .createPage(page)
+      .then(function(page) {
+        "use strict";
+        pageModel
+          .findAllPagesForWebsite(websiteId)
+          .then(function(pages) {
+            res.json(pages);
+          });
+      });
+    // var newPage = new Page(page._id, page.name, websiteId, page.description);
+    // // var newUser = new User('15', 'f', 'f', 'f@gmail.com', 'f', 'f');
+    // // console.log("user from Server: ");
+    // pages.push(newPage);
+    // res.json(newPage);
   }
 
 };
