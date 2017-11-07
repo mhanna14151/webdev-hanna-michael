@@ -32,6 +32,7 @@ import { BannerForHomePageComponent } from './components/banner-for-home-page/ba
 import { BannerForWebDevAssignmentComponent } from './components/banner-for-web-dev-assignment/banner-for-web-dev-assignment.component';
 import {WebsiteEditComponent} from './components/website/website-edit/website-edit.component';
 import { ExterminateComponent } from './components/exterminate/exterminate.component';
+import {WebDevSortableDirective} from '../../directives/wbdv-sortable.directive';
 
 @NgModule({
   // Declared components here
@@ -57,6 +58,7 @@ import { ExterminateComponent } from './components/exterminate/exterminate.compo
     BannerForHomePageComponent,
     BannerForWebDevAssignmentComponent,
     ExterminateComponent,
+    WebDevSortableDirective,
   ],
   imports: [
     BrowserModule,

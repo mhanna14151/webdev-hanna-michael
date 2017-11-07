@@ -9,7 +9,7 @@ WidgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
 WidgetModel.findWidgetById = findWidgetById;
 WidgetModel.updateWidget = updateWidget;
 WidgetModel.deleteWidget = deleteWidget;
-// WidgetModel.reOrderWidget = reOrderWidget;
+WidgetModel.reOrderWidget = reOrderWidget;
 
 module.exports = WidgetModel;
 
@@ -60,6 +60,50 @@ function deleteWidget(widgetId) {
   return WidgetModel.deleteOne({_id: widgetId});
 }
 
-// function reorderWidget(pageId, start, end) {
-//   return null;
-// }
+function reOrderWidget(pageId, start, end) {
+  console.log('DID WE EVER GET HERE?!?!?!?!?!?!?!?!?');
+  var widgetTemp = null;
+  var theseWidgets = WidgetModel.findAllWidgetsForPage()
+    .then(function (widgets) {
+      theseWidgets = widgets;
+      if (end < start) {
+        widgetTemp = widget[start];
+        let i = start;
+        while (i > end) {
+          theseWidgets[i] = theseWidgets[i - 1];
+          i--;
+        }
+      } else {
+        widgetTemp = widget[start];
+        let i = start;
+        while (i < end) {
+          theseWidgets[i] = theseWidgets[i + 1];
+          i++;
+        }
+      }
+    });
+  PageModel.findPageById(pageId)
+    .then(function(page) {
+          page.widgets.splice(0, page.widgets.length);
+          page.save();
+    });
+  for (var i = 0; i < theseWidgets.length; i++) {
+    createWidget((theseWidgets[i]));
+  }
+}
+
+
+
+  //     PageModel.findPageById(widgetThis.pageId)
+  //       .then(function(page) {
+  //         for (var i = 0; i < page.widgets.length; i++) {
+  //           if (page.widgets[i]._id = widgetId) {
+  //             page.widgets.splice(i, 1);
+  //             page.save();
+  //           }
+  //         }
+  //       });
+  //   });
+  //
+  //
+  // return null;

@@ -19,7 +19,8 @@ export class WidgetService {
     'findWidgetsByPageId': this.findWidgetsByPageId,
     'findWidgetById': this.findWidgetById,
     'updateWidget': this.updateWidget,
-    'deleteWidget': this.deleteWidget
+    'deleteWidget': this.deleteWidget,
+    'reorderWidget': this.reorderWidget
   };
 
 
@@ -79,6 +80,17 @@ export class WidgetService {
       .map((response: Response) => {
         return response.json();
       });
+  }
+
+  reorderWidget(pageId, start, stop) {
+    const url = this.baseUrl + '/api/page/' + pageId + '/widget?initial=' + start + '&final=' + stop;
+    const array = {pageId: pageId, start: start, stop: stop};
+    return this._http.put(url, array)
+      .map((response: Response) => {
+        console.log(response.json());
+        return response.json();
+      });
+    // PUT /page/:pageId/widget?initial=index1&final=index2
   }
 
 }

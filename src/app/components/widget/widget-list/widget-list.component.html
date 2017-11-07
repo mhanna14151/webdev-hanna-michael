@@ -23,7 +23,7 @@
 </nav>
 
 <!--Below the banner-->
-<div class="container-fluid top-margin bottomPadding">
+<div appWebDevSortable (orderChanged)="onIndexChange($event)" class="container-fluid top-margin bottomPadding">
   <div *ngFor="let widget of widgets" class = 'borderless'>
     <div [ngSwitch]="widget.widgetType">
       <!--HEADER CASE-->
@@ -68,7 +68,7 @@
         <!--Come back and make this Width Dynamic-->
       </div>
       <!--YOUTUBE CASE-->
-      <div *ngSwitchCase="'YOUTUBE'" class = "moh-widget bottomPadding">
+      <div *ngSwitchCase="'YOUTUBE'" class = "youtube-widget moh-widget bottomPadding">
         <div class="pull-right moh-glyph-toolbar">
           <a (click)="navigateToWidget(widget._id)">
             <span class="glyphicon glyphicon-cog"></span>

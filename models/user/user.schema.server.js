@@ -9,7 +9,6 @@ var UserSchema = mongoose.Schema({
   lastName: String,
   email: String,
   phone: String,
-  // websites: [WebsiteSchema],
   websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}],
   dateCreated: Date
 }, {collection: 'user'});
