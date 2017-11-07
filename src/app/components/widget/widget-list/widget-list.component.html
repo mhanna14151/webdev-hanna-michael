@@ -68,14 +68,14 @@
         <!--Come back and make this Width Dynamic-->
       </div>
       <!--YOUTUBE CASE-->
-      <div *ngSwitchCase="'YOUTUBE'" class = "youtube-widget moh-widget bottomPadding">
+      <div *ngSwitchCase="'YOUTUBE'" class = "moh-widget bottomPadding">
         <div class="pull-right moh-glyph-toolbar">
           <a (click)="navigateToWidget(widget._id)">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </div>
-        <div class = "videoWrap">
+        <div class = "youtube-widget videoWrap">
           <iframe width="560" height="315" [src]="cleanThisUrl(widget.url)"
                   [style.width]="widget.width"
                   frameborder="0" allowfullscreen></iframe>
