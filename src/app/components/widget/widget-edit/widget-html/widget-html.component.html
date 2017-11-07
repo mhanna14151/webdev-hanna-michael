@@ -1,3 +1,40 @@
-<p>
-  widget-html works!
-</p>
+<!--The banner-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+    <!--the left column-->
+    <!--right column-->
+    <div class = "container-fluid">
+      <!--heading on the nav bar-->
+      <div class="navbar-header pull-left ">
+        <div class="navbar-brand pull-left fixed">
+          <a class="navbar-link">
+            <span (click)="returnToPreviousSite()" class="glyphicon glyphicon-chevron-left blackText"></span>
+          </a>
+        </div>
+        <a class="navbar-brand thick">
+          <b class="indent">Widget Edit</b>
+        </a>
+      </div>
+      <!--Presumably in a future assignment,
+      I will edit this glyphicon to add the result.-->
+      <a class="navbar-link navbar-text pull-right fixed">
+        <span (click)="updateWidgetHTML(name, text)" class="glyphicon glyphicon-ok blackText"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class= "bottomPadding moh-max-height moh-Margin-For-Two-Columns">
+  <div class="row moh-max-height">
+    <div class="paddingWithNoTop small-top-Margin">
+    <label>Name</label>
+    <input class="form-control"
+           type = "text"
+           placeholder="Name of Widget"
+           value = 'HTML'>
+    <label>Text</label>
+      <quill-editor [(ngModel)]="text" name="text"></quill-editor>
+    </div>
+  </div>
+</div>
+
