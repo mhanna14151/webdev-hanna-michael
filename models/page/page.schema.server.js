@@ -6,7 +6,7 @@ var PageSchema = mongoose.Schema({
   name: String,
   title: String,
   description: String,
-  widgets: [WidgetSchema],
+  widgets: [{type: mongoose.Schema.Types.ObjectId, ref: 'WidgetModel'}],
   dateCreated: Date
 }, {collection: 'page'});
 

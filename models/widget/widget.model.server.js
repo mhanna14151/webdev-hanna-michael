@@ -67,18 +67,26 @@ function deleteWidget(widgetId) {
 function reorderWidget(pageId, start, end) {
   var theseWidgets = null;
   var widgetTemp = null;
-  return WidgetModel.findAllWidgetsForPage(pageId)
+  var first = Number(start);
+  var last = Number(end);
+  WidgetModel.findAllWidgetsForPage(pageId)
     .then(function (widgets) {
-      "use strict";
       theseWidgets = widgets;
-      WidgetTemp = theseWidgets[start];
-      theseWidgets.splice(start, 1);
-      theseWidgets.splice(end, 0, widgetTemp);
-      return PageModel
-        .findPageById(pageId)
-        .then(function (page) {
-          page.widgets = theseWidgets;
-          return page.save();
+      console.log('THESE WIDGETS ', theseWidgets);
+      WidgetTemp = theseWidgets[first];
+      console.log('Temp Widget ', WidgetTemp);
+      theseWidgets.splice(first, 1);
+      theseWidgets.splice(last, 0, widgetTemp);
+      // theseWidgets[last] = widgetTemp;
+      widgets = theseWidgets;
+      console.log('widgets are now', widgets);
+      return PageModel.findPageById(pageId)
+        .then(function(page) {
+          var newPage = new Page(pageId, page.name, page.websiteId, page.description);
+          console.log('These are the widgets: ', theseWidgets);
+          newPage.widgets = theseWidgets;
+          console.log('this is the page.', newPage);
+          return PageModel.updateOne({_id: pageId}, newPage);
         });
     });
 }

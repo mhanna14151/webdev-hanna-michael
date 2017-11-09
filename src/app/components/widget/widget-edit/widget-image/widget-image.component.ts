@@ -77,4 +77,13 @@ export class WidgetImageComponent implements OnInit {
       });
   }
 
+  searchFlickr() {
+    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget',
+      this.widgetID, 'flickr']);
+
+  }
+
+
+
+
 }

@@ -36,6 +36,8 @@ import { UserService } from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
+import { FlickerImageSearchComponent } from './components/widget/widget-edit/widget-image/flicker-image-search/flicker-image-search.component';
+import {FlickrService} from "./services/flickr.service.client";
 
 @NgModule({
   // Declared components here
@@ -63,6 +65,7 @@ import {WidgetService} from './services/widget.service.client';
     ExterminateComponent,
     WebDevSortableDirective,
     WidgetHtmlComponent,
+    FlickerImageSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,7 @@ import {WidgetService} from './services/widget.service.client';
     QuillEditorModule
   ],
   // Client Side services here
-  providers: [UserService, WebsiteService, PageService, TestService, WidgetService],
+  providers: [UserService, WebsiteService, PageService, TestService, WidgetService, FlickrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
