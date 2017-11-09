@@ -38,6 +38,7 @@ import { PageService } from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
 import { FlickerImageSearchComponent } from './components/widget/widget-edit/widget-image/flicker-image-search/flicker-image-search.component';
 import {FlickrService} from "./services/flickr.service.client";
+import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 
 @NgModule({
   // Declared components here
@@ -66,6 +67,7 @@ import {FlickrService} from "./services/flickr.service.client";
     WebDevSortableDirective,
     WidgetHtmlComponent,
     FlickerImageSearchComponent,
+    WidgetTextComponent,
   ],
   imports: [
     BrowserModule,

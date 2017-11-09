@@ -84,7 +84,19 @@
       <!--HTML CASE-->
       <div *ngSwitchCase="'HTML'" class = "moh-widget bottomPadding">
         <div class="pull-right moh-glyph-toolbar">
-          <span class="glyphicon glyphicon-cog"></span>
+          <a (click)="navigateToWidget(widget._id)">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <div [innerHTML] ="widget.text"></div>
+      </div>
+      <!--Text Case-->
+      <div *ngSwitchCase="'TEXT'" class = "moh-widget bottomPadding">
+        <div class="pull-right moh-glyph-toolbar">
+          <a (click)="navigateToWidget(widget._id)">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </div>
         <div [innerHTML] ="widget.text"></div>

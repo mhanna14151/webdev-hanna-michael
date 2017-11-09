@@ -102,6 +102,7 @@ module.exports = function(app) {
         widgetModel.updateWidget(widgetId, newWidget)
           .then(function(widget1) {
             var callbackUrl   = "/user/"+userId+"/website/"+websiteId+ '/page/' + pageId + '/widget';
+            widget1.save();
             res.redirect(callbackUrl);
           });
       });

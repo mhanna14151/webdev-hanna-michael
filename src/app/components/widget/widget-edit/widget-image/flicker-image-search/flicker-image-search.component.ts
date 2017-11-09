@@ -78,6 +78,10 @@ export class FlickerImageSearchComponent implements OnInit {
     this.widgetId]);
   }
 
+  returnToProfile() {
+    this.router.navigate(['user/', this.userId]);
+  }
+
 }
 
 
