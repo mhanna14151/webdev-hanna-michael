@@ -118,8 +118,6 @@ module.exports = function(app) {
         res.json(widgets);
       });
     console.log('exiting');
-
-
     //
     // var AllWidgets = null;
     // var movedWidget = null;

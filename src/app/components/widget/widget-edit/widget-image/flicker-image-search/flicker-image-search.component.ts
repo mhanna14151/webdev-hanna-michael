@@ -73,6 +73,11 @@ export class FlickerImageSearchComponent implements OnInit {
       });
   }
 
+  returnToPreviousSite() {
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
+    this.widgetId]);
+  }
+
 }
 
 
