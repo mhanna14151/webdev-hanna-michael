@@ -56,7 +56,6 @@ module.exports = function(app) {
     var widgetId = req.params['wgid'];
     widgetModel.deleteWidget(widgetId)
       .then(function(status) {
-        "use strict";
         res.send(status);
       });
   }
@@ -100,9 +99,9 @@ module.exports = function(app) {
         newWidget = widget;
         newWidget.url = '/assets/uploads/'+filename;
         widgetModel.updateWidget(widgetId, newWidget)
-          .then(function(widget1) {
+          .then(function(widget) {
             var callbackUrl   = "/user/"+userId+"/website/"+websiteId+ '/page/' + pageId + '/widget';
-            widget1.save();
+            widget.save();
             res.redirect(callbackUrl);
           });
       });
