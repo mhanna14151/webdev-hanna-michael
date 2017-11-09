@@ -77,7 +77,6 @@ function reorderWidget(pageId, start, end) {
   var last = Number(end);
   start = parseInt(start);
   end = parseInt(end);
-
   return PageModel
     .findPageById(pageId)
     .then(function (page) {

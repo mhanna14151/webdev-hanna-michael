@@ -67,6 +67,9 @@ export class WidgetService {
     const url = this.baseUrl + '/api/widget/' + widgetId;
     const newWidget = new Widget(widgetId, widget.widgetType, widget.pageId, widget.size, widget.width,
       widget.text, widget.url);
+    newWidget.formatted = widget.formatted;
+    newWidget.rows = widget.rows;
+    newWidget.placeholder = widget.placeholder;
     return this._http.put(url, newWidget)
       .map((response: Response) => {
         return response.json();

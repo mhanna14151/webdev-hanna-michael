@@ -12,14 +12,15 @@ export class WidgetTextComponent implements OnInit {
 
   name: String;
   text: String;
-  // size: Number;
   widget: Widget;
   widgetID: String;
   pageID: String;
   userID: String;
   websiteID: String;
   widgetType: String;
+  placeholder: String;
   rows: Number;
+  formatted: Boolean;
 
   constructor(private widgetService: WidgetService,
               private router: Router,
@@ -37,15 +38,21 @@ export class WidgetTextComponent implements OnInit {
       .subscribe((widget) => {
         this.widget = widget;
         this.widgetType = this.widget.widgetType;
+        this.rows = this.widget.rows;
+        this.placeholder = this.widget.placeholder;
         this.text = this.widget.text;
+        this.formatted = this.widget.formatted;
         // this.size = this.widget.size;
       });
   }
 
-  updateWidgetTEXT(ID, rows, placeholder, text, formatted) {
-    const updatedWidget = new Widget(this.widgetID, name, this.pageID, null, null, text, null);
+  updateWidgetTEXT(rows, placeholder, text, formatted) {
+    const updatedWidget = new Widget(this.widgetID, 'TEXT', this.pageID, null, null, null, null);
     updatedWidget.formatted = formatted;
+    console.log('formatted is: ', formatted);
     updatedWidget.rows = rows;
+    updatedWidget.placeholder = placeholder;
+    updatedWidget.text = text;
     this.widgetService.updateWidget(this.widgetID, updatedWidget)
       .subscribe((widget) => {
         this.widget = widget;

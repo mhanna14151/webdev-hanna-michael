@@ -3,7 +3,7 @@
   <div class="row container-fluid">
     <!--the left column-->
     <!--right column-->
-    <div class = "container-fluid">
+    <div class="container-fluid">
       <!--heading on the nav bar-->
       <div class="navbar-header pull-left ">
         <div class="navbar-brand pull-left fixed">
@@ -18,39 +18,55 @@
       <!--Presumably in a future assignment,
       I will edit this glyphicon to add the result.-->
       <a class="navbar-link navbar-text pull-right fixed">
-        <span (click)="updateWidgetTEXT(widgetID, widget.rows, widget.placeholder, text, widget.formatted)" class="glyphicon glyphicon-ok blackText"></span>
+        <span (click)="updateWidgetTEXT(rows, placeholder, text, formatted)"
+              class="glyphicon glyphicon-ok blackText"></span>
       </a>
     </div>
   </div>
 </nav>
 
 <!--Below the BANNER-->
-
-Text
-<input [(ngModel)]="widget.text" class="form-control"/>
-
-Rows
-<input [(ngModel)]="widget.rows" class="form-control" type="number"/>
-<label for="Name">Name</label>
-<div>
-  <input [(ngModel)]="widget.widgetType"
-         type="text"
-         class="form-control"
-         id="Name"
-         name="name"
-         placeholder="Name">
-</div>
-
-Placeholder
-<input [(ngModel)]="widget.placeholder" class="form-control" required/>
-<p></p>
-<div class="input-group">
-  <input type="text"
-         readonly
-         value="Formatted"
-         class="form-control"/>
-  <span class="input-group-addon">
-     <input [(ngModel)]="widget.formatted"
-            type="checkbox"/>
+<div class="bottomPadding moh-max-height moh-Margin-For-Two-Columns">
+  <div class="row moh-max-height">
+    <div class="paddingWithNoTop small-top-Margin form-control">
+      <label>Widget Type</label>
+      <input class="form-control"
+             type = "text"
+             placeholder="Name of Widget"
+             value = {{widget.widgetType}}>
+      <label>Text</label>
+      <input class="form-control"
+             type="text"
+             id="text"
+             placeholder="Text regarding Widget"
+             [(ngModel)] ="text" name ="text">
+      <label>Rows</label>
+      <input class="form-control"
+             type="number"
+             id="rows"
+             placeholder="Number of Rows (e.g. 4)"
+             [(ngModel)] ="rows" name ="rows">
+      <label>Placeholder</label>
+      <input class="form-control"
+             type="text"
+             id="placeholder"
+             placeholder="placeholder"
+             [(ngModel)] ="placeholder" name ="placeholder">
+      <label>Formatted</label>
+      <div class="input-group">
+        <input type="text"
+               readonly
+               value="Formatted"
+               class="form-control"/>
+        <span class="input-group-addon">
+     <input [(ngModel)]="formatted"
+            type="checkbox" name = "formatted" id = "formatted"/>
  </span>
+      </div>
+      <a class="btn btn-danger btn-block"
+         (click)="deleteThisWidget(widgetID)">Delete</a>
+
+
+    </div>
+  </div>
 </div>
