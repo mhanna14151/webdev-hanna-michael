@@ -14,7 +14,6 @@ WidgetModel.reorderWidget = reorderWidget;
 module.exports = WidgetModel;
 
 function createWidget(widget) {
-  console.log('Creating Widget');
   var newWidget = null;
   return WidgetModel
     .create(widget)
@@ -47,7 +46,6 @@ function findWidgetById(widgetId) {
 }
 
 function updateWidget(widgetId, widget) {
-  console.log('Updating widget');
   return WidgetModel.updateOne({_id: widgetId}, widget);
 }
 

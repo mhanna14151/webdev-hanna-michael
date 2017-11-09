@@ -86,11 +86,9 @@ export class WidgetService {
   }
 
   reorderWidget(pageId, start, stop) {
-    console.log('entering the client service for sort widget');
     const url = this.baseUrl + '/api/page/' + pageId + '/widget?initial=' + start + '&final=' + stop;
     return this._http.put(url, start)
       .map((response: Response) => {
-        console.log('exiting the client service for sort widget');
         return response.json();
       });
   }

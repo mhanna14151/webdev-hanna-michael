@@ -42,7 +42,6 @@ module.exports = function(app) {
   }
 
   function updateWidget(req, res) {
-    console.log('updating widget service activated');
     var widgetId = req.params['wgid'];
     var newWidget = req.body;
     widgetModel.updateWidget(widgetId, newWidget)
@@ -108,16 +107,13 @@ module.exports = function(app) {
   }
 
   function reorderWidget(req, res) {
-    console.log('entered the reorder service');
     var pageId = req.params['pid'];
     var start = req.query['initial'];
     var end = req.query['final'];
     widgetModel.reorderWidget(pageId, start, end)
       .then(function(widgets) {
-        console.log('exiting here');
         res.json(widgets);
       });
-    console.log('exiting');
     //
     // var AllWidgets = null;
     // var movedWidget = null;

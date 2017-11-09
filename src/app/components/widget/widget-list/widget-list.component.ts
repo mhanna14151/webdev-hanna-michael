@@ -38,7 +38,6 @@ export class WidgetListComponent implements OnInit {
     this.widgetService.findWidgetsByPageId(this.pageID)
       .subscribe((widgets) => {
         this.widgets = widgets;
-        console.log('WIDGETS WIDGETS WIDGETS', widgets);
       });
   }
 
@@ -74,12 +73,9 @@ export class WidgetListComponent implements OnInit {
   }
 
   onIndexChange(event) {
-    console.log(event.start);
-    console.log(event.stop);
     this.widgetService.reorderWidget(this.pageID, event.start, event.stop)
       .subscribe((widgets) => {
         this.widgets = widgets;
-        // console.log('wiiiiiidgeeettsssss', widgets);
       });
   }
 
