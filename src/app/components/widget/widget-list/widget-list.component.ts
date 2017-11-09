@@ -76,10 +76,10 @@ export class WidgetListComponent implements OnInit {
   onIndexChange(event) {
     console.log(event.start);
     console.log(event.stop);
-    return this.widgetService.reorderWidget(this.pageID, event.start, event.stop)
+    this.widgetService.reorderWidget(this.pageID, event.start, event.stop)
       .subscribe((widgets) => {
         this.widgets = widgets;
-        console.log('wiiiiiidgeeettsssss', widgets);
+        // console.log('wiiiiiidgeeettsssss', widgets);
       });
   }
 

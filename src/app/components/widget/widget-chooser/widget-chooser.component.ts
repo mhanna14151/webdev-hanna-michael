@@ -44,29 +44,24 @@ export class WidgetChooserComponent implements OnInit {
   }
 
   createNewWidget(type: String) {
-    // let widgetThis = null;
-    // this.widgetService.findWidgetById(this)
-    //   .subscribe((widget) => {
-    //     widgetThis = widget;
-    //     widgetThis.widgetType = type;
-    //     console.log('widget id', widgetThis._id);
-    //     this.widgetService.createWidget(this.pageID, widgetThis)
-    //       .subscribe((widget) => {
-    //       this.widgetID = Widget
-    //       })
-    //     this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
-    //            widgetThis._id]);
-    //   });
-
-
     this.widgetType = type;
     const newWidget = new Widget(null, this.widgetType, this.pageID, null, null, null, null);
     this.widgetService.createWidget(this.pageID, newWidget)
       .subscribe((widgets) => {
-      this.widget = widgets[widgets.length - 1];
+      console.log('widgets', widgets);
+      if (widgets.length === 0)  {
+        console.log(this.widget);
+        this.widget = widgets[widgets.length];
+        console.log(this.widget);
         this.widgetID = this.widget._id;
         this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
           this.widgetID]);
+      } else {
+        this.widget = widgets[widgets.length - 1];
+        this.widgetID = this.widget._id;
+        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
+          this.widgetID]);
+      }
     });
   }
 

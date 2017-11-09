@@ -11,10 +11,10 @@ module.exports = function(app) {
   app.get("/api/page/:pid/widget", findAllWidgetsForPage);
   app.get("/api/widget/:wgid", findWidgetById);
   app.put("/api/widget/:wgid", updateWidget);
+  app.put("/api/page/:pid/widget", reorderWidget);
   app.delete("/api/widget/:wgid", deleteWidget);
   app.post("/api/page/:pid/widget", createWidget);
   app.post("/api/upload", upload.single('myFile'), uploadImage);
-  app.put("api/page/:pid/widget", reorderWidget);
 
 
   /**
@@ -42,6 +42,7 @@ module.exports = function(app) {
   }
 
   function updateWidget(req, res) {
+    console.log('updating widget service activated');
     var widgetId = req.params['wgid'];
     var newWidget = req.body;
     widgetModel.updateWidget(widgetId, newWidget)
@@ -106,28 +107,37 @@ module.exports = function(app) {
       });
   }
 
-  function reorderWidget() {
+  function reorderWidget(req, res) {
+    console.log('entered the reorder service');
     var pageId = req.params['pid'];
     var start = req.query['initial'];
     var end = req.query['final'];
-
-    var AllWidgets = null;
-    var movedWidget = null;
-    widgetModel
-      .findAllWidgetsForPage(pageId)
-      .then(function (widgets) {
-        AllWidgets = widgets;
-        movedWidget = AllWidgets[start];
-        AllWidgets.splice(start, 1);
-        AllWidgets.splice(end, 0, movedWidget);
-        pageModel
-          .findPageById(pageId)
-          .then(function (page) {
-            page.widgets = AllWidgets;
-            res.json(page.widgets);
-            return page.save();
-          });
+    widgetModel.reorderWidget(pageId, start, end)
+      .then(function(widgets) {
+        console.log('exiting here');
+        res.json(widgets);
       });
+    console.log('exiting');
+
+
+    //
+    // var AllWidgets = null;
+    // var movedWidget = null;
+    // widgetModel
+    //   .findAllWidgetsForPage(pageId)
+    //   .then(function (widgets) {
+    //     AllWidgets = widgets;
+    //     movedWidget = AllWidgets[start];
+    //     AllWidgets.splice(start, 1);
+    //     AllWidgets.splice(end, 0, movedWidget);
+    //     pageModel
+    //       .findPageById(pageId)
+    //       .then(function (page) {
+    //         page.widgets = AllWidgets;
+    //         res.json(page.widgets);
+    //         return page.save();
+    //       });
+    //   });
     // widgetModel
     //   .reOrderWidget(pageId, start, end)
     //   .then(function(widgets) {
