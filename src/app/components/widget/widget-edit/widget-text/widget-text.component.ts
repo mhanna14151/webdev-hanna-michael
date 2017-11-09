@@ -19,6 +19,7 @@ export class WidgetTextComponent implements OnInit {
   userID: String;
   websiteID: String;
   widgetType: String;
+  rows: Number;
 
   constructor(private widgetService: WidgetService,
               private router: Router,
@@ -41,8 +42,10 @@ export class WidgetTextComponent implements OnInit {
       });
   }
 
-  updateWidgetTEXT(name: String, text: String) {
+  updateWidgetTEXT(ID, rows, placeholder, text, formatted) {
     const updatedWidget = new Widget(this.widgetID, name, this.pageID, null, null, text, null);
+    updatedWidget.formatted = formatted;
+    updatedWidget.rows = rows;
     this.widgetService.updateWidget(this.widgetID, updatedWidget)
       .subscribe((widget) => {
         this.widget = widget;

@@ -30,10 +30,16 @@ function createWidget(widget) {
 }
 
 function findAllWidgetsForPage(pageId) {
-  // return PageModel.findPageById(pageId);
-  return WidgetModel.find({pageId: pageId})
-    .populate('pageId')
-    .exec();
+  return PageModel
+    .findPageById(pageId)
+    .populate('widgets')
+    .exec()
+    .then(function (page) {
+      return page.widgets;
+    });
+  // return WidgetModel.find({pageId: pageId})
+    // .populate('pageId')
+    // .exec();
 }
 
 function findWidgetById(widgetId) {
@@ -69,31 +75,50 @@ function reorderWidget(pageId, start, end) {
   var widgetTemp = null;
   var first = Number(start);
   var last = Number(end);
-  WidgetModel.findAllWidgetsForPage(pageId)
-    .then(function (widgets) {
-      theseWidgets = widgets;
-      console.log('THESE WIDGETS ', theseWidgets);
-      WidgetTemp = theseWidgets[first];
-      console.log('Temp Widget ', WidgetTemp);
-      theseWidgets.splice(first, 1);
-      theseWidgets.splice(last, 0, widgetTemp);
-      // theseWidgets[last] = widgetTemp;
-      widgets = theseWidgets;
-      console.log('widgets are now', widgets);
-      return PageModel.findPageById(pageId)
-        .then(function(page) {
-          var newPage = new Page(pageId, page.name, page.websiteId, page.description);
-          console.log('These are the widgets: ', theseWidgets);
-          newPage.widgets = theseWidgets;
-          console.log('this is the page.', newPage);
-          return PageModel.updateOne({_id: pageId}, newPage);
-        });
+  start = parseInt(start);
+  end = parseInt(end);
+
+  return PageModel
+    .findPageById(pageId)
+    .then(function (page) {
+      page.widgets.splice(end, 0, page.widgets.splice(start, 1)[0]);
+      return page.save();
+    })
+    .then(function(page){
+      return page.widgets;
     });
+
+  // WidgetModel.findAllWidgetsForPage(pageId)
+  //   .then(function (widgets) {
+  //     theseWidgets = widgets;
+  //     console.log('THESE WIDGETS ', theseWidgets);
+  //     WidgetTemp = theseWidgets[first];
+  //     console.log('Temp Widget ', WidgetTemp);
+  //     theseWidgets.splice(first, 1);
+  //     theseWidgets.splice(last, 0, widgetTemp);
+  //     // theseWidgets[last] = widgetTemp;
+  //     widgets = theseWidgets;
+  //     console.log('widgets are now', widgets);
+  //     return PageModel.findPageById(pageId)
+  //       .then(function(page) {
+  //         var newPage = new Page(pageId, page.name, page.websiteId, page.description);
+  //         console.log('These are the widgets: ', theseWidgets);
+  //         newPage.widgets = theseWidgets;
+  //         console.log('this is the page.', newPage);
+  //         return PageModel.updateOne({_id: pageId}, newPage);
+  //       });
+  //   });
 }
 
 
 
 
+
+
+
+
+
+// PAST ATTEMPTS
 
 
 // var mongoose = require('mongoose');
