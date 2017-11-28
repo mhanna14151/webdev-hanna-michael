@@ -1,17 +1,43 @@
 var User = require('../model/user.model.server');
-
+var passport = require('passport');
+var LocalStrategy = require('passport‐local').Strategy;
 
 module.exports = function(app) {
 
   var userModel = require("../../models/user/user.model.server");
+  var passport = require('passport');
 
-  var users = [
-    new User("123", "alice", "alice", "alice@wonderland.com", "Alice", "Wonder"),
-    new User("234", "bob", "bob", "bobmarley@burgers.com", "Bob", "Marley"),
-    new User("345", "charly", "charly", "charlys@angels.com", "Charly", "Garcia"),
-    new User("456", "jannunzi", "jannunzi", "jannunzi@webdev.com", "Jose", "Annunzi")
-  ];
+  passport.serializeUser(serializeUser);
+  function serializeUser(user, done) {
+    done(null, user);
+  }
 
+  passport.deserializeUser(deserializeUser);
+
+  function deserializeUser(user, done) {
+    developerModel
+      .findDeveloperById(user._id)
+      .then(
+      );
+  }
+
+  passport.use(new LocalStrategy(localStrategy));
+  function localStrategy(username, password, done) {
+    userModel
+      .findUserByCredentials(username, password)
+      .then(function (user) {
+          if (user.username === username && user.password === password) {
+            return done(null, user);
+          } else {
+            return done(null, false);
+          }
+        },
+        function (err) {
+          if (err) {
+            return done(err);
+          }
+        });
+  }
 
 
   app.get("/api/user/:uid", findUserById);
@@ -43,9 +69,9 @@ module.exports = function(app) {
     else if (username) {
       var promise = userModel
         .findUserByUserName(username);
-        promise.then(function (user) {
-          res.json(user)
-        });
+      promise.then(function (user) {
+        res.json(user)
+      });
       return;
     }
     var promise = userModel
@@ -121,3 +147,13 @@ module.exports = function(app) {
   }
 
 };
+
+
+
+
+// var users = [
+//   new User("123", "alice", "alice", "alice@wonderland.com", "Alice", "Wonder"),
+//   new User("234", "bob", "bob", "bobmarley@burgers.com", "Bob", "Marley"),
+//   new User("345", "charly", "charly", "charlys@angels.com", "Charly", "Garcia"),
+//   new User("456", "jannunzi", "jannunzi", "jannunzi@webdev.com", "Jose", "Annunzi")
+// ];

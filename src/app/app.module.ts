@@ -37,8 +37,9 @@ import {WebsiteService} from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
 import { FlickerImageSearchComponent } from './components/widget/widget-edit/widget-image/flicker-image-search/flicker-image-search.component';
-import {FlickrService} from "./services/flickr.service.client";
+import {FlickrService} from './services/flickr.service.client';
 import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
+import {SharedService} from './services/shared.service.client';
 
 @NgModule({
   // Declared components here
@@ -77,7 +78,7 @@ import { WidgetTextComponent } from './components/widget/widget-edit/widget-text
     QuillEditorModule
   ],
   // Client Side services here
-  providers: [UserService, WebsiteService, PageService, TestService, WidgetService, FlickrService],
+  providers: [UserService, WebsiteService, PageService, TestService, WidgetService, FlickrService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

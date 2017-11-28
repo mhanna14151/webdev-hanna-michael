@@ -22,7 +22,7 @@ function createWebsiteForUser(website) {
       UserModel
         .findUserById(newWebsite.developerId)
         .then(function (user) {
-          user.websites.push(newWebsite);
+          user.websites.push(newWebsite);s
           return user.save();
         });
     });
