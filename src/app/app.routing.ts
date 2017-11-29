@@ -16,6 +16,7 @@ import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 import {ExterminateComponent} from './components/exterminate/exterminate.component';
 import {FlickerImageSearchComponent} from './components/widget/widget-edit/widget-image/flicker-image-search/flicker-image-search.component';
+import {AuthGuard} from './services/auth-guard.service';
 // import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
 // import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 // import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
@@ -26,7 +27,7 @@ const APP_ROUTES: Routes = [
   { path: 'test', component: TestComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'user', component: ProfileComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'user/:uid', component: ProfileComponent},
   { path: 'user/:uid/website', component: WebsiteListComponent},
   { path: 'user/:uid/website/new', component: WebsiteNewComponent},

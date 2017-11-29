@@ -67,7 +67,7 @@
     Websites
   </button>
   <a class="btn btn-warning btn-block "
-     [routerLink]="['/login']">Logout</a>
+     (click)="logout()">Logout</a>
   <button class = "btn btn-danger btn-block"
           (click)="terminateAccount()">
     Terminate Account

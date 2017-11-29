@@ -3,7 +3,7 @@ var User = require('../model/user.model.server');
 module.exports = function(app) {
   var userModel = require("../../models/user/user.model.server");
   var passport = require('passport');
-  var LocalStrategy = require('passport‐local').Strategy;
+  var LocalStrategy = require('passport-local').Strategy;
 
   passport.serializeUser(serializeUser);
 
@@ -47,6 +47,13 @@ module.exports = function(app) {
   app.post("/api/user", createUser);
   app.post('/api/register', register);
   app.post('/api/login', passport.authenticate('local'), login);
+  app.post('/api/logout', logout);
+  app.post('/api/loggedIn', loggedIn);
+
+  function logout(req, res) {
+    req.logOut();
+    res.send(200);
+  }
 
   function register(req, res) {
     "use strict";
@@ -62,6 +69,14 @@ module.exports = function(app) {
 
   function login(req, res) {
     res.json(req.user);
+  }
+
+  function loggedIn(req, res) {
+    if (req.isAuthenticated()) {
+      res.json(req.user);
+    } else {
+      res.send('0');
+    }
   }
 
 
