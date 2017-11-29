@@ -38,8 +38,17 @@ export class UserService {
       });
   }
 
-  login() {
-
+  login(username, password) {
+    const url = this.baseUrl + '/api/login';
+    const credentials = {
+      username: username,
+      password: password
+    };
+    this.options.withCredentials = true;
+    return this._http.post(url, credentials, this.options)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   createUser(user) {

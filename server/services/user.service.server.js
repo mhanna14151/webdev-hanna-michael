@@ -1,11 +1,9 @@
 var User = require('../model/user.model.server');
-var passport = require('passport');
-var LocalStrategy = require('passport‐local').Strategy;
 
 module.exports = function(app) {
-
   var userModel = require("../../models/user/user.model.server");
   var passport = require('passport');
+  var LocalStrategy = require('passport‐local').Strategy;
 
   passport.serializeUser(serializeUser);
 
@@ -34,19 +32,13 @@ module.exports = function(app) {
     userModel
       .findUserByCredentials(username, password)
       .then(function (user) {
-          if (user.username === username && user.password === password) {
-            return done(null, user);
-          } else {
-            return done(null, false);
-          }
-        },
-        function (err) {
-          if (err) {
-            return done(err);
-          }
-        });
+        if (user) {
+          return done(null, user);
+        } else {
+          return done(null, false);
+        }
+      });
   }
-
 
   app.get("/api/user/:uid", findUserById);
   app.put("/api/user/:uid", updateUser);
@@ -54,6 +46,7 @@ module.exports = function(app) {
   app.get("/api/user", findUsers); // find users by user names, credentials, or all users.
   app.post("/api/user", createUser);
   app.post('/api/register', register);
+  app.post('/api/login', passport.authenticate('local'), login);
 
   function register(req, res) {
     "use strict";
@@ -65,6 +58,10 @@ module.exports = function(app) {
           res.json(user);
         });
       });
+  }
+
+  function login(req, res) {
+    res.json(req.user);
   }
 
 
