@@ -8,6 +8,7 @@ module.exports = function(app) {
   var passport = require('passport');
 
   passport.serializeUser(serializeUser);
+
   function serializeUser(user, done) {
     done(null, user);
   }
@@ -15,9 +16,16 @@ module.exports = function(app) {
   passport.deserializeUser(deserializeUser);
 
   function deserializeUser(user, done) {
-    developerModel
-      .findDeveloperById(user._id)
-      .then(
+    userModel
+      .findUserById(user._id)
+      .then(function (user) {
+          "use strict";
+          done(null, user);
+        },
+        function (err) {
+          "use strict";
+          done(err, null);
+        }
       );
   }
 
@@ -45,6 +53,19 @@ module.exports = function(app) {
   app.delete("/api/user/:uid", deleteUser);
   app.get("/api/user", findUsers); // find users by user names, credentials, or all users.
   app.post("/api/user", createUser);
+  app.post('/api/register', register);
+
+  function register(req, res) {
+    "use strict";
+    var newUser = req.body;
+    userModel
+      .createUser(newUser)
+      .then(function(user) {
+        req.login(user, function(err) {
+          res.json(user);
+        });
+      });
+  }
 
 
   /**

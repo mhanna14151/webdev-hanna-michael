@@ -9,6 +9,7 @@ import {User} from '../models/user.model.client';
 @Injectable()
 
 export class UserService {
+  options: RequestOptions = new RequestOptions();
 
   constructor(private _http: Http) { }
 
@@ -19,8 +20,27 @@ export class UserService {
     'findUserById' : this.findUserById,
     'findUserByUsername' : this.findUserByUsername,
     'updateUser' : this.updateUser,
+    'register' : this.register,
+    'login' : this.login
     // 'deleteUser' : this.deleteUser
   };
+
+  register(username, password) {
+    const url = this.baseUrl + '/api/register';
+    const credientials = {
+      username: username,
+      password: password
+    };
+    this.options.withCredentials = true;
+    return this._http.post(url, credientials, this.options)
+      .map((response: Response) =>  {
+      return response.json();
+      });
+  }
+
+  login() {
+
+  }
 
   createUser(user) {
     // const num: Number = (Math.floor(1 + (1000 - 1) * Math.random()));
