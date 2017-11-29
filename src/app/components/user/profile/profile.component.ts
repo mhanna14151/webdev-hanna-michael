@@ -26,9 +26,15 @@ export class ProfileComponent implements OnInit {
               private sharedService: SharedService) { }
 
   ngOnInit() {
-    this.paramSubscriptions = this.route.params
+     this.route.params
       .subscribe(params => {
-        this.user = this.sharedService.user || {};
+        this.user = this.sharedService.user;
+        // if (this.user !== {}) {
+          this.username = this.user.username;
+          this.email = this.user.email;
+          this.firstName = this.user.firstName;
+          this.lastName = this.user.lastName;
+        // }
       });
   }
     // this.route.params.subscribe(params => {

@@ -34,10 +34,8 @@ export class RegisterComponent implements OnInit {
         });
     } else {
       this.errorMsg = 'passwords do not match!';
+      this.errorFlag = true;
     }
-
-
-
   }
     // this.userService.findUserByUsername(username)
     //   .subscribe((user2: User) => {

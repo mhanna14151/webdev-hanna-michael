@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   login(username: String, password: String) {
     this.userService
-      .login(this.username, this.password)
+      .login(username, password)
       .subscribe((user) => {
       this.sharedService.user = user;
       this.router.navigate(['/user']);

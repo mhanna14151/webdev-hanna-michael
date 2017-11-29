@@ -28,6 +28,7 @@ module.exports = function(app) {
   }
 
   passport.use(new LocalStrategy(localStrategy));
+
   function localStrategy(username, password, done) {
     userModel
       .findUserByCredentials(username, password)
