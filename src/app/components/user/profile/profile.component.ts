@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(params => {
         this.user = this.sharedService.user;
         // if (this.user !== {}) {
+        this.userId = this.user._id;
           this.username = this.user.username;
           this.email = this.user.email;
           this.firstName = this.user.firstName;
@@ -37,28 +38,47 @@ export class ProfileComponent implements OnInit {
         // }
       });
   }
-    // this.route.params.subscribe(params => {
-    //   this.userId = params['uid'];
-    //   this.userService.findUserById(this.userId)
-    //     .subscribe((user: User) => {
-    //     this.user = user;
-    //       this.username = this.user.username;
-    //       this.email = this.user.email;
-    //       this.firstName = this.user.firstName;
-    //       this.lastName = this.user.lastName;
-    //   });
-    // });
 
   navigateToUsersWebsite() {
     this.router.navigate(['user', this.userId, 'website']);
   }
 
   updateProfile(username: String, email: String, firstName: String, lastName: String) {
-    const newUser = new User(this.userId, username, this.user.password, email, firstName, lastName);
-    this.userService.updateUser(this.userId, newUser)
-      .subscribe((users) => {
-      this.users = users;
-    });
+    confirm('Are you sure you wish to update your information?');
+    if (this.user.username !== username) {
+      this.userService.findUserByUsername(username).subscribe((theUser) => {
+        if (theUser) {
+          alert('Username is already taken');
+          this.user.username = this.user.username;
+          this.user.email = email;
+          this.user.firstName = firstName;
+          this.user.lastName = lastName;    this.userService.updateUser(this.userId, this.user)
+            .subscribe((users) => {
+              this.users = users;
+            });
+
+        } else {
+          this.user.username = username;
+          this.user.email = email;
+          this.user.firstName = firstName;
+          this.user.lastName = lastName;
+          this.userService.updateUser(this.userId, this.user)
+            .subscribe((users) => {
+              this.users = users;
+            });
+        }
+      });
+    } else {
+      this.user.username = username;
+      this.user.email = email;
+      this.user.firstName = firstName;
+      this.user.lastName = lastName;
+      this.userService.updateUser(this.userId, this.user)
+        .subscribe((users) => {
+          this.users = users;
+        });
+    }
+    // const newUser = new User(this.userId, username, this.user.password, email, firstName, lastName);
   }
 
   terminateAccount() {

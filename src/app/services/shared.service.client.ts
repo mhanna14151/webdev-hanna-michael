@@ -10,6 +10,6 @@ import {Page} from '../models/page.model.client';
 
 export class SharedService {
 
-  user = '';
+  user = {};
 
 }
