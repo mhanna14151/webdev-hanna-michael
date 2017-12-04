@@ -4,6 +4,7 @@ import {Website} from '../../../models/website.model.client';
 import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-widget-edit',
@@ -12,7 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class WidgetEditComponent implements OnInit {
   userId: String;
-  user: User;
+  user: any;
   websiteId: String;
   website: Website;
   pageID: String;
@@ -23,14 +24,16 @@ export class WidgetEditComponent implements OnInit {
   url: string;
 
 
-  constructor(private widgetService: WidgetService,
+  constructor(private sharedService: SharedService,
+              private widgetService: WidgetService,
               private route: ActivatedRoute,
               private router: Router) { }
 
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    this.userId = this.user._id;
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
       this.widgetID = params['wgid'];
@@ -49,7 +52,7 @@ export class WidgetEditComponent implements OnInit {
 
 
   returnToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['user/']);
   }
 
 

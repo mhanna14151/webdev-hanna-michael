@@ -5,6 +5,7 @@ import {WebsiteService} from '../../../services/website.service.client';
 import {PageService} from '../../../services/page.service.client';
 import {Page} from '../../../models/page.model.client';
 import {User} from '../../../models/user.model.client';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-page-new',
@@ -13,7 +14,7 @@ import {User} from '../../../models/user.model.client';
 })
 export class PageNewComponent implements OnInit {
   userId: String;
-  user: User;
+  user: any;
   websiteId: String;
   page: Page;
   pages: Page[];
@@ -24,11 +25,13 @@ export class PageNewComponent implements OnInit {
   constructor(private userService: UserService,
               private pageService: PageService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private sharedService: SharedService) { }
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    this.userId = this.user._id;
     this.route.params.subscribe(params => {
-        this.userId = params['uid'];
         this.websiteId = params['wid'];
         this.pageID = params['pid'];
         this.pageService.findPageById(this.pageID)
@@ -47,16 +50,16 @@ export class PageNewComponent implements OnInit {
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['user/']);
   }
 
   navigateToWidget(ID) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID, 'widget']);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page', ID, 'widget']);
 
   }
 
   returnToPreviousPage() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page']);
   }
 
   navigateToCreateNewPage() {
@@ -64,7 +67,7 @@ export class PageNewComponent implements OnInit {
   }
 
   navigateToPageEdit(ID) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID]);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page', ID]);
   }
 
   createNewPage(name, description) {
@@ -72,7 +75,7 @@ export class PageNewComponent implements OnInit {
     this.pageService.createPage(this.websiteId, newPage)
       .subscribe((page) => {
       this.page = page;
-      this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+      this.router.navigate(['user/', 'website', this.websiteId, 'page']);
       });
   }
 

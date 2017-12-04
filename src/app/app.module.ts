@@ -40,7 +40,7 @@ import { FlickerImageSearchComponent } from './components/widget/widget-edit/wid
 import {FlickrService} from './services/flickr.service.client';
 import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 import {SharedService} from './services/shared.service.client';
-import {AuthGuard} from "./services/auth-guard.service";
+import {AuthGuard} from './services/auth-guard.service';
 
 @NgModule({
   // Declared components here

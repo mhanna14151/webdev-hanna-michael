@@ -4,6 +4,7 @@ import {UserService} from '../../../services/user.service.client';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Website} from '../../../models/website.model.client';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-website-edit',
@@ -12,7 +13,7 @@ import {Website} from '../../../models/website.model.client';
 })
 export class WebsiteEditComponent implements OnInit {
   userId: String;
-  user: User;
+  user: any;
   name: String;
   description: String;
   website: Website;
@@ -22,12 +23,14 @@ export class WebsiteEditComponent implements OnInit {
   constructor(
     private websiteService: WebsiteService,
     private route: ActivatedRoute,
+    private sharedService: SharedService,
     private router: Router) {
   }
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    this.userId = this.user._id;
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.websiteService.findWebsiteById(this.websiteId)
         .subscribe((website: Website) => {
@@ -47,7 +50,7 @@ export class WebsiteEditComponent implements OnInit {
   }
 
   navigateToWebsiteEdit(ID) {
-    this.router.navigate(['user/', this.userId, 'website', ID]);
+    this.router.navigate(['user/', 'website', ID]);
   }
 
   updateWebsite(ID, name: String, description: String) {
@@ -56,24 +59,24 @@ export class WebsiteEditComponent implements OnInit {
       .subscribe((website) => {
       this.website = website;
       this.name = this.website.name;
-      this.router.navigate(['user/', this.userId, 'website']);
+      this.router.navigate(['user/', 'website']);
       });
   }
 
   navigateToUsersWebsite() {
-    this.router.navigate(['user', this.userId, 'website']);
+    this.router.navigate(['user', 'website']);
   }
 
   navigateToWebsiteNew() {
-    this.router.navigate(['user/', this.userId, 'website', 'new']);
+    this.router.navigate(['user/', 'website', 'new']);
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['user/']);
   }
 
   navigateToPage(ID) {
-    this.router.navigate(['user/', this.userId, 'website', ID, 'page']);
+    this.router.navigate(['user/', 'website', ID, 'page']);
 
   }
 
@@ -81,7 +84,7 @@ export class WebsiteEditComponent implements OnInit {
     this.websiteService.deleteWebsite(this.websiteId)
       .subscribe((websites) => {
         this.websites = websites;
-        this.router.navigate(['user', this.userId, 'website']);
+        this.router.navigate(['user', 'website']);
       });
   }
 

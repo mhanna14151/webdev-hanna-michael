@@ -40,7 +40,8 @@ export class ProfileComponent implements OnInit {
   }
 
   navigateToUsersWebsite() {
-    this.router.navigate(['user', this.userId, 'website']);
+    console.log('navigating to user/website');
+    this.router.navigate(['user', 'website']);
   }
 
   updateProfile(username: String, email: String, firstName: String, lastName: String) {

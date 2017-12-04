@@ -6,6 +6,7 @@ import {Page} from '../../../models/page.model.client';
 import {User} from '../../../models/user.model.client';
 import {Website} from '../../../models/website.model.client';
 import {DomSanitizer} from '@angular/platform-browser';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-widget-list',
@@ -14,7 +15,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class WidgetListComponent implements OnInit {
   userId: String;
-  user: User;
+  user: any;
   websiteId: String;
   website: Website;
   pages: Page[];
@@ -26,12 +27,14 @@ export class WidgetListComponent implements OnInit {
   constructor(private widgetService: WidgetService,
               private route: ActivatedRoute,
               private router: Router,
-              private sanitzer: DomSanitizer) { }
+              private sanitzer: DomSanitizer,
+              private sharedService: SharedService) { }
 
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    this.userId = this.user._id;
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
     });
@@ -46,19 +49,19 @@ export class WidgetListComponent implements OnInit {
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['user/']);
   }
 
 
 
   navigateToWidget(ID) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
+    this.router.navigate(['user/', 'website', this.websiteId, 'page', this.pageID, 'widget',
     ID]);
 
   }
 
   navigateToWidgetChooser() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget', 'new']);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page', this.pageID, 'widget', 'new']);
   }
 
   cleanThisUrl(url) {
@@ -69,7 +72,7 @@ export class WidgetListComponent implements OnInit {
   }
 
   returnToPreviousSite() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page']);
   }
 
   onIndexChange(event) {

@@ -28,18 +28,17 @@ const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'user', component: ProfileComponent, canActivate: [AuthGuard]},
-  { path: 'user/:uid', component: ProfileComponent},
-  { path: 'user/:uid/website', component: WebsiteListComponent},
-  { path: 'user/:uid/website/new', component: WebsiteNewComponent},
-  { path: 'user/:uid/website/:wid', component: WebsiteEditComponent},
-  { path: 'user/:uid/website/:wid/page', component: PageListComponent},
-  { path: 'user/:uid/website/:wid/page/new', component: PageNewComponent},
-  { path: 'user/:uid/website/:wid/page/:pid', component: PageEditComponent},
-  { path: 'user/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},
-  { path: 'user/:uid/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
-  { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
+  { path: 'user/website', component: WebsiteListComponent},
+  { path: 'user/website/new', component: WebsiteNewComponent},
+  { path: 'user/website/:wid', component: WebsiteEditComponent},
+  { path: 'user/website/:wid/page', component: PageListComponent},
+  { path: 'user/website/:wid/page/new', component: PageNewComponent},
+  { path: 'user/website/:wid/page/:pid', component: PageEditComponent},
+  { path: 'user/website/:wid/page/:pid/widget', component: WidgetListComponent},
+  { path: 'user/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
+  { path: 'user/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
   { path: 'exterminate', component: ExterminateComponent},
-  { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickerImageSearchComponent}
+  { path: 'user/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickerImageSearchComponent}
 ];
 
 // Export the routes as module providers

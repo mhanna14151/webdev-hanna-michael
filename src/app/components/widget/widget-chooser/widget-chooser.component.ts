@@ -5,6 +5,7 @@ import {Page} from '../../../models/page.model.client';
 import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SharedService} from '../../../services/shared.service.client';
 
 
 @Component({
@@ -14,7 +15,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class WidgetChooserComponent implements OnInit {
   userId: String;
-  user: User;
+  user: any;
   websiteId: String;
   website: Website;
   widgetType: String;
@@ -25,13 +26,15 @@ export class WidgetChooserComponent implements OnInit {
   url: string;
 
 
-  constructor(
+  constructor(private sharedService: SharedService,
               private widgetService: WidgetService,
               private route: ActivatedRoute,
               private router: Router) { }
 
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    this.userId = this.user._id;
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
       this.websiteId = params['wid'];
@@ -54,19 +57,19 @@ export class WidgetChooserComponent implements OnInit {
         this.widget = widgets[widgets.length];
         console.log(this.widget);
         this.widgetID = this.widget._id;
-        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
+        this.router.navigate(['user/', 'website', this.websiteId, 'page', this.pageID, 'widget',
           this.widgetID]);
       } else {
         this.widget = widgets[widgets.length - 1];
         this.widgetID = this.widget._id;
-        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget',
+        this.router.navigate(['user/', 'website', this.websiteId, 'page', this.pageID, 'widget',
           this.widgetID]);
       }
     });
   }
 
   returnToPreviousSite() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageID, 'widget']);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page', this.pageID, 'widget']);
   }
 
 }

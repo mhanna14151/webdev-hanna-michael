@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {Widget} from '../../../../models/widget.model.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SharedService} from '../../../../services/shared.service.client';
 
 
 
@@ -13,6 +14,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class WidgetHtmlComponent implements OnInit {
   name: String;
   text: String;
+  user: any;
   // size: Number;
   widget: Widget;
   widgetID: String;
@@ -21,16 +23,18 @@ export class WidgetHtmlComponent implements OnInit {
   websiteID: String;
   widgetType: String;
 
-  constructor(private widgetService: WidgetService,
+  constructor(private sharedService: SharedService,
+              private widgetService: WidgetService,
               private router: Router,
               private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    this.userID = this.user._id;
     this.route.params.subscribe(params => {
       this.pageID = params['pid'];
       this.widgetID = params['wgid'];
-      this.userID = params['uid'];
       this.websiteID = params['wid'];
     });
     this.widgetService.findWidgetById(this.widgetID)
@@ -47,7 +51,7 @@ export class WidgetHtmlComponent implements OnInit {
     this.widgetService.updateWidget(this.widgetID, updatedWidget)
       .subscribe((widget) => {
         this.widget = widget;
-        this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+        this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
 
       });
   }
@@ -57,18 +61,18 @@ export class WidgetHtmlComponent implements OnInit {
     if (this.text === null) {
       this.widgetService.deleteWidget(this.widgetID);
     }
-    this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+    this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.userID]);
+    this.router.navigate(['user/']);
   }
 
   deleteThisWidget(ID) {
     this.widgetService.deleteWidget(this.widgetID)
       .subscribe(() => {
         // this.widgets = widgets;
-        this.router.navigate(['user/', this.userID, 'website', this.websiteID, 'page', this.pageID, 'widget']);
+        this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
       });
   }
 

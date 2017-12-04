@@ -8,12 +8,14 @@ module.exports = function(app) {
   passport.serializeUser(serializeUser);
 
   function serializeUser(user, done) {
+    console.log('ser');
     done(null, user);
   }
 
   passport.deserializeUser(deserializeUser);
 
   function deserializeUser(user, done) {
+    console.log('des');
     userModel
       .findUserById(user._id)
       .then(function (user) {
@@ -30,6 +32,7 @@ module.exports = function(app) {
   passport.use(new LocalStrategy(localStrategy));
 
   function localStrategy(username, password, done) {
+    console.log('Local Strategy');
     userModel
       .findUserByCredentials(username, password)
       .then(function (user) {
@@ -52,6 +55,7 @@ module.exports = function(app) {
   app.post('/api/loggedIn', loggedIn);
 
   function logout(req, res) {
+    console.log('logout');
     req.logOut();
     res.send(200);
   }
@@ -69,10 +73,12 @@ module.exports = function(app) {
   }
 
   function login(req, res) {
+    console.log('login');
     res.json(req.user);
   }
 
   function loggedIn(req, res) {
+    console.log('loggedIn');
     if (req.isAuthenticated()) {
       res.json(req.user);
     } else {

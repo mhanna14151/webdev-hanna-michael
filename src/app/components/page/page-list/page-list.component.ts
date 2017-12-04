@@ -4,6 +4,7 @@ import {UserService} from '../../../services/user.service.client';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Page} from '../../../models/page.model.client';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-page-list',
@@ -13,18 +14,20 @@ import {Page} from '../../../models/page.model.client';
 
 export class PageListComponent implements OnInit {
   userId: String;
-  user: User;
+  user: any;
   websiteId: String;
   pages: Page[];
   pageID: String;
 
   constructor(private pageService: PageService,
+              private sharedService: SharedService,
               private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    this.userId = this.user._id;
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.websiteId = params['wid'];
       this.pageID = params['pid'];
       this.pageService.findPagesByWebsiteId(this.websiteId)
@@ -39,24 +42,24 @@ export class PageListComponent implements OnInit {
   }
 
   returnToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['user/']);
   }
 
 
   navigateToWidget(ID) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID, 'widget']);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page', ID, 'widget']);
   }
 
   navigateToUsersWebsite() {
-    this.router.navigate(['user', this.userId, 'website']);
+    this.router.navigate(['user', 'website']);
   }
 
   navigateToCreateNewPage() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', 'new']);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page', 'new']);
   }
 
   navigateToPageEdit(ID) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', ID]);
+    this.router.navigate(['user/', 'website', this.websiteId, 'page', ID]);
   }
 
 }
