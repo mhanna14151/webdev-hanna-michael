@@ -31,6 +31,7 @@ export class PageNewComponent implements OnInit {
   ngOnInit() {
     this.user = this.sharedService.user;
     this.userId = this.user._id;
+    this.name = '';
     this.route.params.subscribe(params => {
         this.websiteId = params['wid'];
         this.pageID = params['pid'];
@@ -71,12 +72,16 @@ export class PageNewComponent implements OnInit {
   }
 
   createNewPage(name, description) {
-    const newPage: Page = new Page(null, name, this.websiteId, description);
-    this.pageService.createPage(this.websiteId, newPage)
-      .subscribe((page) => {
-      this.page = page;
-      this.router.navigate(['user/', 'website', this.websiteId, 'page']);
-      });
+    if (name === '') {
+      alert('Name cannot be left blank');
+    } else {
+      const newPage: Page = new Page(null, name, this.websiteId, description);
+      this.pageService.createPage(this.websiteId, newPage)
+        .subscribe((page) => {
+          this.page = page;
+          this.router.navigate(['user/', 'website', this.websiteId, 'page']);
+        });
+    }
   }
 
 }

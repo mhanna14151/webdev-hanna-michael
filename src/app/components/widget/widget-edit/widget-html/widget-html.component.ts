@@ -47,13 +47,17 @@ export class WidgetHtmlComponent implements OnInit {
   }
 
   updateWidgetHTML(name: String, text: String) {
-    const updatedWidget = new Widget(this.widgetID, name, this.pageID, null, null, text, null);
-    this.widgetService.updateWidget(this.widgetID, updatedWidget)
-      .subscribe((widget) => {
-        this.widget = widget;
-        this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
+    if (name === '') {
+      alert('Name cannot be left blank');
+    } else {
+      const updatedWidget = new Widget(this.widgetID, name, this.pageID, null, null, text, null);
+      this.widgetService.updateWidget(this.widgetID, updatedWidget)
+        .subscribe((widget) => {
+          this.widget = widget;
+          this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
 
-      });
+        });
+    }
   }
 
   returnToPreviousSite() {

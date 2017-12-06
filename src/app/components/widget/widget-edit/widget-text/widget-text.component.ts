@@ -51,18 +51,22 @@ export class WidgetTextComponent implements OnInit {
   }
 
   updateWidgetTEXT(rows, placeholder, text, formatted) {
-    const updatedWidget = new Widget(this.widgetID, 'TEXT', this.pageID, null, null, null, null);
-    updatedWidget.formatted = formatted;
-    console.log('formatted is: ', formatted);
-    updatedWidget.rows = rows;
-    updatedWidget.placeholder = placeholder;
-    updatedWidget.text = text;
-    this.widgetService.updateWidget(this.widgetID, updatedWidget)
-      .subscribe((widget) => {
-        this.widget = widget;
-        this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
+    if (text === '') {
+      alert('Text cannot be left blank');
+    } else {
+      const updatedWidget = new Widget(this.widgetID, 'TEXT', this.pageID, null, null, null, null);
+      updatedWidget.formatted = formatted;
+      console.log('formatted is: ', formatted);
+      updatedWidget.rows = rows;
+      updatedWidget.placeholder = placeholder;
+      updatedWidget.text = text;
+      this.widgetService.updateWidget(this.widgetID, updatedWidget)
+        .subscribe((widget) => {
+          this.widget = widget;
+          this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
 
-      });
+        });
+    }
   }
 
   returnToPreviousSite() {

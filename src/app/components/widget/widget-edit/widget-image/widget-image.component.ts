@@ -53,12 +53,16 @@ export class WidgetImageComponent implements OnInit {
   }
 
   updateWidgetImage(id, text: String, width: String, url: String) {
-    const updatedWidget = new Widget(id, 'IMAGE', this.pageID, null, width, text, url);
-    this.widgetService.updateWidget(id, updatedWidget)
-      .subscribe((widget) => {
-        this.widget = widget;
-        this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
-      });
+    if (text === '') {
+      alert('Text cannot be left blank');
+    } else {
+      const updatedWidget = new Widget(id, 'IMAGE', this.pageID, null, width, text, url);
+      this.widgetService.updateWidget(id, updatedWidget)
+        .subscribe((widget) => {
+          this.widget = widget;
+          this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
+        });
+    }
   }
 
   returnToPreviousSite() {

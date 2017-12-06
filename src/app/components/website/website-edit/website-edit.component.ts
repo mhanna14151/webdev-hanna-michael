@@ -54,13 +54,17 @@ export class WebsiteEditComponent implements OnInit {
   }
 
   updateWebsite(ID, name: String, description: String) {
-    const updatedWebsite = new Website(ID, name, this.userId, description);
-    this.websiteService.updateWebsite(this.websiteId, updatedWebsite)
-      .subscribe((website) => {
-      this.website = website;
-      this.name = this.website.name;
-      this.router.navigate(['user/', 'website']);
-      });
+    if (name === '') {
+      alert('Name cannot be left blank');
+    } else {
+      const updatedWebsite = new Website(ID, name, this.userId, description);
+      this.websiteService.updateWebsite(this.websiteId, updatedWebsite)
+        .subscribe((website) => {
+          this.website = website;
+          this.name = this.website.name;
+          this.router.navigate(['user/', 'website']);
+        });
+    }
   }
 
   navigateToUsersWebsite() {

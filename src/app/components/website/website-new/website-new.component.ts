@@ -32,6 +32,7 @@ export class WebsiteNewComponent implements OnInit {
   ngOnInit() {
     this.user = this.sharedService.user;
     this.userId = this.user._id;
+    this.name = '';
     this.route.params.subscribe(params => {
       this.websiteId = params['wid'];
       this.websiteService.findAllWebsitesForUser(this.userId)
@@ -42,13 +43,16 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   createNewWebsite(name, description) {
-    const newWebsite: Website = new Website(null, name, this.userId, description);
-    this.websiteService.createWebsite(this.userId, newWebsite)
-      .subscribe((websites) => {
-      this.websites = websites;
-        this.router.navigate(['user/', this.userId, 'website']);
-      });
-
+    if (name === '') {
+      alert('Website Name cannot be empty, please try again');
+    } else {
+      const newWebsite: Website = new Website(null, name, this.userId, description);
+      this.websiteService.createWebsite(this.userId, newWebsite)
+        .subscribe((websites) => {
+          this.websites = websites;
+          this.router.navigate(['user/', 'website']);
+        });
+    }
   }
 
   outputWebsitesForThisUser() {

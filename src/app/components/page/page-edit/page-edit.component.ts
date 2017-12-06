@@ -80,11 +80,15 @@ export class PageEditComponent implements OnInit {
   }
 
   updatePage(ID, name: String, description: String) {
+    if (name === '') {
+      alert('Name cannot be left blank');
+    } else {
     const updatedPage = new Page(ID, name, this.websiteId, description);
     this.pageService.updatePage(this.pageID, updatedPage)
       .subscribe((page) => {
         this.page = page;
         this.router.navigate(['user/', 'website', this.websiteId, 'page']);
       });
+    }
   }
 }

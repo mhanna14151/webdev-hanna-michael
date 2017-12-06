@@ -45,6 +45,9 @@ export class WidgetHeaderComponent implements OnInit {
   }
 
   updateWidgetHeader(text: String, size: Number) {
+    if (text === '') {
+      alert('Text cannot be left blank');
+    } else {
     const updatedWidget = new Widget(this.widgetID, 'HEADING', this.pageID, size, null, text, null);
     this.widgetService.updateWidget(this.widgetID, updatedWidget)
       .subscribe((widget) => {
@@ -52,6 +55,7 @@ export class WidgetHeaderComponent implements OnInit {
         this.router.navigate(['user/', 'website', this.websiteID, 'page', this.pageID, 'widget']);
 
       });
+    }
   }
 
   returnToPreviousSite() {

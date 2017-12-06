@@ -4,6 +4,7 @@ module.exports = function(app) {
   var userModel = require("../../models/user/user.model.server");
   var passport = require('passport');
   var LocalStrategy = require('passport-local').Strategy;
+  var bcrypt = require("bcrypt-nodejs");
 
   passport.serializeUser(serializeUser);
 
@@ -34,9 +35,9 @@ module.exports = function(app) {
   function localStrategy(username, password, done) {
     console.log('Local Strategy');
     userModel
-      .findUserByCredentials(username, password)
+      .findUserByUserName(username)
       .then(function (user) {
-        if (user) {
+        if(user && bcrypt.compareSync(password, user.password)) {
           return done(null, user);
         } else {
           return done(null, false);
@@ -55,7 +56,6 @@ module.exports = function(app) {
   app.post('/api/loggedIn', loggedIn);
 
   function logout(req, res) {
-    console.log('logout');
     req.logOut();
     res.send(200);
   }
@@ -63,6 +63,7 @@ module.exports = function(app) {
   function register(req, res) {
     "use strict";
     var newUser = req.body;
+    newUser.password = bcrypt.hashSync(newUser.password);
     userModel
       .createUser(newUser)
       .then(function(user) {
@@ -73,12 +74,10 @@ module.exports = function(app) {
   }
 
   function login(req, res) {
-    console.log('login');
     res.json(req.user);
   }
 
   function loggedIn(req, res) {
-    console.log('loggedIn');
     if (req.isAuthenticated()) {
       res.json(req.user);
     } else {
