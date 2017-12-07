@@ -22,7 +22,8 @@ export class UserService {
     'findUserByUsername' : this.findUserByUsername,
     'updateUser' : this.updateUser,
     'register' : this.register,
-    'login' : this.login
+    'login' : this.login,
+    // 'findUserByFacebookId' : findUserByFacebookId'
     // 'deleteUser' : this.deleteUser
   };
 

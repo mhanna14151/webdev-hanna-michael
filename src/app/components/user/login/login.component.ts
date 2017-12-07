@@ -3,6 +3,9 @@ import {Router} from '@angular/router';
 import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../models/user.model.client';
 import {SharedService} from '../../../services/shared.service.client';
+import {environment} from '../../../../environments/environment';
+
+
 
 @Component({
   selector: 'app-login',
@@ -14,6 +17,8 @@ export class LoginComponent implements OnInit {
   password: String;
   errorFlag: boolean;
   errorMsg: String;
+
+  baseUrl = environment.baseUrl;
 
   constructor(private router: Router, private userService: UserService, private sharedService: SharedService) { }
 
