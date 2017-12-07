@@ -1,6 +1,6 @@
 var User = require('../model/user.model.server');
 // var one = '1808085995928478';
-// var two = '49bf8d852b9e1b3a1a4df36b255184e4';
+// var two = '1808085995928478a49bf8d852b9e1b3a1a4df36b255184e4';
 // var three = 'http://localhost:3100/api/facebook/oauth2callback';
 
 

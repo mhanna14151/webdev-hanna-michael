@@ -53,7 +53,7 @@ export class WidgetImageComponent implements OnInit {
   }
 
   updateWidgetImage(id, text: String, width: String, url: String) {
-    if (text === '') {
+    if (text === '' || text === null) {
       alert('Text cannot be left blank');
     } else {
       const updatedWidget = new Widget(id, 'IMAGE', this.pageID, null, width, text, url);

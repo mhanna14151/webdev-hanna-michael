@@ -72,7 +72,7 @@ export class PageNewComponent implements OnInit {
   }
 
   createNewPage(name, description) {
-    if (name === '') {
+    if (name === '' || name === null) {
       alert('Name cannot be left blank');
     } else {
       const newPage: Page = new Page(null, name, this.websiteId, description);

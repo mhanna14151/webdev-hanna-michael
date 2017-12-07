@@ -51,7 +51,7 @@ export class WidgetTextComponent implements OnInit {
   }
 
   updateWidgetTEXT(rows, placeholder, text, formatted) {
-    if (text === '') {
+    if (text === '' || text === null) {
       alert('Text cannot be left blank');
     } else {
       const updatedWidget = new Widget(this.widgetID, 'TEXT', this.pageID, null, null, null, null);

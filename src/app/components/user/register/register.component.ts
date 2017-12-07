@@ -22,11 +22,16 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private sharedService: SharedService) { }
 
   ngOnInit() {
+    this.username = null;
+    this.userName = null;
+    this.password = null;
     this.errorFlag = false;
   }
 
   registerNewUser(username, password, verifyPassword) {
-    if (password === verifyPassword) {
+    if (username === null || username === '' || password === null || password === '' || verifyPassword === null || verifyPassword === '') {
+      alert('Fields cannot be left blank');
+    } else if (password === verifyPassword) {
       this.userService.register(username, password)
         .subscribe((user) => {
           this.sharedService.user = user;

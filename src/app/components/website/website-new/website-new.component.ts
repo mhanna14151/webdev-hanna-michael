@@ -43,7 +43,7 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   createNewWebsite(name, description) {
-    if (name === '') {
+    if (name === '' || name === null) {
       alert('Website Name cannot be empty, please try again');
     } else {
       const newWebsite: Website = new Website(null, name, this.userId, description);

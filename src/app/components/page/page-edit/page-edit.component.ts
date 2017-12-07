@@ -80,7 +80,7 @@ export class PageEditComponent implements OnInit {
   }
 
   updatePage(ID, name: String, description: String) {
-    if (name === '') {
+    if (name === '' || name === null) {
       alert('Name cannot be left blank');
     } else {
     const updatedPage = new Page(ID, name, this.websiteId, description);

@@ -47,8 +47,8 @@ export class WidgetHtmlComponent implements OnInit {
   }
 
   updateWidgetHTML(name: String, text: String) {
-    if (name === '') {
-      alert('Name cannot be left blank');
+    if (name === '' || name === null || text === null || text === '') {
+      alert('Fields cannot be left blank');
     } else {
       const updatedWidget = new Widget(this.widgetID, name, this.pageID, null, null, text, null);
       this.widgetService.updateWidget(this.widgetID, updatedWidget)

@@ -54,7 +54,7 @@ export class WebsiteEditComponent implements OnInit {
   }
 
   updateWebsite(ID, name: String, description: String) {
-    if (name === '') {
+    if (name === '' || name === null) {
       alert('Name cannot be left blank');
     } else {
       const updatedWebsite = new Website(ID, name, this.userId, description);

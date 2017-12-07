@@ -45,7 +45,7 @@ export class WidgetHeaderComponent implements OnInit {
   }
 
   updateWidgetHeader(text: String, size: Number) {
-    if (text === '') {
+    if (text === '' || text === null) {
       alert('Text cannot be left blank');
     } else {
     const updatedWidget = new Widget(this.widgetID, 'HEADING', this.pageID, size, null, text, null);
