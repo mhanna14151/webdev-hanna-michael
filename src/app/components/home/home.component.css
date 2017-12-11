@@ -1,35 +1,157 @@
 .topMargin {
   margin-top: 40px;
 }
-
 /*This code was taken from: https://www.w3schools.com/howto/howto_js_topnav.asp*/
 
 /* Add a black background color to the top navigation */
-.topnav {
-  background-color: #333;
+.SpaceNav {
+  background-color: black;
   overflow: hidden;
+  border: 2px solid #ffffff;
+
 }
 
+
 /* Style the links inside the navigation bar */
-.topnav a {
+.SpaceNav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: white;
+  font-family: final_frontier_old_styleRg;
   text-align: center;
+  text-color: white;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 28px;
 }
 
 /* Change the color of links on hover */
-.topnav a:hover {
+.SpaceNav a:hover {
   background-color: #ddd;
   color: black;
+  border: black;
 }
 
 /* Add a color to the active/current link */
-.topnav a.active {
+.SpaceNav a.active {
   background-color: #4CAF50;
   color: white;
 }
 
+.mh-backgroundColor {
+  background-color: #333;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+
+}
+
+moh-maxPictureSize {
+  height:1%;
+  width: 1%;
+
+}
+
+b {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+/* from: https://www.w3schools.com/howto/howto_css_cards.asp*/
+.jj-card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow from: https://www.w3schools.com/howto/howto_css_cards.asp*/
+.jj-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.jj-container {
+  padding: 2px 16px;
+  padding-left: 15px;
+}
+
+.mb-img-max {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.mh-paddingAwayFromNavBar {
+  padding-top: 1%;
+}
+
+.mh-paddingAwayFromNavBarTriple {
+  padding-top: 3%;
+}
+
+.jj-img-padding {
+  padding-top: 25px;
+  width: 100%;
+}
+
+.jj-button-profile {
+  border: transparent;
+  background-color: transparent;
+}
+
+.jj-follows {
+  height: 35px;
+  width: 30px;
+}
+
+.glyphicon.glyphicon-picture {
+  font-size: 75px;
+  color: white;
+}
+
+.glyphicon.glyphicon-remove {
+  color: white;
+}
+
+
+.mh-roundedCorners {
+  border-radius: 25px;
+  border: 2px solid #ffffff;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.mh-roundedCornersForSmallButtons {
+  border-radius: 25px;
+  border: 2px solid #ffffff;
+  padding: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.mh-roundedCornersV2 {
+  border-radius: 25px;
+  border: 2px solid #ffffff;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.moh-buttonPadding {
+  padding: 50px;
+}
+
+.moh-max-height {
+  height: 100%;
+}
+
+.moh-btnWidthPlusMargin {
+  margin: 6px;
+  min-width: 152px;
+  max-width: 168px;
+}

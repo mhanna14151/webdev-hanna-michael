@@ -1,29 +1,51 @@
-<!--The banner-->
-<div class="topnav" id="myTopnav">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Michael</title>
+  <link href="../../../assets/css/vendors/HTML/styles.css" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-  <a href="home.component.html">Home</a>
+  <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js?ver=3.3"></script>
 
-  <a href="../Assignments/assignments.html">Assignments</a>
+</head>
 
-
+<body>
+<div id="header">
+  <!--<div id="logo"><a href="">MICHAEL HANNA</a></div>-->
+  <ul id="main-menu">
+    <li><a (click)="navigateToAssignment()">Assignment</a></li>
+    <li><a href="https://spacebook-benjamin-hanna-johns.herokuapp.com/">SpaceBook Project</a></li>
+    <li><a href="https://github.com/mhanna14151/">GitHub</a></li>
+  </ul>
 </div>
 
-<!--This is the content below the banner-->
+<div>
 
-
-<div class="container">
-  <h1>
-    Angular 4 MEAN stack app
-  </h1>
-  <h3>
-    App works
-  </h3>
-  <h4>
-    <a href="test">Test MongoDB</a>
-  </h4>
-
-  <h2> Assignment2
-    <a routerLink='login'>link to user component</a>
-  </h2>
+  <!--Begin About Section-->
+  <div id="about">
+    <h1>About</h1>
+    <div class="top-divider"></div>
+    <div class="content">
+      <img src="https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/163816_1552560942882_2617628_n.jpg?oh=e6a200ec124c5c80b6e1313297fb842b&oe=5ACC1E09" />
+      <h2>My Name is Michael Hanna, and I am a software engineer in the making. I apologize for the sparcity of this website. This page in it's current state is only temporary, and I'll be adding to it soon. But enough about that, let me tell you about myself. I'm currently pursuing a Master's Degree in Computer Science. I've come to learn I like a wide 'array' of topics, and am excited to continue to learn more and more. If you'd like to learn more, I've included some more information in my personal Github account in the header above. It's a work in progress and is mostly comprised of school projects. Hopefully that will change as this semester draws to a close, and I have more spare time to explore.</h2>
+      <p></p>
+    </div>
+    <div class="bottom-divider">
+      <h1>Projects</h1>
+    </div>
+    <div class="bottom-divider">
+      <h2>Spacebook Project Demo</h2>
+      <iframe width="560" height="315" [src]="cleanThisUrl('https://youtu.be/no1K-4un6OU')"
+              [style.width]=""
+              frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <!--End About Section-->
 </div>
 
+
+
+</body>
+</html>
